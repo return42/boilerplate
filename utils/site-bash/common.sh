@@ -621,7 +621,7 @@ prefix_stdout () {
 sudoOrExit() {
 # ----------------------------------------------------------------------------
     if [ ! $(id -u) -eq 0 ];  then
-        echo "this command requires root privilege (sudo) ausgeführt werden!"
+        echo "this command requires root (sudo) privilege!"
         exit 42
     fi
 }
@@ -1687,6 +1687,14 @@ CONFIG_cryptedBackup(){
     done
 
 }
+
+
+# Samba
+# =====
+
+if [[ -z "$SAMBA_SERVER" ]]; then
+    SAMBA_SERVER=127.0.0.1
+fi
 
 # Debian's Apache Setup
 # =====================
