@@ -13,6 +13,7 @@ __pycache__/
 .Python
 env/
 build/
+local/
 develop-eggs/
 dist/
 downloads/
@@ -90,3 +91,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# odd OS
+.DS_Store

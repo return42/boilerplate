@@ -17,7 +17,7 @@ docs-help:
 # ------------------------------------------------------------------------------
 
 sphinx-doc: $(PY_ENV)
-	$(PY_ENV_BIN)/pip install Sphinx
+	@$(PY_ENV_BIN)/pip install $(PIP_VERBOSE) Sphinx
 
 # ------------------------------------------------------------------------------
 # commands

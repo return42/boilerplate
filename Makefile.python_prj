@@ -38,8 +38,8 @@ PHONY += clean
 clean: pyclean docs-clean
 	$(call cmd,common_clean)
 
-PHONY += help-rqmts
-rqmts: msg-sphinx-doc msg-pylint-exe msg-pip-exe
+PHONY += rqmts
+rqmts: msg-python-exe msg-virtualenv-exe
 
 .PHONY: $(PHONY)
 

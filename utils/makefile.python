@@ -10,7 +10,6 @@ PYBUILD  ?= py_build
 # python version to use
 PY       ?=3
 PYTHON   ?= python$(PY)
-PIP      ?= pip
 PIP_INST ?=
 PYLINT   ?= pylint
 
@@ -18,6 +17,14 @@ VIRTUALENV   = virtualenv --python=$(PYTHON)
 VTENV_OPTS   = "--no-site-packages"
 PY_ENV       = ./local/py$(PY)
 PY_ENV_BIN   = $(PY_ENV)/bin
+
+ifeq ($(KBUILD_VERBOSE),1)
+  PIP_VERBOSE =
+  VIRTUALENV_VERBOSE =
+else
+  PIP_VERBOSE = "-q"
+  VIRTUALENV_VERBOSE = "-q"
+endif
 
 python-help::
 	@echo  'makefile.python:'
@@ -72,22 +79,26 @@ endif
 
 PHONY += pylint-exe
 pylint-exe: $(PY_ENV)
-	$(PY_ENV_BIN)/pip install $(PYLINT)
+	$(PY_ENV_BIN)/pip $(PIP_VERBOSE) install $(PYLINT)
 
 # ------------------------------------------------------------------------------
 # commands
 # ------------------------------------------------------------------------------
 
+# $2 path to folder where virtualenv take place
+quiet_cmd_virtualenv  = PYENV     $@
+      cmd_virtualenv  = $(VIRTUALENV) $(VIRTUALENV_VERBOSE) $(VTENV_OPTS) $2
+
 # $2 path to folder with setup.py
 quiet_cmd_pyinstall   = INSTALL   $@
-      cmd_pyinstall   = $(PY_ENV_BIN)/$(PIP) -v install $(PIP_INST) -e $2
+      cmd_pyinstall   = $(PY_ENV_BIN)/pip $(PIP_VERBOSE) install $(PIP_INST) -e $2
 
 # Uninstall the package. Since pip does not uninstall the no longer needed
 # depencies (something like autoremove) the depencies remain.
 
 # $2 package name to uninstall
 quiet_cmd_pyuninstall = UNINSTALL $@
-      cmd_pyuninstall = $(PY_ENV_BIN)/$(PIP) uninstall $2
+      cmd_pyuninstall = $(PY_ENV_BIN)/pip $(PIP_VERBOSE) uninstall $2
 
 # $2 path to lint
 quiet_cmd_pylint      = LINT      $@
@@ -140,8 +151,8 @@ pyuninstall: pip-exe
 	$(call cmd,pyuninstall,$(PYOBJECTS))
 
 $(PY_ENV): virtualenv-exe python-exe
-	$(VIRTUALENV) $(VTENV_OPTS) $(PY_ENV)
-	$(PY_ENV_BIN)/pip install -r requirements.txt
+	$(call cmd,virtualenv,$(PY_ENV))
+	@$(PY_ENV_BIN)/pip install $(PIP_VERBOSE) -r requirements.txt
 
 # With 'dependency_links=' setuptools supports dependencies on packages hosted
 # on other reposetories then PyPi, see "Packages Not On PyPI" [1].  The big
