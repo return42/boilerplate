@@ -1,3 +1,14 @@
-Sphinx
+# --------
+# requires
+# --------
+
+# --------------
+# tests_requires
+# --------------
+
+# -------
+# develop
+# -------
+
+pip
 sphinx_rtd_theme
-nose
