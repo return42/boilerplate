@@ -87,7 +87,13 @@ pylint-exe: $(PY_ENV)
 
 # $2 path to folder where virtualenv take place
 quiet_cmd_virtualenv  = PYENV     $@
-      cmd_virtualenv  = $(VIRTUALENV) $(VIRTUALENV_VERBOSE) $(VTENV_OPTS) $2
+      cmd_virtualenv  = \
+	if [ ! -d "./$(PY_ENV)" ];then                                  \
+		$(VIRTUALENV) $(VIRTUALENV_VERBOSE) $(VTENV_OPTS) $2;   \
+	else                                                            \
+		echo "using virtualenv from $2";                        \
+        fi
+
 
 # $2 path to folder with setup.py
 quiet_cmd_pyinstall   = INSTALL   $@
