@@ -12,3 +12,12 @@
 
 pip
 sphinx_rtd_theme
+
+# sphinxjp.themes.revealjs: slide-shows with revaljs
+#
+#   comment out next lines, if you don't build slide-shows
+#
+git+https://github.com/return42/sphinxjp.themes.revealjs@master#egg=sphinxjp.themes.revealjs
+# -e file:../sphinxjp.themes.revealjs#egg=sphinxjp.themes.revealjs
+
+

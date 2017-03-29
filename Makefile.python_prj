@@ -6,14 +6,16 @@ include utils/makefile.sphinx
 
 GIT_URL   = https://github.com/return42/XXXX.git
 PYOBJECTS = XXXX
+SLIDES    = docs/slides
 
 all: clean pylint pytest build docs
 
 PHONY += help
 help:
-	@echo  '  docs	- build documentation'
-	@echo  '  clean	- remove most generated files'
-	@echo  '  rqmts	- info about build requirements'
+	@echo  '  docs   - build documentation'
+	@echo  '  slides - build reveal.js slide presentation'
+	@echo  '  clean  - remove most generated files'
+	@echo  '  rqmts  - info about build requirements'
 	@echo  ''
 	@echo  '  install   - developer install'
 	@echo  '  uninstall - developer uninstall'
@@ -33,6 +35,10 @@ uninstall: pyuninstall
 PHONY += docs
 docs:  sphinx-doc
 	$(call cmd,sphinx,html,docs,docs)
+
+PHONY += slides
+slides:  sphinx-doc
+	$(call cmd,sphinx,html,$(SLIDES),$(SLIDES),slides)
 
 PHONY += clean
 clean: pyclean docs-clean
