@@ -37,7 +37,8 @@ boilerplate
 
 .. revealjs:: add boilerplate to your project
 
-   copy 'util' folder to your repository and add some includes to your Makefile:
+   copy 'utils' folder to your repository and add some includes to your
+   Makefile:
 
    .. rv_code::
 
@@ -75,8 +76,6 @@ boilerplate
 
 .. revealjs:: add *docs* target to your project
 
-   Build Sphinx documentation from folder *docs*.
-
    .. rv_code::
 
       PHONY += docs
@@ -89,10 +88,9 @@ boilerplate
 
       .PHONY: $(PHONY)
 
+   builds (Sphinx) documentation from folder *docs*.
 
 .. revealjs:: add *slides* target to your project
-
-   Build slide presentation from folder *docs/slides*.
 
    .. rv_code::
 
@@ -106,8 +104,9 @@ boilerplate
 
       .PHONY: $(PHONY)
 
+   builds (reveal.js) presentation from folder *docs/slides*.
 
-.. revealjs:: THE END
+.. revealjs:: Thanks!
  :title-heading: h2
  :subtitle-heading: h3
- :subtitle: BY return42
+ :subtitle: more slides comming soon ...
