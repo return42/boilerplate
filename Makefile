@@ -7,7 +7,7 @@ include utils/makefile.sphinx
 GIT_URL   = https://github.com/return42/boilerplate.git
 SLIDES    = docs/slides
 
-all: clean pylint pytest build docs
+all: clean docs
 
 PHONY += help
 help:
