@@ -11,18 +11,11 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-env/
 build/
 local/
-develop-eggs/
 dist/
 downloads/
-eggs/
 .eggs/
-lib/
-lib64/
-parts/
-sdist/
 *.egg-info/
 .installed.cfg
 *.egg

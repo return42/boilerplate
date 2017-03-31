@@ -104,7 +104,7 @@ quiet_cmd_pyinstall   = INSTALL   $@
 
 # $2 package name to uninstall
 quiet_cmd_pyuninstall = UNINSTALL $@
-      cmd_pyuninstall = $(PY_ENV_BIN)/pip $(PIP_VERBOSE) uninstall $2
+      cmd_pyuninstall = $(PY_ENV_BIN)/pip $(PIP_VERBOSE) uninstall --yes $2
 
 # $2 path to lint
 quiet_cmd_pylint      = LINT      $@
@@ -151,9 +151,9 @@ pylint: pylint-exe
 	$(call cmd,pylint,$(PYOBJECTS))
 
 PHONY += pyinstall pyuninstall
-pyinstall: pip-exe
+pyinstall:
 	$(call cmd,pyinstall,.)
-pyuninstall: pip-exe
+pyuninstall:
 	$(call cmd,pyuninstall,$(PYOBJECTS))
 
 $(PY_ENV): virtualenv-exe python-exe
