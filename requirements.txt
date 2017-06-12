@@ -6,12 +6,22 @@
 # tests_requires
 # --------------
 
+pip
+tox
+pytest
+pytest-cov
+pylint
+
 # -------
 # develop
 # -------
 
-pip
+Sphinx
 sphinx_rtd_theme
+pip
+#twine
+#wheel
+#mock
 
 # sphinxjp.themes.revealjs: slide-shows with revaljs
 #
