@@ -9,30 +9,13 @@ boilerplate
 
    .. rv_small::
 
-      Created by `return42 <http://github.com/return42>`_
+      *Hit '?' to see keyboard shortcuts*
 
-.. revealjs:: About this presentation
-
-   This is a small `REVAL.JS <http://lab.hakim.se/reveal-js>`_ presentation.
-   The source format of it's content is in `reST-markup
-   <http://docutils.sourceforge.net/rst.html>`_.
-
-   The HTML is build by the `Sphinx-doc <http://www.sphinx-doc.org/>`_ extension
-   `sphinxjp.themes.revealjs <https://github.com/tell-k/sphinxjp.themes.revealjs>`_.
+   `boilerplate@GitHub <https://github.com/return42/boilerplate>`_
 
    .. rv_small::
 
-      Hit **s** on your keyboard to see the speaker notes.
-
-   .. rv_note::
-
-      These are some notes. They'll be hidden in your presentation, but
-      you can see them if you open the speaker notes window .
-
-      #. sphinxjp.themes.revealjs: https://github.com/tell-k/sphinxjp.themes.revealjs
-      #. REVEAL.JS: http://lab.hakim.se/reveal-js
-      #. Sphinx-doc: http://www.sphinx-doc.org
-      #. reST:  http://www.sphinx-doc.org/en/stable/rest.html / http://docutils.sourceforge.net/rst.html
+      contributed by `return42 <http://github.com/return42>`_
 
 
 .. revealjs:: add boilerplate to your project
@@ -92,6 +75,8 @@ boilerplate
 
 .. revealjs:: add *slides* target to your project
 
+   build (reveal.js) presentation from folder *docs/slides*.
+
    .. rv_code::
 
       PHONY += slides
@@ -104,7 +89,38 @@ boilerplate
 
       .PHONY: $(PHONY)
 
-   builds (reveal.js) presentation from folder *docs/slides*.
+
+   .. rv_small::
+
+      in your requirements.txt use my more up-to-date fork
+
+   .. rv_code::
+      
+      git+https://github.com/return42/sphinxjp.themes.revealjs
+
+   
+.. revealjs:: About this presentation
+
+   This is a small `REVAL.JS <http://lab.hakim.se/reveal-js>`_ presentation.
+   The source format of it's content is in `reST-markup
+   <http://docutils.sourceforge.net/rst.html>`_.
+
+   The HTML is build by the `Sphinx-doc <http://www.sphinx-doc.org/>`_ extension
+   `sphinxjp.themes.revealjs <https://github.com/tell-k/sphinxjp.themes.revealjs>`_.
+
+   .. rv_small::
+
+      Hit **s** on your keyboard to see the speaker notes.
+
+   .. rv_note::
+
+      These are some notes. They'll be hidden in your presentation, but
+      you can see them if you open the speaker notes window .
+
+      #. sphinxjp.themes.revealjs: https://github.com/tell-k/sphinxjp.themes.revealjs
+      #. REVEAL.JS: http://lab.hakim.se/reveal-js
+      #. Sphinx-doc: http://www.sphinx-doc.org
+      #. reST:  http://www.sphinx-doc.org/en/stable/rest.html / http://docutils.sourceforge.net/rst.html
 
 .. revealjs:: Thanks!
  :title-heading: h2
