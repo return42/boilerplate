@@ -13,8 +13,8 @@ boilerplate
 
 .. revealjs:: boilerplate
    :title-heading: h2
-   :subtitle: nothing special here, only some of my boilerplates
-   :subtitle-heading: h3
+
+   nothing special here, only some of my boilerplates
 
    .. rv_small::
 
