@@ -2,6 +2,15 @@
 boilerplate
 =================================================
 
+.. raw:: html
+
+   <aside id="logo" style="height:8vh; width:8vw; position:absolute; bottom:2vh; left:2vw; ">
+     <a href="http://www.darmarit.de">
+       <img src="_static/darmarIT_logo_512.png">
+     </a>
+   </aside>
+
+
 .. revealjs:: boilerplate
    :title-heading: h2
    :subtitle: nothing special here, only some of my boilerplates

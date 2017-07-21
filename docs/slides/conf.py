@@ -152,7 +152,7 @@ html_theme_options = {
     # },
 
     # loading custom js after RevealJs.initialize.
-    # "customjs": "mysettings.js",
+    "customjs": "mysettings.js",
 }
 
 html_static_path = ['_static']
