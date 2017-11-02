@@ -1856,22 +1856,24 @@ FFOX_globalAddOn() {
     #   FFOX_globalAddOn install ${CACHE}/firefox_addon-627512-latest.xpi
 
     # get extension UID from install.rdf
-    UID_ADDON=$(unzip -p $2 install.rdf \
-        | grep "<em:id>" \
-        | head -n 1 \
-        | sed 's/^.*>\(.*\)<.*$/\1/g' \
-             )
+
     echo
+    UID_ADDON=$(unzip -p $2 manifest.json \
+        | python -c  'import json,sys;print json.load(sys.stdin)["applications"]["gecko"]["id"]' 2>/dev/null)
+    if [[ -z ${UID_ADDON} ]] ; then
+        UID_ADDON=$(unzip -p $2 install.rdf \
+                           | grep "<em:id>" \
+                           | head -n 1 \
+                           | sed 's/^.*>\(.*\)<.*$/\1/g' )
+    fi
     if [[ -z ${UID_ADDON} ]] ; then
         # Scheinbar gibt es Plugins bei denen der Namensraum (em) nicht
         # expliziet angegeben ist, diese verwenden dann das <id> Tag.
         UID_ADDON=$(unzip -p $2 install.rdf \
                            | grep "<id>" \
                            | head -n 1 \
-                           | sed 's/^.*>\(.*\)<.*$/\1/g' \
-                 )
+                           | sed 's/^.*>\(.*\)<.*$/\1/g' )
     fi
-
     if [[ -z ${UID_ADDON} ]] ; then
         err_msg "can't read tag '<em:id>' from: $2"
     else
