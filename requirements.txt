@@ -18,6 +18,7 @@ pylint
 
 Sphinx
 sphinx_rtd_theme
+sphinx-autobuild
 pip
 #twine
 #wheel

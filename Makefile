@@ -11,8 +11,9 @@ all: clean docs
 
 PHONY += help
 help:
-	@echo  '  docs   - build documentation'
-	@echo  '  clean  - remove most generated files'
+	@echo  '  docs      - build documentation'
+	@echo  '  docs-live - autobuild HTML documentation while editing'
+	@echo  '  clean     - remove most generated files'
 	@echo  ''
 	@$(MAKE) -s -f utils/makefile.sphinx docs-help
 
@@ -20,6 +21,10 @@ help:
 PHONY += docs
 docs:  sphinx-doc
 	$(call cmd,sphinx,html,$(SLIDES),$(SLIDES))
+
+PHONY += doc-live
+docs-live: sphinx-live
+	$(call cmd,sphinx_autobuild,html,$(SLIDES),$(SLIDES))
 
 PHONY += clean
 clean: pyclean docs-clean
