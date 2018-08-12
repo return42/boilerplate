@@ -38,4 +38,7 @@ html_context = {
     ],
 }
 html_logo = 'darmarIT_logo_128.png'
+
+# disable tls_verify for intersphinx url's with self signed certifacates
+# tls_verify = False
 intersphinx_mapping = {}
