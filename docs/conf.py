@@ -37,5 +37,5 @@ html_context = {
         '_static/theme_overrides.css',
     ],
 }
-
+html_logo = 'darmarIT_logo_128.png'
 intersphinx_mapping = {}
