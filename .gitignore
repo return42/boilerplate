@@ -86,3 +86,6 @@ ENV/
 
 # odd OS
 .DS_Store
+
+# ignore GNOME's tracker-ignore flag
+.trackerignore
