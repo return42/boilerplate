@@ -22,11 +22,11 @@ cfg_msg() {
 
 # SCRIPT_FOLDER: Ordner mit den Skripten für die Setups
 #
-SCRIPT_FOLDER=${REPO_ROOT}/scripts
+#SCRIPT_FOLDER=${REPO_ROOT}/scripts
 
 # TEMPLATES: Ordner in dem die vorlagen für die Setups zu finden sind
 #
-TEMPLATES="${REPO_ROOT}/templates"
+#TEMPLATES="${REPO_ROOT}/templates"
 
 # CACHE: Ordner in dem die Downloads und Builds gecached werden
 #
@@ -70,6 +70,12 @@ CACHE=${REPO_ROOT}/cache
 # das ganz normale ``diff`` verwendet.
 #
 #DIFF_CMD=colordiff
+
+# =====
+# SAMBA
+# =====
+
+# SAMBA_SERVER=127.0.0.1
 
 # =====================
 # Debian's Apache Setup
