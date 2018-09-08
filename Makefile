@@ -22,7 +22,7 @@ PHONY += docs
 docs:  sphinx-doc
 	$(call cmd,sphinx,html,$(SLIDES),$(SLIDES))
 
-PHONY += doc-live
+PHONY += docs-live
 docs-live: sphinx-live
 	$(call cmd,sphinx_autobuild,html,$(SLIDES),$(SLIDES))
 
