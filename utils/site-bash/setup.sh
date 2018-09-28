@@ -20,17 +20,16 @@ cfg_msg() {
     echo -e "${BYellow}CFG:${_color_Off} $*" >&2
 }
 
+if [[ ! -e "${REPO_ROOT}/.config" ]]; then
+    cfg_msg "installing ${REPO_ROOT}/.config"
+    cp "$(dirname ${BASH_SOURCE[0]})/setup_dot_config" "${REPO_ROOT}/.config"
+    chown ${SUDO_USER}:${SUDO_USER} "${REPO_ROOT}/.config"
+fi
 
 # setup's pre hook
 if declare -F hook_load_setup_pre >/dev/null
 then
     hook_load_setup_pre
-fi
-
-if [[ ! -e "${REPO_ROOT}/.config" ]]; then
-    cfg_msg "installing ${REPO_ROOT}/.config"
-    cp "$(dirname ${BASH_SOURCE[0]})/setup_dot_config" "${REPO_ROOT}/.config"
-    chown ${SUDO_USER}:${SUDO_USER} "${REPO_ROOT}/.config"
 fi
 
 # source
