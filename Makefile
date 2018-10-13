@@ -3,6 +3,7 @@
 include utils/makefile.include
 include utils/makefile.python
 include utils/makefile.sphinx
+include utils/makefile.0
 
 GIT_URL   = https://github.com/return42/boilerplate.git
 SLIDES    = docs/slides
