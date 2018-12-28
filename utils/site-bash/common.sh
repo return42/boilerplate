@@ -1912,7 +1912,7 @@ FFOX_globalAddOn() {
     # get extension UID from manifest.json or alternative from META-INF/mozilla.rsa
 
     UID_ADDON=$(unzip -p $2 manifest.json \
-        | python -c  'import json,sys;print json.load(sys.stdin)["applications"]["gecko"]["id"]' 2>/dev/null)
+        | python -c  'import json,sys;print(json.load(sys.stdin)["applications"]["gecko"]["id"])' 2>/dev/null)
 
     if [[ -z ${UID_ADDON} ]] ; then
         UID_ADDON=$(unzip -p $2 META-INF/mozilla.rsa \
