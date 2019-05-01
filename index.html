@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>boilerplate</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    
+<link rel="stylesheet" href="_static/css/reset.css">
+<link rel="stylesheet" href="_static/css/reveal.min.css">
+<link rel="stylesheet" href="_static/css/theme/dejavu.css" id="theme">
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="_static/lib/css/zenburn.css">
+
+<link rel="stylesheet" href="_static/mysettings.css" type="text/css" />
+
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '_static/css/print/pdf.css' : '_static/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+
+    <!--[if lt IE 9]>
+    <script src="_static/lib/js/html5shiv.js"></script>
+    <![endif]-->
+      <script type="text/javascript" src="_static/language_data.js"></script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        
+  <div class="section" id="boilerplate">
+<h1>boilerplate<a class="headerlink" href="#boilerplate" title="Permalink to this headline">¶</a></h1>
+<aside id="logo" style="height:8vh; width:8vw; position:absolute; bottom:2vh; left:2vw; ">
+  <a href="http://www.darmarit.de">
+    <img src="_static/darmarIT_logo_512.png">
+  </a>
+</aside><section>
+<h2>boilerplate</h2>
+<p class="first">nothing special here, only some of my boilerplates</p>
+<small>
+<p class="first last"><em>Hit ‘?’ to see keyboard shortcuts</em></p>
+</small>
+<p><a class="reference external" href="https://github.com/return42/boilerplate">boilerplate&#64;GitHub</a></p>
+<small class="last">
+<p class="first last">contributed by <a class="reference external" href="http://github.com/return42">return42</a></p>
+</small>
+</section>
+<section>
+<h2>Intro</h2>
+<p class="first">In my projects I like to run tests and build processes from <a class="reference external" href="https://www.gnu.org/software/make/">make</a>.  The
+boilerplate code here is for common build purpose and heavily based on:</p>
+<ul class="last simple">
+<li><p><a class="reference external" href="https://www.gnu.org/software/make/">make</a></p></li>
+<li><p><a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> (<a class="reference external" href="https://www.python.org">Python</a>)</p></li>
+</ul>
+</section>
+<section>
+<h2>add boilerplate to your project</h2>
+<p class="first">copy <code class="docutils literal notranslate"><span class="pre">./utils</span></code> folder to your repository and add some includes to your
+<code class="docutils literal notranslate"><span class="pre">./Makefile</span></code> (python projects see <a class="reference external" href="https://github.com/return42/boilerplate/blob/master/Makefile.python_prj">Makefile.python_prj</a>)</p>
+<pre>
+<code data-trim contenteditable># -*- coding: utf-8; mode: makefile-gmake -*-
+
+include utils/makefile.include
+include utils/makefile.python
+include utils/makefile.sphinx
+include utils/makefile.0</code></pre>
+<p>In your repository add developer’s <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p>
+<pre class="last">
+<code data-trim contenteditable>Sphinx
+sphinx_rtd_theme
+sphinx-autobuild
+pip
+git+https://github.com/return42/sphinxjp.themes.revealjs</code></pre>
+</section>
+<section>
+<h2>common make options</h2>
+<pre class="first last">
+<code data-trim contenteditable>$ make make-help
+  make V=0|1 [targets] 0 =&gt; quiet build (default), 1 =&gt; verbose
+  make V=2   [targets] 2 =&gt; give reason for rebuild of target</code></pre>
+</section>
+<section>
+<h2>add doc targets to Makefile (1)</h2>
+<p class="first">Use definitions from <a class="reference external" href="https://github.com/return42/boilerplate/blob/master/utils/makefile.sphinx">makefile.sphinx</a> to define your doc targets.</p>
+<pre class="makefile">
+<code data-trim contenteditable>help:
+    @echo  &#x27;  docs      - build documentation&#x27;
+    @echo  &#x27;  docs-live - autobuild HTML doc while editing&#x27;
+    @$(MAKE) -s -f utils/makefile.include make-help
+    @$(MAKE) -s -f utils/makefile.sphinx docs-help
+
+docs: sphinx-doc
+    $(call cmd,sphinx,html,docs,docs)
+
+docs-live: sphinx-live
+    $(call cmd,sphinx_autobuild,html,docs,docs)</code></pre>
+<p class="last">builds (Sphinx) documentation from folder <em>docs</em>.</p>
+</section>
+<section>
+<h2>add doc targets to Makefile (2)</h2>
+<p class="first">build (reveal.js) presentation from folder <em>docs/slides</em>.</p>
+<pre class="makefile">
+<code data-trim contenteditable>slides:  sphinx-doc
+        $(call cmd,sphinx,html,docs/slides,docs/slides,slides)
+
+help:
+        @echo  &#x27;  slides - build reveal.js slide presentation&#x27;
+
+.PHONY: slides help</code></pre>
+<small>
+<p class="first last">in your requirements.txt use my more up-to-date fork</p>
+</small>
+<pre class="last">
+<code data-trim contenteditable>git+https://github.com/return42/sphinxjp.themes.revealjs</code></pre>
+</section>
+<section>
+<h2>use predefined python targets (1)</h2>
+<pre class="makefile first last">
+<code data-trim contenteditable>help:
+  @echo  &#x27;  install   - developer install&#x27;
+  @echo  &#x27;  uninstall - developer uninstall&#x27;
+  @echo  &#x27;&#x27;
+  @$(MAKE) -s -f utils/makefile.python python-help
+
+install: pyinstall
+
+uninstall: pyuninstall</code></pre>
+</section>
+<section>
+<h2>use predefined python targets (2)</h2>
+<pre class="first last">
+<code data-trim contenteditable>$ make help
+  install   - developer install
+  uninstall - developer uninstall
+
+makefile.python:
+  pylint        - run pylint *linting*
+  pytest        - run *tox* test on python objects
+  pydebug       - run tests within a PDB debug session
+  pybuild       - build python packages
+  pyclean       - clean intermediate python objects
+  py[un]install - [un]install python objects in editable mode
+  upload-pypi   - upload py_dist/* files to PyPi
+options:
+  make PY=2  [targets] =&gt; to eval targets with python 2 (3)
+  make PIP_INST=       =&gt; to set/unset pip install options (--user)
+  make TEST=.          =&gt; choose test from ./tests (default &quot;.&quot; runs all)
+  make DEBUG=          =&gt; target &quot;debug&quot;: do not invoke PDB on errors
+when using target &quot;pydebug&quot;, set breakpoints within py-source by adding::
+    ...
+    DEBUG()
+    ...</code></pre>
+</section>
+<section>
+<h2>About this presentation</h2>
+<p class="first">This is a small <a class="reference external" href="http://lab.hakim.se/reveal-js">REVAL.JS</a> presentation.
+The source format of it’s content is in <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reST-markup</a>.</p>
+<p>The HTML is build by the <a class="reference external" href="http://www.sphinx-doc.org/">Sphinx-doc</a> extension
+<a class="reference external" href="https://github.com/tell-k/sphinxjp.themes.revealjs">sphinxjp.themes.revealjs</a>.</p>
+<small>
+<p class="first last">Hit <strong>s</strong> on your keyboard to see the speaker notes.</p>
+</small>
+<aside class="last notes">
+<p class="first">These are some notes. They’ll be hidden in your presentation, but
+you can see them if you open the speaker notes window .</p>
+<ol class="last arabic simple">
+<li><p>sphinxjp.themes.revealjs: <a class="reference external" href="https://github.com/tell-k/sphinxjp.themes.revealjs">https://github.com/tell-k/sphinxjp.themes.revealjs</a></p></li>
+<li><p>REVEAL.JS: <a class="reference external" href="http://lab.hakim.se/reveal-js">http://lab.hakim.se/reveal-js</a></p></li>
+<li><p>Sphinx-doc: <a class="reference external" href="http://www.sphinx-doc.org">http://www.sphinx-doc.org</a></p></li>
+<li><p>reST:  <a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html">http://www.sphinx-doc.org/en/stable/rest.html</a> / <a class="reference external" href="http://docutils.sourceforge.net/rst.html">http://docutils.sourceforge.net/rst.html</a></p></li>
+</ol>
+</aside>
+</section>
+<section>
+<h2>Thanks!</h2>
+<h3>more slides comming soon ...</h3>
+</section>
+</div>
+
+
+      </div>
+    </div>
+    
+<script src="_static/jquery.js"></script>
+<script src="_static/js/reveal.min.js"></script>
+    <script>
+
+      // change DOM for reveal.js
+      $("div.section h1").remove();
+      var content = $("div.section").html();
+      $("div.section").remove();
+      $("div.slides").html(content);
+
+      Reveal.initialize({
+        width: 960,
+        height: 700,
+
+        margin: 0.1,
+
+        minScale: 0.2,
+        maxScale: 2,
+
+        controls: true,
+        progress: true,
+        history: true,
+        center: false,
+
+        keyboard : true,
+        overview: true,
+        touch: true,
+        loop: false,
+        rtl: false,
+        fragments: true,
+
+        autoSlide: 0,
+        mouseWheel: false,
+        rollingLinks: false,
+        previewLinks: false,
+
+        transitionSpeed: "default",
+        backgroundTransition: "default",
+
+        slideNumber: true,
+        embedded: false,
+        autoSlideStoppable: true,
+        hideAddressBar: true,
+
+        parallaxBackgroundImage: "",
+        parallaxBackgroundSize: "",
+
+        focusBodyOnPageVisiblityChange: true,
+
+        viewDistance: 3,
+
+        transition: Reveal.getQueryHash().transition || "slide",
+
+        
+
+        dependencies: [
+          { src: '_static/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '_static/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '_static/plugin/highlight/highlight.js', async: true },
+          { src: '_static/plugin/search/search.js', async: true },
+          { src: '_static/plugin/zoom-js/zoom.js', async: true },
+          { src: '_static/plugin/notes/notes.js', async: true},
+        ]
+      });
+    </script>
+    <script src="_static/mysettings.js"></script>
+    
+  </body>
+</html>
