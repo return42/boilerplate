@@ -5,10 +5,13 @@ include utils/makefile.python
 include utils/makefile.sphinx
 include utils/makefile.0
 
-GIT_URL   = https://github.com/return42/XXXX.git
-PYOBJECTS = XXXX
-SLIDES    = docs/slides
-API_DOC   = $(DOC)/$(PYOBJECTS)-api
+GIT_URL   = https://github.com/return42/XXXXXX.git
+PYOBJECTS = XXXXXX
+DOC       = docs
+SLIDES    = $(DOC)/slides
+API_DOC   = $(DOC)/XXXXXX-api
+PYLINT_RC = .pylintrc
+PY_SETUP_EXTRAS ?= \[develop,test\]
 
 all: clean pylint pytest build docs
 
@@ -23,11 +26,19 @@ help:
 	@echo  '  install   - developer install'
 	@echo  '  uninstall - developer uninstall'
 	@echo  ''
+	@echo  '  project   - rebuild generic project files (README, ..)'
+	@echo  ''
 	@$(MAKE) -s -f utils/makefile.include make-help
 	@echo  ''
 	@$(MAKE) -s -f utils/makefile.python python-help
 	@echo  ''
 	@$(MAKE) -s -f utils/makefile.sphinx docs-help
+
+PHONY += project
+project: $(PY_ENV)
+	- rm -f README.rst requirements.txt
+	$(PY_ENV_BIN)/python -c "from XXXXXX.__pkginfo__ import *; print(docstring)" > README.rst
+	$(PY_ENV_BIN)/python -c "from XXXXXX.__pkginfo__ import *; print(requirements_txt)" > requirements.txt
 
 PHONY += install
 install: pyinstall pyenvinstall
@@ -35,24 +46,21 @@ install: pyinstall pyenvinstall
 PHONY += uninstall
 uninstall: pyuninstall pyenvuninstall
 
-
 PHONY += docs
-docs:  sphinx-doc $(API_DOC)
-	@$(PY_ENV_BIN)/pip install $(PIP_VERBOSE) -e .
+docs:  pyenvinstall sphinx-doc
 	$(call cmd,sphinx,html,docs,docs)
 
 PHONY += docs-live
-docs-live:  sphinx-live
-	@$(PY_ENV_BIN)/pip install $(PIP_VERBOSE) -e .
+docs-live:  pyenvinstall sphinx-live
 	$(call cmd,sphinx_autobuild,html,docs,docs)
 
 PHONY += slides
 slides:  sphinx-doc
 	$(call cmd,sphinx,html,$(SLIDES),$(SLIDES),slides)
 
-$(API_DOC): $(PY_ENV)
-	$(PY_ENV_BIN)/sphinx-apidoc --separate --maxdepth=0 -o docs/linuxdoc-api linuxdoc
-	rm -f $(API_DOC)/modules.rst
+# $(API_DOC): $(PY_ENV)
+# 	$(PY_ENV_BIN)/sphinx-apidoc --separate --maxdepth=1 -o $(API_DOC) XXXXXX
+# 	rm -f $(API_DOC)/modules.rst
 
 PHONY += clean
 clean: pyclean docs-clean
@@ -61,6 +69,5 @@ clean: pyclean docs-clean
 
 PHONY += rqmts
 rqmts: msg-python-exe msg-pip-exe msg-virtualenv-exe
-
 
 .PHONY: $(PHONY)
