@@ -1,26 +1,37 @@
-# --------
-# requires
-# --------
+# -*- coding: utf-8; mode: conf -*-
+# ----------------
+# install requires
+# ----------------
 
-# --------------
-# tests_requires
-# --------------
+fspath
+tinycss2
+requests
+sqlalchemy
 
-pip
-tox
-pytest
-pytest-cov
+# -------------
+# test requires
+# -------------
+
 pylint
 
-# -------
-# develop
-# -------
+#tox
+#pytest
+#pytest-cov
 
+# ----------------
+# develop requires
+# ----------------
+
+jedi
 Sphinx
 sphinx_rtd_theme
 sphinx-autobuild
+sphinxcontrib-programoutput
 pip
-#twine
+sqlalchemy_schemadisplay @ git+https://github.com/fschulze/sqlalchemy_schemadisplay
+psycopg2-binary
+twine
+
 #wheel
 #mock
 
@@ -30,5 +41,3 @@ pip
 #
 git+https://github.com/return42/sphinxjp.themes.revealjs
 # -e file:../sphinxjp.themes.revealjs#egg=sphinxjp.themes.revealjs
-
-
