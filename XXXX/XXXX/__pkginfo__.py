@@ -1,5 +1,6 @@
 # -*- coding: utf-8; mode: python; mode: flycheck -*-
 # pylint: disable=invalid-name,redefined-builtin
+# pylint: disable=line-too-long
 """Python package meta informations used by setup.py and other project files.
 
 Single point of source for all XXXXXX package metadata.  After modifying this
@@ -32,6 +33,7 @@ Further read:
 .. _installing: https://packaging.python.org/tutorials/installing-packages/
 
 """
+# pylint: enable=line-too-long
 
 from setuptools import find_packages
 
@@ -137,7 +139,8 @@ test_requires = [
 test_requires_txt = "\n".join(test_requires)
 
 develop_requires = [
-    'jedi'
+    'jedi' # https://jedi.readthedocs.io/
+    , 'epc @ git+https://github.com/tkf/python-epc' # required by emacs: https://tkf.github.io/emacs-jedi
     , 'Sphinx'
     , 'sphinx_rtd_theme'
     , 'sphinx-autobuild'
