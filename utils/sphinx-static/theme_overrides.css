@@ -27,6 +27,14 @@ div[class^="highlight"] pre {
     padding: 24px 24px 0px 24px;
 }
 
+/* https://github.com/readthedocs/sphinx_rtd_theme/pull/723
+   Do not float elements next to admonition blocks
+*/
+
+.note, .attention, .caution, .danger, .error, .hint, .important, .tip, .warning, .seealso, .admonition-todo, .admonition {
+    clear: both;
+}
+
 /* There is an invisible div around code-block's div. It is a workaround to add
  * a margin on the bottom of the code-block, which only helpful on screen
  * medias. This div has also a invisible (white on white) border.  When printing
