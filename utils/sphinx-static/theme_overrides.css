@@ -19,6 +19,14 @@ div[class^="highlight"] pre {
     line-height: normal;
 }
 
+/* https://github.com/readthedocs/sphinx_rtd_theme/issues/803
+   --> Sidebars have extra spacing on the bottom margin in Sphinx 2.1
+*/
+
+.rst-content .sidebar {
+    padding: 24px 24px 0px 24px;
+}
+
 /* There is an invisible div around code-block's div. It is a workaround to add
  * a margin on the bottom of the code-block, which only helpful on screen
  * medias. This div has also a invisible (white on white) border.  When printing
