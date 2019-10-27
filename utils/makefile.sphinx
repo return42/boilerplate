@@ -35,6 +35,7 @@ docs-help:
 	@echo  'makefile.docs:'
 	@echo  '  docs-clean	- clean intermediate doc objects'
 	@echo  '  $(GH_PAGES)	- create & upload github pages'
+        @echo  '  sphinx-pdf    - run sphinx latex & pdf targets'
 
 # ------------------------------------------------------------------------------
 # requirements
@@ -47,6 +48,32 @@ sphinx-doc: $(PY_ENV)
 sphinx-live: $(PY_ENV)
 	@echo "  PY_ENV    installing Sphinx$(SPHINXVERS)"
 	$(Q)$(PY_ENV_BIN)/pip install $(PIP_VERBOSE) 'Sphinx$(SPHINXVERS)' sphinx-autobuild
+
+
+PHONY += msg-texlive texlive
+
+ifeq ($(shell which xelatex >/dev/null 2>&1; echo $$?), 1)
+texlive: msg-TeXLive
+	$(error The 'xelatex' command was not found)
+else
+texlive:
+	@:
+endif
+
+msg-texlive:
+	$(Q)echo "\n\
+The TeX/PDF output and the *math* extension require TexLive and latexmk:\n\n\
+  Make sure you have a updated TeXLive with XeTeX engine installed, grab it\n\
+  it from https://www.tug.org/texlive or install it from your package manager.\n\n\
+  Install latexmk from your package manager or visit https://ctan.org/pkg/latexmk\n\n\
+  Sphinx-doc produce (Xe)LaTeX files which might use additional TeX-packages\n\
+  and fonts. To process these LaTeX files, a TexLive installation with the\n\
+  additional packages is required. On debian based OS these requirements\n\
+  are installed by::\n\n\
+    sudo apt-get install\n\
+         latexmk\n\
+         texlive-base texlive-xetex texlive-latex-recommended\n\
+         texlive-extra-utils dvipng ttf-dejavu\n"
 
 # ------------------------------------------------------------------------------
 # commands
@@ -71,6 +98,18 @@ quiet_cmd_sphinx_clean = CLEAN     $@
 # ------------------------------------------------------------------------------
 # targets
 # ------------------------------------------------------------------------------
+
+PHONY += sphinx-latex
+sphinx-latex: texlive sphinx-doc
+	$(Q)mkdir -p $(DOCS_DIST)/latex
+	$(call cmd,sphinx,latex,.,.,latex)
+
+PHONY += sphinx-pdf
+sphinx-pdf: sphinx-latex
+	$(Q)cd $(DOCS_DIST)/latex; make all-pdf
+	$(Q)mkdir -p $(DOCS_DIST)/pdf
+	$(Q)cp $(DOCS_DIST)/latex/*.pdf $(DOCS_DIST)/pdf
+	@echo " SPHINX  *.pdf --> file://$(abspath $(DOCS_DIST)/pdf)"
 
 PHONY += docs-clean
 docs-clean:
