@@ -103,7 +103,7 @@ quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DOCS_DIST)/$5)
 	-b $2 -c $3 -d $(DOCS_BUILD)/.doctrees $4 $(DOCS_DIST)/$5
 
 quiet_cmd_sphinx_autobuild = SPHINX  $@ --> file://$(abspath $(DOCS_DIST)/$5)
-      cmd_sphinx_autobuild = PATH="$(PY_ENV_BIN):$(PATH)" $(PY_ENV_BIN)/sphinx-autobuild  $(SPHINX_VERBOSE) --poll -B $(SPHINXOPTS)\
+      cmd_sphinx_autobuild = PATH="$(PY_ENV_BIN):$(PATH)" $(PY_ENV_BIN)/sphinx-autobuild  $(SPHINX_VERBOSE) --poll -B --host 0.0.0.0 --port 8080 $(SPHINXOPTS)\
 	-b $2 -c $3 -d $(DOCS_BUILD)/.doctrees $4 $(DOCS_DIST)/$5
 
 quiet_cmd_sphinx_clean = CLEAN     $@
@@ -142,6 +142,7 @@ BOOKS_HTML  = $(patsubst %,%.html,$(BOOKS))
 BOOKS_CLEAN = $(patsubst %,%.clean,$(BOOKS))
 BOOKS_LATEX = $(patsubst %,%.latex,$(BOOKS))
 BOOKS_PDF   = $(patsubst %,%.pdf,$(BOOKS))
+BOOKS_LIVE  = $(patsubst %,%.live,$(BOOKS))
 
 $(BOOKS_DIST):
 	mkdir -p $(BOOKS_DIST)
@@ -156,6 +157,17 @@ $(BOOKS_HTML): sphinx-doc | $(BOOKS_DIST)
 	  $(patsubst books/%.html,%,$@) \
 	  $(BOOKS_DIST)/$(patsubst books/%.html,%,$@)
 	@echo "SPHINX  $@ --> file://$(abspath $(BOOKS_DIST)/$(patsubst books/%.html,%,$@))"
+
+PHONY += $(BOOKS_HTML)
+$(BOOKS_LIVE): sphinx-live | $(BOOKS_DIST)
+	PATH="$(PY_ENV_BIN):$(PATH)" \
+	SPHINX_CONF=$(patsubst books/%.live,%,$@)/conf.py \
+	$(PY_ENV_BIN)/sphinx-autobuild --poll -B --host 0.0.0.0 --port 8080 $(SPHINX_VERBOSE) $(SPHINXOPTS)\
+	  -b html \
+	  -c $(DOCS_FOLDER) \
+	  -d $(DOCS_BUILD)/books/$(patsubst books/%.live,%,$@)/.doctrees \
+	  $(patsubst books/%.live,%,$@) \
+	  $(BOOKS_DIST)/$(patsubst books/%.live,%,$@)
 
 $(BOOKS_PDF): %.pdf : %.latex
 	$(Q)cd $(DOCS_BUILD)/latex/$(patsubst books/%.pdf,%,$@); make all-pdf
