@@ -83,7 +83,7 @@ The TeX/PDF output and the *math* extension require TexLive and latexmk:\n\n\
   and fonts. To process these LaTeX files, a TexLive installation with the\n\
   additional packages is required. On debian based OS these requirements\n\
   are installed by::\n\n\
-    sudo apt-get install\n\
+    sudo -H apt-get install\n\
          latexmk\n\
          texlive-base texlive-xetex texlive-latex-recommended\n\
          texlive-extra-utils dvipng ttf-dejavu\n"
