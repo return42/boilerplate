@@ -1908,6 +1908,100 @@ APACHE_dissable_site() {
     sudo -H service apache2 force-reload
 }
 
+
+# uWSGI Setup
+# ===========
+
+if [[ -z "$uWSGI_SETUP" ]]; then
+    uWSGI_SETUP="/etc/uwsgi"
+fi
+
+#  ----------------------------------------------------------------------------
+uWSGI_restart() {
+# ----------------------------------------------------------------------------
+
+    # usage:  uWSGI_restart()
+
+    info_msg "restart uWSGI service"
+    sudo -H systemctl restart uwsgi
+}
+
+# ----------------------------------------------------------------------------
+uWSGI_install_app() {
+# ----------------------------------------------------------------------------
+
+    # usage:  uWSGI_install_app [--eval] searx.ini ...
+
+    # Installiert eine uWSGI-App aus den ``${TEMPLATES}`` Ordner.  Nach dem
+    # Installieren (apps-available) wird die App noch aktiviert (apps-enabled)
+    # und es wird der uWSGI Dienst neu gestartet, so das die uWSGI-App gleich
+    # aktiv ist.
+
+    local do_eval=""
+    if [[ "$1" == "--eval" ]]; then
+        do_eval=$1; shift
+    fi
+
+    local CONF
+    for CONF in $*; do
+        TEMPLATES_InstallOrMerge \
+	    $do_eval "${uWSGI_SETUP}/apps-available/${CONF}" root root 644
+	uWSGI_enable_app ${CONF}
+    done
+    uWSGI_restart
+}
+
+# ----------------------------------------------------------------------------
+uWSGI_remove_app() {
+# ----------------------------------------------------------------------------
+
+    # usage:  uWSGI_remove_app searx.ini ...
+
+    # De-Installiert eine uWSGI-App und es wird der uWSGI Dienst neu gestartet.
+
+    local CONF
+    for CONF in $*; do
+	uWSGI_disable_app ${CONF}
+	rm -f ${uWSGI_SETUP}/apps-available/$CONF
+	info_msg "removed uWSGI app: $CONF"
+    done
+    uWSGI_restart
+}
+
+# ----------------------------------------------------------------------------
+uWSGI_enable_app() {
+# ----------------------------------------------------------------------------
+
+    # usage:   uWSGI_enable_app searx.ini
+
+    if [[ -z $1 ]]; then
+        err_msg "uWSGI_enable_app argument mit uWSGI App fehlt. "
+        return 42
+    fi
+
+    local CONF=$1
+    pushd ${uWSGI_SETUP}/apps-enabled >/dev/null
+    sudo -H ln -s ../apps-available/$CONF
+    info_msg "enabled uWSGI app: $CONF (restart uWSGI required)"
+    popd >/dev/null
+}
+
+# ----------------------------------------------------------------------------
+uWSGI_disable_app() {
+# ----------------------------------------------------------------------------
+
+    # usage:   uWSGI_disable_app searx.ini
+
+    if [[ -z $1 ]]; then
+        err_msg "uWSGI_disable_app argument mit uWSGI App fehlt. "
+        return 42
+    fi
+
+    local CONF=$1
+    rm -f ${uWSGI_SETUP}/apps-enabled/$CONF
+    info_msg "disabled uWSGI app: $CONF (restart uWSGI required)"
+}
+
 # Firefox
 # =======
 
