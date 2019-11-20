@@ -564,6 +564,22 @@ EOF
     fi
 }
 
+# ----------------------------------------------------------------------------
+print_URL_status () {
+# ----------------------------------------------------------------------------
+
+    # usage:
+    #
+    #   $ echo $(print_URL_status 'https://www.google.de') -- $?
+    #   200 -- 0
+    #
+    #   $ echo $(print_URL_status 'https://www.url-gibt-es-nicht.xy') -- $?
+    #   000 -- 6
+
+    curl -H 'Cache-Control: no-cache' -o /dev/null \
+	 --silent --head --write-out '%{http_code}' \
+	 --insecure "${1?missing URL argumen}"
+}
 
 # ----------------------------------------------------------------------------
 TEE_stderr () {
