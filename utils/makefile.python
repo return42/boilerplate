@@ -21,7 +21,7 @@ PIP_INST ?= --user
 PY_SETUP_EXTRAS ?=
 
 PYDEBUG  ?= --pdb
-PYLINT_RC ?= utils/pylintrc
+PYLINT_RC ?= .pylintrc
 
 TEST_FOLDER  ?= ./tests
 TEST         ?= .
@@ -29,7 +29,7 @@ TEST         ?= .
 VTENV_OPTS   = "--no-site-packages"
 PY_ENV       = ./local/py$(PY)
 PY_ENV_BIN   = $(PY_ENV)/bin
-PY_ENV_ACT   = source $(PY_ENV_BIN)/activate
+PY_ENV_ACT   = . $(PY_ENV_BIN)/activate
 
 ifeq ($(OS),Windows_NT)
   PYTHON     = python
