@@ -55,11 +55,11 @@ docs-help:
 # ------------------------------------------------------------------------------
 
 sphinx-doc: $(PY_ENV)
-	@echo "  PY_ENV    installing Sphinx$(SPHINXVERS)"
+	@echo "PYENV     installing Sphinx$(SPHINXVERS)"
 	$(Q)$(PY_ENV_BIN)/pip install $(PIP_VERBOSE) 'Sphinx$(SPHINXVERS)'
 
 sphinx-live: $(PY_ENV)
-	@echo "  PY_ENV    installing Sphinx$(SPHINXVERS)"
+	@echo "PYENV     installing Sphinx$(SPHINXVERS)"
 	$(Q)$(PY_ENV_BIN)/pip install $(PIP_VERBOSE) 'Sphinx$(SPHINXVERS)' sphinx-autobuild
 
 
@@ -97,12 +97,12 @@ The TeX/PDF output and the *math* extension require TexLive and latexmk:\n\n\
 # $4 sourcedir
 # $5 dest subfolder e.g. "man" for man pages at $(DOCS_DIST)/man
 
-quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DOCS_DIST)/$5)
+quiet_cmd_sphinx = SPHINX    $@ --> file://$(abspath $(DOCS_DIST)/$5)
       cmd_sphinx = SPHINX_CONF=$(abspath $4/$(SPHINX_CONF))\
 	$(SPHINXBUILD) $(SPHINX_VERBOSE) $(SPHINXOPTS)\
 	-b $2 -c $3 -d $(DOCS_BUILD)/.doctrees $4 $(DOCS_DIST)/$5
 
-quiet_cmd_sphinx_autobuild = SPHINX  $@ --> file://$(abspath $(DOCS_DIST)/$5)
+quiet_cmd_sphinx_autobuild = SPHINX    $@ --> file://$(abspath $(DOCS_DIST)/$5)
       cmd_sphinx_autobuild = PATH="$(PY_ENV_BIN):$(PATH)" $(PY_ENV_BIN)/sphinx-autobuild  $(SPHINX_VERBOSE) --poll -B --host 0.0.0.0 --port 8080 $(SPHINXOPTS)\
 	-b $2 -c $3 -d $(DOCS_BUILD)/.doctrees $4 $(DOCS_DIST)/$5
 
@@ -120,7 +120,7 @@ sphinx-pdf: sphinx-latex
 	$(Q)cd $(DOCS_BUILD)/latex/; make all-pdf
 	$(Q)mkdir -p $(DOCS_DIST)/pdf
 	$(Q)cp $(DOCS_BUILD)/latex/*.pdf $(DOCS_DIST)/pdf
-	@echo " SPHINX  *.pdf --> file://$(abspath $(DOCS_DIST)/pdf)"
+	@echo "SPHINX    *.pdf --> file://$(abspath $(DOCS_DIST)/pdf)"
 
 PHONY += sphinx-latex
 sphinx-latex: texlive sphinx-doc
@@ -156,7 +156,7 @@ $(BOOKS_HTML): sphinx-doc | $(BOOKS_DIST)
 	  -d $(DOCS_BUILD)/books/$(patsubst books/%.html,%,$@)/.doctrees \
 	  $(patsubst books/%.html,%,$@) \
 	  $(BOOKS_DIST)/$(patsubst books/%.html,%,$@)
-	@echo "SPHINX  $@ --> file://$(abspath $(BOOKS_DIST)/$(patsubst books/%.html,%,$@))"
+	@echo "SPHINX    $@ --> file://$(abspath $(BOOKS_DIST)/$(patsubst books/%.html,%,$@))"
 
 PHONY += $(BOOKS_HTML)
 $(BOOKS_LIVE): sphinx-live | $(BOOKS_DIST)
@@ -173,7 +173,7 @@ $(BOOKS_PDF): %.pdf : %.latex
 	$(Q)cd $(DOCS_BUILD)/latex/$(patsubst books/%.pdf,%,$@); make all-pdf
 	$(Q)mkdir -p $(BOOKS_DIST)/$(patsubst books/%.pdf,%,$@)/pdf
 	$(Q)cp -v $(DOCS_BUILD)/latex/$(patsubst books/%.pdf,%,$@)/*.pdf $(BOOKS_DIST)/$(patsubst books/%.pdf,%,$@)/pdf
-	@echo " SPHINX  $@ --> file://$(abspath $(BOOKS_DIST)/$(patsubst books/%.pdf,%,$@))/pdf"
+	@echo "SPHINX    $@ --> file://$(abspath $(BOOKS_DIST)/$(patsubst books/%.pdf,%,$@))/pdf"
 
 PHONY += $(BOOKS_LATEX)
 $(BOOKS_LATEX): sphinx-doc | $(BOOKS_DIST)
@@ -184,7 +184,7 @@ $(BOOKS_LATEX): sphinx-doc | $(BOOKS_DIST)
 	  -d $(DOCS_BUILD)/books/$(patsubst books/%.latex,%,$@)/.doctrees \
 	  $(patsubst books/%.latex,%,$@) \
 	  $(DOCS_BUILD)/latex/$(patsubst books/%.latex,%,$@)
-	@echo " SPHINX  $@ --> file://$(abspath $(DOCS_BUILD)/latex/$(patsubst books/%.latex,%,$@))"
+	@echo "SPHINX    $@ --> file://$(abspath $(DOCS_BUILD)/latex/$(patsubst books/%.latex,%,$@))"
 
 $(BOOKS_CLEAN):
 	$(Q)rm -rf $(BOOKS_DIST)/$(patsubst books/%.clean,%,$@) \
