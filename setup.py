@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8; mode: python -*-
 """
-XXXXXX ``setup.py``
+XXXX ``setup.py``
 
-Metadata see ``XXXXXX/__pkginfo__.py``
+Metadata see ``XXXX/__pkginfo__.py``
 """
 
 import os
@@ -12,7 +12,7 @@ import imp
 from setuptools import setup
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
-SRC = ospj(ROOT, 'XXXXXX')
+SRC = ospj(ROOT, 'XXXX')
 PKG = imp.load_source('__pkginfo__', ospj(SRC, '__pkginfo__.py'))
 
 # https://packaging.python.org/guides/distributing-packages-using-setuptools/#configuring-your-project

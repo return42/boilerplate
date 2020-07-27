@@ -1,44 +1,43 @@
 # -*- coding: utf-8; mode: conf -*-
-# ----------------
-# install requires
-# ----------------
+
+# requirements of package XXXX
+# ----------------------------
 
 fspath
 tinycss2
 requests
 sqlalchemy
 
-# -------------
 # test requires
 # -------------
 
 pylint
+# tox
+# pytest
+# pytest-cov
 
-#tox
-#pytest
-#pytest-cov
+# make docs
+# ---------
 
-# ----------------
-# develop requires
-# ----------------
-
-jedi
 Sphinx
-sphinx_rtd_theme
+pallets-sphinx-themes
 sphinx-autobuild
+sphinx-issues
+sphinx-jinja
+sphinx-tabs
 sphinxcontrib-programoutput
-pip
-sqlalchemy_schemadisplay @ git+https://github.com/fschulze/sqlalchemy_schemadisplay
-psycopg2-binary
-twine
-epc @ git+https://github.com/tkf/python-epc
+linuxdoc @ git+http://github.com/return42/linuxdoc.git
 
-#wheel
-#mock
-
-# sphinxjp.themes.revealjs: slide-shows with revaljs
-#
-#   comment out next lines, if you don't build slide-shows
-#
+# slide-shows with revaljs
 git+https://github.com/return42/sphinxjp.themes.revealjs
-# -e file:../sphinxjp.themes.revealjs#egg=sphinxjp.themes.revealjs
+
+# develop
+# -------
+
+twine
+jedi
+epc @ git+https://github.com/tkf/python-epc
+# sqlalchemy_schemadisplay @ git+https://github.com/fschulze/sqlalchemy_schemadisplay
+# wheel
+# mock
+

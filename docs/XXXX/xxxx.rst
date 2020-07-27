@@ -6,9 +6,3 @@ xxxx package
     :undoc-members:
     :show-inheritance:
 
-.. toctree::
-   :maxdepth: 1
-
-   xxxx.yyyy
-   xxxx.zzzz
-

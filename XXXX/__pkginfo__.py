@@ -3,11 +3,11 @@
 # pylint: disable=line-too-long
 """Python package meta informations used by setup.py and other project files.
 
-Single point of source for all XXXXXX package metadata.  After modifying this
+Single point of source for all XXXX package metadata.  After modifying this
 file it is needed to recreate some projet files::
 
-  ./local/py3/bin/python -c "from XXXXXX.__pkginfo__ import *; print(README)" > README.rst
-  ./local/py3/bin/python -c "from XXXXXX.__pkginfo__ import *; print(requirements_txt)" > requirements.txt
+  ./local/py3/bin/python -c "from XXXX.__pkginfo__ import *; print(README)" > README.rst
+  ./local/py3/bin/python -c "from XXXX.__pkginfo__ import *; print(requirements_txt)" > requirements.txt
 
 About python packaging see `Python Packaging Authority`_.  Most of the names
 here are mapped to ``setup(<name1>=..., <name2>=...)`` arguments in
@@ -37,13 +37,13 @@ Further read:
 
 from setuptools import find_packages
 
-package = 'XXXXXX'
-version = '20190831.1.post0'
+package = 'XXXX'
+version = '20200727'
 
-copyright = '2019 Markus Heiser'
-description = 'Pluginable font library'
+copyright = '2020 Markus Heiser'
+description = 'XXXX lorem ipsum'
 license = 'GPLv3'
-keywords = 'fonts TTF OTF WOFF WOFF2'
+keywords = 'XXXX lorem ipsum'
 
 author = 'Markus Heiser'
 author_email = 'markus.heiser@darmarIT.de'
@@ -53,9 +53,9 @@ maintainer = 'Markus Heiser'
 maintainer_email = 'markus.heiser@darmarIT.de'
 maintainers = [maintainer, ]
 
-url = 'https://github.com/return42/XXXXXX'
-docs = 'http://return42.github.io/XXXXXX'
-issues = 'https://github.com/return42/XXXXXX/issues'
+url = 'https://github.com/return42/XXXX'
+docs = 'http://return42.github.io/XXXX'
+issues = 'https://github.com/return42/XXXX/issues'
 
 project_urls = {
     # pylint: disable=bad-continuation
@@ -68,18 +68,10 @@ packages = find_packages(exclude=['docs', 'tests'])
 
 # https://setuptools.readthedocs.io/en/latest/setuptools.html#including-data-files
 package_data = {
-    'XXXXXX' : [
+    'XXXX' : [
         'config.ini'
         , 'log.ini'
         , 'mime.types'
-
-        , 'files/cantarell/COPYING'
-        , 'files/cantarell/cantarell.css'
-        , 'files/cantarell/*.woff2'
-
-        , 'files/dejavu/LICENSE.html'
-        , 'files/dejavu/dejavu.css'
-        , 'files/dejavu/DejaVu*.woff2'
     ]
 }
 
@@ -88,20 +80,18 @@ package_data = {
 # https://www.scivision.dev/newer-setuptools-needed/
 # https://setuptools.readthedocs.io/en/latest/history.html#v40-5-0
 data_files = [
-    ('/etc/XXXXXX', [
-        'XXXXXX/config.ini'
-        ,  'XXXXXX/log.ini'
+    ('/etc/XXXX', [
+        'XXXX/config.ini'
+        ,  'XXXX/log.ini'
     ])
-    , ('/usr/share/doc/XXXXXX', [
+    , ('/usr/share/doc/XXXX', [
         'README.rst'
         , 'LICENSE.txt'
-        , 'XXXXXX/files/cantarell/COPYING'
-        , 'XXXXXX/files/dejavu/LICENSE.html'
     ])
     , ]
 
 # https://packaging.python.org/guides/distributing-packages-using-setuptools/#python-requires
-python_requires  ='>=3.5'
+python_requires  ='>=3.7'
 
 # https://packaging.python.org/guides/distributing-packages-using-setuptools/#py-modules
 py_modules = []
@@ -109,10 +99,10 @@ py_modules = []
 # Since pip v18.1 [PEP508-URL] is supported!
 #
 # Don't use depricated [dependency_links] any more.  See [git+] for using repos
-# as packages.  E.g. 'XXXXXX's master from github with *all extras* is added to
+# as packages.  E.g. 'XXXX's master from github with *all extras* is added to
 # the requirements by::
 #
-#        XXXXXX @ git+https://github.com/return42/XXXXXX[devel,test]
+#        XXXX @ git+https://github.com/return42/XXXX[devel,test]
 #
 #  The setup.py 'extra_requires' addressed with [PEP-508 extras], here in the
 #  example 'devel' and 'test' requirements also installed.
@@ -139,60 +129,59 @@ test_requires = [
 test_requires_txt = "\n".join(test_requires)
 
 develop_requires = [
-    'jedi' # https://jedi.readthedocs.io/
-    , 'epc @ git+https://github.com/tkf/python-epc' # required by emacs: https://tkf.github.io/emacs-jedi
-    , 'Sphinx'
-    , 'sphinx_rtd_theme'
-    , 'sphinx-autobuild'
-    , 'sphinxcontrib-programoutput'
-    , 'pip'
-    , 'sqlalchemy_schemadisplay @ git+https://github.com/fschulze/sqlalchemy_schemadisplay'
-    , 'psycopg2-binary'
-    , 'twine'
+    'twine'
+    # https://jedi.readthedocs.io/
+    , 'jedi'
+    # epc required by emacs: https://tkf.github.io/emacs-jedi
+    , 'epc @ git+https://github.com/tkf/python-epc'
 ]
 
 develop_requires_txt = "\n".join(develop_requires)
 
 requirements_txt = """# -*- coding: utf-8; mode: conf -*-
-# ----------------
-# install requires
-# ----------------
+
+# requirements of package XXXX
+# ----------------------------
 
 %(install_requires_txt)s
 
-# -------------
 # test requires
 # -------------
 
 %(test_requires_txt)s
+# tox
+# pytest
+# pytest-cov
 
-#tox
-#pytest
-#pytest-cov
+# make docs
+# ---------
 
-# ----------------
-# develop requires
-# ----------------
+Sphinx
+pallets-sphinx-themes
+sphinx-autobuild
+sphinx-issues
+sphinx-jinja
+sphinx-tabs
+sphinxcontrib-programoutput
+linuxdoc @ git+http://github.com/return42/linuxdoc.git
+
+# slide-shows with revaljs
+git+https://github.com/return42/sphinxjp.themes.revealjs
+
+# develop
+# -------
 
 %(develop_requires_txt)s
-
-#wheel
-#mock
-
-# sphinxjp.themes.revealjs: slide-shows with revaljs
-#
-#   comment out next lines, if you don't build slide-shows
-#
-#git+https://github.com/return42/sphinxjp.themes.revealjs
-# -e file:../sphinxjp.themes.revealjs#egg=sphinxjp.themes.revealjs
-
+# sqlalchemy_schemadisplay @ git+https://github.com/fschulze/sqlalchemy_schemadisplay
+# wheel
+# mock
 """ % globals()
 
 def get_entry_points():
     """get entry points of the python package"""
     return {
         'console_scripts': [
-            'XXXXXX = XXXXXX.cli:main' # Main XXXXXX_ console script
+            'XXXX = XXXX.cli:main' # Main XXXX_ console script
         ]}
 
 # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -210,35 +199,13 @@ classifiers = [
 ]
 
 docstring = """
-The python `XXXXXX <%(docs)s>`__ package helps to manage fonts from different
-resources.  It comes with an API and the XXXXXX command line (see `use
-<%(docs)s/use.html>`__).
 
-To name just a few XXXXXX features:
+The python `XXXX <%(docs)s>`__ package helps .. .  It comes with an API and the
+XXXX command line (see `use <%(docs)s/use.html>`__).
 
-- XXXXXX ships some `builtin fonts <%(docs)s/builtin.html>`__
-- XXXXXX make use of fonts from `google fonts <%(docs)s/googlefont.html>`__
-- XXXXXX use fonts from `entry points <%(docs)s/ep_points.html>`__
-- Python `mimetypes <https://docs.python.org/3/library/mimetypes.html>`__ for font types
+.. sidebar::  Info
 
-
-Install
-=======
-
-Install and update using `pip <https://pip.pypa.io/en/stable/quickstart/>`__:
-
-.. code-block:: text
-
-   pip install -U XXXXXX
-
-
-Links
-=====
-
-- Documentation:   %(docs)s
-- Releases:        https://pypi.org/project/XXXXXX/
-- Code:            %(url)s
-- Issue tracker:   %(url)s/issues
+   Lorem ipsum ..
 
 ============ ===============================================
 package:     %(package)s (%(version)s)
@@ -247,11 +214,30 @@ e-mail:      %(maintainer_email)s
 license:     %(license)s
 ============ ===============================================
 
+Install
+=======
+
+Install and update using `pip <https://pip.pypa.io/en/stable/quickstart/>`__:
+
+.. code:: bash
+
+   pip install -U XXXX
+
+
+Links
+=====
+
+- Documentation:   %(docs)s
+- Releases:        https://pypi.org/project/XXXX/
+- Code:            %(url)s
+- Issue tracker:   %(url)s/issues
+
+
 """ % globals()
 
 README = """\
 ==============================================================================
-XXXXXX
+XXXX
 ==============================================================================
 
 %(docstring)s

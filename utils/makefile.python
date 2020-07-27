@@ -5,11 +5,12 @@ PYOBJECTS ?=
 
 SITE_PYTHON ?=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))site-python
 export PYTHONPATH := $(SITE_PYTHON):$$PYTHONPATH
+export PY_ENV PYDIST PYBUILD
 
 # folder where the python distribution takes place
-PYDIST   ?= ./py_dist
+PYDIST   = ./dist$(LXC_ENV_FOLDER)
 # folder where the python intermediate build files take place
-PYBUILD  ?= ./py_build
+PYBUILD  = ./build$(LXC_ENV_FOLDER)
 # python version to use
 PY       ?=3
 PYTHON   ?= python$(PY)
@@ -26,8 +27,8 @@ PYLINT_RC ?= .pylintrc
 TEST_FOLDER  ?= ./tests
 TEST         ?= .
 
-VTENV_OPTS   = "--no-site-packages"
-PY_ENV       = ./local/py$(PY)
+VTENV_OPTS   ?=
+PY_ENV       = ./local$(LXC_ENV_FOLDER)/py$(PY)
 PY_ENV_BIN   = $(PY_ENV)/bin
 PY_ENV_ACT   = . $(PY_ENV_BIN)/activate
 
@@ -35,20 +36,6 @@ ifeq ($(OS),Windows_NT)
   PYTHON     = python
   PY_ENV_BIN = $(PY_ENV)/Scripts
   PY_ENV_ACT = $(PY_ENV_BIN)/activate
-endif
-
-ifeq ($(PYTHON),python)
-  VIRTUALENV   = virtualenv
-else
-  VIRTUALENV   = virtualenv --python=$(PYTHON)
-endif
-
-ifeq ($(KBUILD_VERBOSE),1)
-  PIP_VERBOSE =
-  VIRTUALENV_VERBOSE =
-else
-  PIP_VERBOSE = "-q"
-  VIRTUALENV_VERBOSE = "-q"
 endif
 
 python-help::
@@ -59,7 +46,7 @@ python-help::
 	@echo  '    pylint    - run pylint *linting*'
 	@echo  '    pytest    - run *tox* test on python objects'
 	@echo  '    pydebug   - run tests within a PDB debug session'
-	@echo  '    pybuild   - build python packages'
+	@echo  '    pybuild   - build python packages ($(PYDIST) $(PYBUILD))'
 	@echo  '    pyclean   - clean intermediate python objects'
 	@echo  '  targets using system users environment:'
 	@echo  '    py[un]install - [un]install python objects in editable mode'
@@ -110,22 +97,6 @@ pip-exe:
 	@:
 endif
 
-PHONY += msg-virtualenv-exe virtualenv-exe
-msg-virtualenv-exe:
-	@echo "\n  virtualenv is required\n\n\
-  Make sure you have an updated virtualenv installed, grab it from\n\
-  https://virtualenv.pypa.io/en/stable/installation/ or install it\n\
-  via pip by::\n\n\
-    pip install --user https://github.com/pypa/virtualenv/tarball/master\n" | $(FMT)
-
-ifeq ($(shell which virtualenv >/dev/null 2>&1; echo $$?), 1)
-virtualenv-exe: msg-virtualenv-exe
-	$(error The 'virtualenv' command was not found)
-else
-virtualenv-exe:
-	@:
-endif
-
 # ------------------------------------------------------------------------------
 # commands
 # ------------------------------------------------------------------------------
@@ -153,7 +124,7 @@ quiet_cmd_pyenvuninstall = PYENV     uninstall   $2
 quiet_cmd_virtualenv  = PYENV     usage: $ source ./$@/bin/activate
       cmd_virtualenv  = \
 	if [ ! -d "./$(PY_ENV)" ];then                                  \
-		$(VIRTUALENV) $(VIRTUALENV_VERBOSE) $(VTENV_OPTS) $2;   \
+		$(PYTHON) -m venv $(VTENV_OPTS) $2;                     \
 	else                                                            \
 		echo "PYENV     using virtualenv from $2";              \
         fi
@@ -192,14 +163,14 @@ quiet_cmd_pytest      = TEST      $@
 # .. _installing: https://packaging.python.org/tutorials/installing-packages/
 #
 quiet_cmd_pybuild     = BUILD     $@
-      cmd_pybuild     = $(PY_ENV_BIN)/$(PYTHON) setup.py \
+      cmd_pybuild     = $(PY_ENV_BIN)/python setup.py \
 			sdist -d $(PYDIST)  \
 			bdist_wheel --bdist-dir $(PYBUILD) -d $(PYDIST)
 
 quiet_cmd_pyclean     = CLEAN     $@
 # remove 'build' folder since bdist_wheel does not care the --bdist-dir
       cmd_pyclean     = \
-	rm -rf $(PYDIST) $(PYBUILD) ./local ./.tox *.egg-info     ;\
+	rm -rf $(PYDIST) $(PYBUILD) $(PY_ENV) ./.tox *.egg-info     ;\
 	find . -name '*.pyc' -exec rm -f {} +      ;\
 	find . -name '*.pyo' -exec rm -f {} +      ;\
 	find . -name __pycache__ -exec rm -rf {} +
@@ -232,8 +203,9 @@ pyclean:
 
 # to build *local* environment, python and virtualenv from the OS is needed!
 pyenv: $(PY_ENV)
-$(PY_ENV): virtualenv-exe python-exe
+$(PY_ENV): python-exe
 	$(call cmd,virtualenv,$(PY_ENV))
+	@$(PY_ENV_BIN)/pip install $(PIP_VERBOSE) -U wheel pip setuptools
 	@$(PY_ENV_BIN)/pip install $(PIP_VERBOSE) -r requirements.txt
 
 PHONY += pylint-exe
@@ -270,7 +242,7 @@ pyenv-uninstall: $(PY_ENV)
 
 # runs python interpreter from ./local/py<N>/bin/python
 pyenv-python: pyenv-install
-	cd ./local; ../$(PY_ENV_BIN)/python -i
+	$(PY_ENV_BIN)/python -i
 
 # With 'dependency_links=' setuptools supports dependencies on packages hosted
 # on other reposetories then PyPi, see "Packages Not On PyPI" [1].  The big
@@ -284,7 +256,7 @@ pyenv-python: pyenv-install
 
 # https://github.com/pypa/twine
 PHONY += upload-pypi
-upload-pypi: pyclean pybuild
+upload-pypi: pyclean pyenvinstall pybuild
 	@$(PY_ENV_BIN)/twine upload $(PYDIST)/*
 
 .PHONY: $(PHONY)
