@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>xxxx.__pkginfo__ &#8212; xxxx 20200727 documentation</title>
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_tabs/tabs.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+    <script src="../../_static/sphinx_tabs/tabs.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../../';</script>
+   
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">xxxx 20200727 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">xxxx.__pkginfo__</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for xxxx.__pkginfo__</h1><div class="highlight"><pre>
+<span></span># -*- coding: utf-8; mode: python; mode: flycheck -*-
+# pylint: disable=invalid-name,redefined-builtin
+# pylint: disable=line-too-long
+&quot;&quot;&quot;Python package meta informations used by setup.py and other project files.
+
+Single point of source for all xxxx package metadata.  After modifying this
+file it is needed to recreate some projet files::
+
+  ./local/py3/bin/python -c &quot;from xxxx.__pkginfo__ import *; print(README)&quot; &gt; README.rst
+  ./local/py3/bin/python -c &quot;from xxxx.__pkginfo__ import *; print(requirements_txt)&quot; &gt; requirements.txt
+
+About python packaging see `Python Packaging Authority`_.  Most of the names
+here are mapped to ``setup(&lt;name1&gt;=..., &lt;name2&gt;=...)`` arguments in
+``setup.py``.  See `Packaging and distributing projects`_ about ``setup(...)``
+arguments. If this is all new for you, start with `PyPI Quick and Dirty`_.
+
+Further read:
+
+- pythonwheels_
+- setuptools_
+- packaging_
+- sdist_
+- installing_
+
+.. _`Python Packaging Authority`: https://www.pypa.io
+.. _`Packaging and distributing projects`: https://packaging.python.org/guides/distributing-packages-using-setuptools/
+.. _`PyPI Quick and Dirty`: https://hynek.me/articles/sharing-your-labor-of-love-pypi-quick-and-dirty/
+.. _pythonwheels: https://pythonwheels.com/
+.. _setuptools: https://setuptools.readthedocs.io/en/latest/setuptools.html
+.. _packaging: https://packaging.python.org/guides/distributing-packages-using-setuptools/#packaging-and-distributing-projects
+.. _sdist: https://packaging.python.org/guides/distributing-packages-using-setuptools/#source-distributions
+.. _bdist_wheel: https://packaging.python.org/guides/distributing-packages-using-setuptools/#pure-python-wheels
+.. _installing: https://packaging.python.org/tutorials/installing-packages/
+
+&quot;&quot;&quot;
+# pylint: enable=line-too-long
+
+from setuptools import find_packages
+
+package = &#39;xxxx&#39;
+version = &#39;20200727&#39;
+
+copyright = &#39;2020 Markus Heiser&#39;
+description = &#39;xxxx lorem ipsum&#39;
+license = &#39;GPLv3&#39;
+keywords = &#39;xxxx lorem ipsum&#39;
+
+author = &#39;Markus Heiser&#39;
+author_email = &#39;markus.heiser@darmarIT.de&#39;
+authors = [author, ]
+
+maintainer = &#39;Markus Heiser&#39;
+maintainer_email = &#39;markus.heiser@darmarIT.de&#39;
+maintainers = [maintainer, ]
+
+url = &#39;https://github.com/name/xxxx&#39;
+docs = &#39;https://name.github.io/xxxx&#39;
+issues = &#39;https://github.com/name/xxxx/issues&#39;
+
+project_urls = {
+    # pylint: disable=bad-continuation
+    &#39;Documentation&#39;      : docs
+    , &#39;Code&#39;             : url
+    , &#39;Issue tracker&#39;    : issues
+}
+
+packages = find_packages(exclude=[&#39;docs&#39;, &#39;tests&#39;])
+
+# https://setuptools.readthedocs.io/en/latest/setuptools.html#including-data-files
+package_data = {
+    &#39;xxxx&#39; : [
+        &#39;config.ini&#39;
+        , &#39;log.ini&#39;
+        , &#39;mime.types&#39;
+    ]
+}
+
+# https://docs.python.org/distutils/setupscript.html#installing-additional-files
+# https://setuptools.readthedocs.io/en/latest/setuptools.html?highlight=options.data_files#configuring-setup-using-setup-cfg-files
+# https://www.scivision.dev/newer-setuptools-needed/
+# https://setuptools.readthedocs.io/en/latest/history.html#v40-5-0
+data_files = [
+    (&#39;/etc/xxxx&#39;, [
+        &#39;xxxx/config.ini&#39;
+        ,  &#39;xxxx/log.ini&#39;
+    ])
+    , (&#39;/usr/share/doc/xxxx&#39;, [
+        &#39;README.rst&#39;
+        , &#39;LICENSE.txt&#39;
+    ])
+    , ]
+
+# https://packaging.python.org/guides/distributing-packages-using-setuptools/#python-requires
+python_requires  =&#39;&gt;=3.7&#39;
+
+# https://packaging.python.org/guides/distributing-packages-using-setuptools/#py-modules
+py_modules = []
+
+# Since pip v18.1 [PEP508-URL] is supported!
+#
+# Don&#39;t use depricated [dependency_links] any more.  See [git+] for using repos
+# as packages.  E.g. &#39;xxxx&#39;s master from github with *all extras* is added to
+# the requirements by::
+#
+#        xxxx @ git+https://github.com/return42/xxxx[devel,test]
+#
+#  The setup.py &#39;extra_requires&#39; addressed with [PEP-508 extras], here in the
+#  example &#39;devel&#39; and &#39;test&#39; requirements also installed.
+#
+# [PEP-508 URL]      https://www.python.org/dev/peps/pep-0508/
+# [PEP-508 extras]   https://www.python.org/dev/peps/pep-0508/#extras
+# [git+] https://pip.pypa.io/en/stable/reference/pip_install/#vcs-support
+# [requirements.txt] https://pip.pypa.io/en/stable/user_guide/#requirements-files
+# [dependency_links] https://python-packaging.readthedocs.io/en/latest/dependencies.html
+
+install_requires = [
+    &#39;fspath&#39;
+    , &#39;tinycss2&#39;
+    , &#39;requests&#39;
+    , &#39;sqlalchemy&#39;
+]
+
+install_requires_txt = &quot;\n&quot;.join(install_requires)
+
+test_requires = [
+    &#39;pylint&#39;
+    ]
+
+test_requires_txt = &quot;\n&quot;.join(test_requires)
+
+develop_requires = [
+    &#39;twine&#39;
+    # https://jedi.readthedocs.io/
+    , &#39;jedi&#39;
+    # epc required by emacs: https://tkf.github.io/emacs-jedi
+    , &#39;epc @ git+https://github.com/tkf/python-epc&#39;
+]
+
+develop_requires_txt = &quot;\n&quot;.join(develop_requires)
+
+requirements_txt = &quot;&quot;&quot;# -*- coding: utf-8; mode: conf -*-
+
+# requirements of package xxxx
+# ----------------------------
+
+%(install_requires_txt)s
+
+# test requires
+# -------------
+
+%(test_requires_txt)s
+# tox
+# pytest
+# pytest-cov
+
+# make docs
+# ---------
+
+Sphinx
+pallets-sphinx-themes
+sphinx-autobuild
+sphinx-issues
+sphinx-jinja
+sphinx-tabs
+sphinxcontrib-programoutput
+linuxdoc @ git+http://github.com/return42/linuxdoc.git
+
+# slide-shows with revaljs
+git+https://github.com/return42/sphinxjp.themes.revealjs
+
+# develop
+# -------
+
+%(develop_requires_txt)s
+# sqlalchemy_schemadisplay @ git+https://github.com/fschulze/sqlalchemy_schemadisplay
+# wheel
+# mock
+&quot;&quot;&quot; % globals()
+
+<div class="viewcode-block" id="get_entry_points"><a class="viewcode-back" href="../../xxxx-api/xxxx.__pkginfo__.html#xxxx.__pkginfo__.get_entry_points">[docs]</a>def get_entry_points():
+    &quot;&quot;&quot;get entry points of the python package&quot;&quot;&quot;
+    return {
+        &#39;console_scripts&#39;: [
+            &#39;xxxx = xxxx.cli:main&#39; # Main xxxx_ console script
+        ]}</div>
+
+# See https://pypi.python.org/pypi?%3Aaction=list_classifiers
+classifiers = [
+    &quot;Development Status :: 5 - Production/Stable&quot;
+    , &quot;Intended Audience :: Developers&quot;
+    , &quot;License :: OSI Approved :: GNU General Public License v3 (GPLv3)&quot;
+    , &quot;Operating System :: OS Independent&quot;
+    , &quot;Programming Language :: Python&quot;
+    , &quot;Programming Language :: Python :: 3&quot;
+    , &quot;Programming Language :: Python :: Implementation :: CPython&quot;
+    , &quot;Programming Language :: Python :: Implementation :: PyPy&quot;
+    , &quot;Topic :: Software Development :: Libraries :: Application Frameworks&quot;
+    , &quot;Topic :: Software Development :: Libraries :: Python Modules&quot;
+]
+
+docstring = &quot;&quot;&quot;
+
+The python `xxxx &lt;%(docs)s&gt;`__ package helps .. .  It comes with an API and the
+xxxx command line (see `use &lt;%(docs)s/use.html&gt;`__).
+
+.. sidebar::  Info
+
+   Lorem ipsum ..
+
+============ ===============================================
+package:     %(package)s (%(version)s)
+copyright:   %(copyright)s
+e-mail:      %(maintainer_email)s
+license:     %(license)s
+============ ===============================================
+
+Install
+=======
+
+Install and update using `pip &lt;https://pip.pypa.io/en/stable/quickstart/&gt;`__:
+
+.. code:: bash
+
+   pip install -U xxxx
+
+
+Links
+=====
+
+- Documentation:   %(docs)s
+- Releases:        https://pypi.org/project/xxxx/
+- Code:            %(url)s
+- Issue tracker:   %(url)s/issues
+
+
+&quot;&quot;&quot; % globals()
+
+README = &quot;&quot;&quot;\
+==============================================================================
+xxxx
+==============================================================================
+
+%(docstring)s
+&quot;&quot;&quot; % globals()
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+  <span id="sidebar-top"></span>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  
+    
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/darmarIT_logo_128.png" alt="Logo"/>
+            </a></p>
+  
+
+  <h3>Project Links</h3>
+  <ul>
+    <li><a href="https://return42.github.io/boilerplate/slides/index.html">Slide Collection</a>
+  
+    <li><a href="https://github.com/return42/boilerplate">Source</a>
+  
+    <li><a href="https://return42.github.io/boilerplate/xxxx-api/xxxx.html">API</a>
+  </ul><h3>Navigation</h3>
+<ul>
+  <li><a href="../../index.html">Overview</a>
+    <ul>
+      <li><a href="../index.html">Module code</a>
+        
+          
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020 Markus Heiser.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.0.
+    </div>
+  <script src="../../_static/version_warning_offset.js"></script>
+
+  </body>
+</html>

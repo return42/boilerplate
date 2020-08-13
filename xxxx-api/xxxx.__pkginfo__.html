@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>xxxx.__pkginfo__ module &#8212; xxxx 20200727 documentation</title>
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="xxxx package" href="xxxx.html" />
+  <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../';</script>
+   
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="xxxx.html" title="xxxx package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">xxxx 20200727 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="xxxx.html" accesskey="U">xxxx package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">xxxx.__pkginfo__ module</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-xxxx.__pkginfo__">
+<span id="xxxx-pkginfo-module"></span><h1>xxxx.__pkginfo__ module<a class="headerlink" href="#module-xxxx.__pkginfo__" title="Permalink to this headline">¶</a></h1>
+<p>Python package meta informations used by setup.py and other project files.</p>
+<p>Single point of source for all xxxx package metadata.  After modifying this
+file it is needed to recreate some projet files:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./local/py3/bin/python -c &quot;from xxxx.__pkginfo__ import *; print(README)&quot; &gt; README.rst
+./local/py3/bin/python -c &quot;from xxxx.__pkginfo__ import *; print(requirements_txt)&quot; &gt; requirements.txt
+</pre></div>
+</div>
+<p>About python packaging see <a class="reference external" href="https://www.pypa.io">Python Packaging Authority</a>.  Most of the names
+here are mapped to <code class="docutils literal notranslate"><span class="pre">setup(&lt;name1&gt;=...,</span> <span class="pre">&lt;name2&gt;=...)</span></code> arguments in
+<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>.  See <a class="reference external" href="https://packaging.python.org/guides/distributing-packages-using-setuptools/">Packaging and distributing projects</a> about <code class="docutils literal notranslate"><span class="pre">setup(...)</span></code>
+arguments. If this is all new for you, start with <a class="reference external" href="https://hynek.me/articles/sharing-your-labor-of-love-pypi-quick-and-dirty/">PyPI Quick and Dirty</a>.</p>
+<p>Further read:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pythonwheels.com/">pythonwheels</a></p></li>
+<li><p><a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html">setuptools</a></p></li>
+<li><p><a class="reference external" href="https://packaging.python.org/guides/distributing-packages-using-setuptools/#packaging-and-distributing-projects">packaging</a></p></li>
+<li><p><a class="reference external" href="https://packaging.python.org/guides/distributing-packages-using-setuptools/#source-distributions">sdist</a></p></li>
+<li><p><a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/">installing</a></p></li>
+</ul>
+<dl class="py function">
+<dt id="xxxx.__pkginfo__.get_entry_points">
+<code class="sig-prename descclassname">xxxx.__pkginfo__.</code><code class="sig-name descname">get_entry_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/xxxx/__pkginfo__.html#get_entry_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xxxx.__pkginfo__.get_entry_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>get entry points of the python package</p>
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+  <span id="sidebar-top"></span>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  
+    
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/darmarIT_logo_128.png" alt="Logo"/>
+            </a></p>
+  
+
+  <h3>Project Links</h3>
+  <ul>
+    <li><a href="https://return42.github.io/boilerplate/slides/index.html">Slide Collection</a>
+  
+    <li><a href="https://github.com/return42/boilerplate">Source</a>
+  
+    <li><a href="https://return42.github.io/boilerplate/xxxx-api/xxxx.html">API</a>
+  </ul><h3>Navigation</h3>
+<ul>
+  <li><a href="../index.html">Overview</a>
+    <ul>
+      <li><a href="xxxx.html">xxxx package</a>
+        <ul>
+          <li>Previous: <a href="xxxx.html" title="previous chapter">xxxx package</a>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020 Markus Heiser.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.0.
+    </div>
+  <script src="../_static/version_warning_offset.js"></script>
+
+  </body>
+</html>
