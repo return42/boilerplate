@@ -1,6 +1,6 @@
 # -*- coding: utf-8; mode: conf -*-
 
-# requirements of package XXXX
+# requirements of package xxxx
 # ----------------------------
 
 fspath

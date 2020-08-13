@@ -6,7 +6,10 @@ include utils/makefile.sphinx
 include utils/makefile.0
 
 GIT_URL   = https://github.com/return42/boilerplate.git
-SLIDES    = docs/slides
+PYOBJECTS = xxxx
+DOC       = docs
+SLIDES    = $(DOC)/slides
+API_DOC   = $(DOC)/$(PYOBJECTS)-api
 
 all: clean docs
 
@@ -54,13 +57,16 @@ clean: pyclean docs-clean
 	$(call cmd,common_clean)
 
 PHONY += project
-project: $(PY_ENV) pyenvinstall
+project: $(PY_ENV) $(API_DOC) pyenvinstall
 	@echo '  PROJECT   requirements.txt'
 	$(Q)- rm -f requirements.txt
-	$(Q)$(PY_ENV_BIN)/python -c "from XXXX.__pkginfo__ import *; print(requirements_txt)" > ./requirements.txt
-	#$(Q)- rm -f README.rst
-	#@echo '  PROJECT   README.rst'
-	#$(Q)$(PY_ENV_BIN)/python -c "from XXXX.__pkginfo__ import *; print(README)" > ./README.rst
+	$(Q)$(PY_ENV_BIN)/python -c "from xxxx.__pkginfo__ import *; print(requirements_txt)" > ./requirements.txt
+
+PHONY += $(API_DOC)
+$(API_DOC): $(PY_ENV)
+	$(Q)rm -rf ./$(API_DOC)
+	$(Q)$(PY_ENV_BIN)/sphinx-apidoc --separate --maxdepth=0 --private -o $(API_DOC) xxxx
+	$(Q)rm -f $(API_DOC)/modules.rst
 
 .PHONY: $(PHONY)
 

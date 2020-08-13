@@ -3,22 +3,29 @@
 # Sphinx documentation build configuration file
 
 import re
-import XXXX
+import xxxx
 import sys, os
+
+from pallets_sphinx_themes import ProjectLink
+
 sys.path.append(os.path.abspath('../utils/site-python'))
 from sphinx_build_tools import load_sphinx_config
 
-project   = 'XXXX'
-copyright = XXXX.__copyright__
-version   = XXXX.__version__
-release   = XXXX.__version__
+project   = 'xxxx'
+copyright = xxxx.__copyright__
+version   = xxxx.__version__
+release   = xxxx.__version__
 show_authors = True
+
+DOC_URL    = 'https://return42.github.io/boilerplate'
+GIT_URL    = 'https://github.com/return42/boilerplate'
+GIT_BRANCH = 'master'
 
 source_suffix       = '.rst'
 show_authors        = True
 master_doc          = 'index'
 templates_path      = ['_templates']
-exclude_patterns    = ['_build', 'slides']
+exclude_patterns    = ['_build', 'slides', 'index-autodoc.rst']
 todo_include_todos  = True
 highlight_language = 'none'
 
@@ -40,17 +47,42 @@ extensions = [
     , 'linuxdoc.manKernelDoc'    # Implementation of the 'kernel-doc-man' builder
     , 'linuxdoc.cdomain'         # Replacement for the sphinx c-domain.
     , 'linuxdoc.kfigure'         # Sphinx extension which implements scalable image handling.
-    , 'pallets_sphinx_themes',
+    , 'sphinx_tabs.tabs'         # https://github.com/djungelorm/sphinx-tabs
+    , 'pallets_sphinx_themes'
+    , 'sphinxcontrib.programoutput'  # https://github.com/NextThought/sphinxcontrib-programoutput
+
 ]
 
-intersphinx_mapping = {}
 # usage:    :ref:`comparison manual <python:comparisons>`
-intersphinx_mapping['python']  = ('https://docs.python.org/', None)
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3/", None),
+    "flask": ("https://flask.palletsprojects.com/", None),
+    # "werkzeug": ("https://werkzeug.palletsprojects.com/", None),
+    "jinja": ("https://jinja.palletsprojects.com/", None),
+    "linuxdoc" : ("https://return42.github.io/linuxdoc/", None),
+    "sphinx" : ("https://www.sphinx-doc.org/en/master/", None),
+}
 
+
+# usage::   lorem :patch:`f373169` ipsum
 extlinks = {}
-# usage:    :cdb-doc:`admin/platform/blobstore_maintenance`
-extlinks['origin']    = ('https://github.com/return42/boilerplate/src/master/%s', 'git')
-extlinks['commit']    = ('https://github.com/return42/boilerplate/commit/%s', '#')
+extlinks['wiki']   = (GIT_URL + '/wiki/%s', ' ')
+extlinks['pull']   = (GIT_URL + '/pull/%s', 'PR ')
+extlinks['origin'] = (GIT_URL + '/blob/' + GIT_BRANCH + '/%s', 'git://')
+extlinks['patch']  = (GIT_URL + '/commit/%s', '#')
+extlinks['docs']   = (DOC_URL + '/%s', 'docs: ')
+extlinks['pypi'] = ('https://pypi.org/project/%s', 'PyPi: ')
+extlinks['man'] = ('https://manpages.debian.org/jump?q=%s', '')
+#extlinks['role'] = (
+#    'https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-%s', '')
+extlinks['duref'] = (
+    'http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#%s', '')
+extlinks['durole'] = (
+    'http://docutils.sourceforge.net/docs/ref/rst/roles.html#%s', '')
+extlinks['dudir'] =  (
+    'http://docutils.sourceforge.net/docs/ref/rst/directives.html#%s', '')
+extlinks['ctan'] =  (
+    'https://ctan.org/pkg/%s', 'CTAN: ')
 
 # sphinx.ext.imgmath setup
 html_math_renderer = 'imgmath'
@@ -58,15 +90,27 @@ imgmath_image_format = 'svg'
 imgmath_font_size = 14
 # sphinx.ext.imgmath setup END
 
-
-html_search_language = 'de'
+html_search_language = 'en'
 
 sys.path.append(os.path.abspath('_themes'))
 html_theme           = "custom"
 html_logo            = 'darmarIT_logo_128.png'
 html_theme_path      = ['_themes']
-html_static_path     = ["static"]
 
+html_theme_options = {"index_sidebar_logo": True}
+html_context = {
+    "project_links": [
+        ProjectLink("Slide Collection", DOC_URL + '/slides/index.html'),
+        #ProjectLink("Home", DOC_URL),
+        ProjectLink("Source", GIT_URL),
+        ProjectLink("API", DOC_URL+ '/xxxx-api/xxxx.html'),
+
+    ]
+}
+html_sidebars = {
+    "**": ["project.html", "relations.html", "localtoc.html", "searchbox.html"],
+}
+singlehtml_sidebars = {"index": ["project.html", "localtoc.html"]}
 
 # ------------------------------------------------------------------------------
 # Since loadConfig overwrites settings from the global namespace, it has to be

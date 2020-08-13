@@ -5,18 +5,23 @@ include utils/makefile.python
 include utils/makefile.sphinx
 include utils/makefile.0
 
-GIT_URL   = https://github.com/return42/XXXXXX.git
-PYOBJECTS = XXXXXX
+GIT_URL   = https://github.com/return42/boilerplate.git
+PYOBJECTS = xxxx
 DOC       = docs
 SLIDES    = $(DOC)/slides
-API_DOC   = $(DOC)/XXXXXX-api
+API_DOC   = $(DOC)/$(PYOBJECTS)-api
 PYLINT_RC = .pylintrc
 PY_SETUP_EXTRAS = \[develop,test\]
 
 all: clean pylint pytest build docs
 
-PHONY += help
-help:
+PHONY += help help-min help-all
+
+help: help-min
+	@echo  ''
+	@echo  'to get more help:  make help-all'
+
+help-min:
 	@echo  '  build     - build distribution packages ($(PYDIST))'
 	@echo  '  docs      - build documentation'
 	@echo  '  docs-live - autobuild HTML documentation while editing'
@@ -27,23 +32,26 @@ help:
 	@echo  '  install   - developer install'
 	@echo  '  uninstall - developer uninstall'
 	@echo  ''
-	@echo  '  project   - rebuild generic project files (README, ..)'
+	@echo  '  project   - rebuild generic project files (README, requirements.txt)'
 	@echo  ''
-	@$(MAKE) -s -f utils/makefile.include make-help
+	$(Q)$(MAKE) -e -s make-help
+
+help-all: help-min
 	@echo  ''
-	@$(MAKE) -s -f utils/makefile.python python-help
+	$(Q)$(MAKE) -e -s docs-help
 	@echo  ''
-	@$(MAKE) -s -f utils/makefile.sphinx docs-help
+	$(Q)$(MAKE) -e -s python-help
+
 
 PHONY += build
 build: $(PY_ENV) project pybuild
 
 PHONY += project
-project: $(PY_ENV) pyenvinstall
+project: $(PY_ENV) pyenvinstall $(API_DOC)
 	@echo '  PROJECT   README.rst requirements.txt'
 	$(Q)- rm -f README.rst requirements.txt
-	$(Q)$(PY_ENV_BIN)/python -c "from XXXXXX.__pkginfo__ import *; print(README)" > ./README.rst
-	$(Q)$(PY_ENV_BIN)/python -c "from XXXXXX.__pkginfo__ import *; print(requirements_txt)" > ./requirements.txt
+	$(Q)$(PY_ENV_BIN)/python -c "from xxxx.__pkginfo__ import *; print(README)" > ./README.rst
+	$(Q)$(PY_ENV_BIN)/python -c "from xxxx.__pkginfo__ import *; print(requirements_txt)" > ./requirements.txt
 
 
 PHONY += install
@@ -64,9 +72,11 @@ PHONY += slides
 slides:  sphinx-doc
 	$(call cmd,sphinx,html,$(SLIDES),$(SLIDES),slides)
 
-# $(API_DOC): $(PY_ENV)
-# 	$(PY_ENV_BIN)/sphinx-apidoc --separate --maxdepth=1 -o $(API_DOC) XXXXXX
-# 	rm -f $(API_DOC)/modules.rst
+PHONY += $(API_DOC)
+$(API_DOC): $(PY_ENV)
+	$(Q)rm -rf ./$(API_DOC)
+	$(Q)$(PY_ENV_BIN)/sphinx-apidoc --separate --maxdepth=0 --private -o $(API_DOC) xxxx
+	$(Q)rm -f $(API_DOC)/modules.rst
 
 PHONY += clean
 clean: pyclean docs-clean

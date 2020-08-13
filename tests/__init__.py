@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-    XXXX unit test driver
+    xxxx unit test driver
     ~~~~~~~~~~~~~~~~~~~~~~~
 
     :copyright:  Copyright (C) 2017 Markus Heiser

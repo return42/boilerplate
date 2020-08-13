@@ -3,11 +3,11 @@
 # pylint: disable=line-too-long
 """Python package meta informations used by setup.py and other project files.
 
-Single point of source for all XXXX package metadata.  After modifying this
+Single point of source for all xxxx package metadata.  After modifying this
 file it is needed to recreate some projet files::
 
-  ./local/py3/bin/python -c "from XXXX.__pkginfo__ import *; print(README)" > README.rst
-  ./local/py3/bin/python -c "from XXXX.__pkginfo__ import *; print(requirements_txt)" > requirements.txt
+  ./local/py3/bin/python -c "from xxxx.__pkginfo__ import *; print(README)" > README.rst
+  ./local/py3/bin/python -c "from xxxx.__pkginfo__ import *; print(requirements_txt)" > requirements.txt
 
 About python packaging see `Python Packaging Authority`_.  Most of the names
 here are mapped to ``setup(<name1>=..., <name2>=...)`` arguments in
@@ -37,13 +37,13 @@ Further read:
 
 from setuptools import find_packages
 
-package = 'XXXX'
+package = 'xxxx'
 version = '20200727'
 
 copyright = '2020 Markus Heiser'
-description = 'XXXX lorem ipsum'
+description = 'xxxx lorem ipsum'
 license = 'GPLv3'
-keywords = 'XXXX lorem ipsum'
+keywords = 'xxxx lorem ipsum'
 
 author = 'Markus Heiser'
 author_email = 'markus.heiser@darmarIT.de'
@@ -53,9 +53,9 @@ maintainer = 'Markus Heiser'
 maintainer_email = 'markus.heiser@darmarIT.de'
 maintainers = [maintainer, ]
 
-url = 'https://github.com/return42/XXXX'
-docs = 'http://return42.github.io/XXXX'
-issues = 'https://github.com/return42/XXXX/issues'
+url = 'https://github.com/name/xxxx'
+docs = 'https://name.github.io/xxxx'
+issues = 'https://github.com/name/xxxx/issues'
 
 project_urls = {
     # pylint: disable=bad-continuation
@@ -68,7 +68,7 @@ packages = find_packages(exclude=['docs', 'tests'])
 
 # https://setuptools.readthedocs.io/en/latest/setuptools.html#including-data-files
 package_data = {
-    'XXXX' : [
+    'xxxx' : [
         'config.ini'
         , 'log.ini'
         , 'mime.types'
@@ -80,11 +80,11 @@ package_data = {
 # https://www.scivision.dev/newer-setuptools-needed/
 # https://setuptools.readthedocs.io/en/latest/history.html#v40-5-0
 data_files = [
-    ('/etc/XXXX', [
-        'XXXX/config.ini'
-        ,  'XXXX/log.ini'
+    ('/etc/xxxx', [
+        'xxxx/config.ini'
+        ,  'xxxx/log.ini'
     ])
-    , ('/usr/share/doc/XXXX', [
+    , ('/usr/share/doc/xxxx', [
         'README.rst'
         , 'LICENSE.txt'
     ])
@@ -99,10 +99,10 @@ py_modules = []
 # Since pip v18.1 [PEP508-URL] is supported!
 #
 # Don't use depricated [dependency_links] any more.  See [git+] for using repos
-# as packages.  E.g. 'XXXX's master from github with *all extras* is added to
+# as packages.  E.g. 'xxxx's master from github with *all extras* is added to
 # the requirements by::
 #
-#        XXXX @ git+https://github.com/return42/XXXX[devel,test]
+#        xxxx @ git+https://github.com/return42/xxxx[devel,test]
 #
 #  The setup.py 'extra_requires' addressed with [PEP-508 extras], here in the
 #  example 'devel' and 'test' requirements also installed.
@@ -140,7 +140,7 @@ develop_requires_txt = "\n".join(develop_requires)
 
 requirements_txt = """# -*- coding: utf-8; mode: conf -*-
 
-# requirements of package XXXX
+# requirements of package xxxx
 # ----------------------------
 
 %(install_requires_txt)s
@@ -181,7 +181,7 @@ def get_entry_points():
     """get entry points of the python package"""
     return {
         'console_scripts': [
-            'XXXX = XXXX.cli:main' # Main XXXX_ console script
+            'xxxx = xxxx.cli:main' # Main xxxx_ console script
         ]}
 
 # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -200,8 +200,8 @@ classifiers = [
 
 docstring = """
 
-The python `XXXX <%(docs)s>`__ package helps .. .  It comes with an API and the
-XXXX command line (see `use <%(docs)s/use.html>`__).
+The python `xxxx <%(docs)s>`__ package helps .. .  It comes with an API and the
+xxxx command line (see `use <%(docs)s/use.html>`__).
 
 .. sidebar::  Info
 
@@ -221,14 +221,14 @@ Install and update using `pip <https://pip.pypa.io/en/stable/quickstart/>`__:
 
 .. code:: bash
 
-   pip install -U XXXX
+   pip install -U xxxx
 
 
 Links
 =====
 
 - Documentation:   %(docs)s
-- Releases:        https://pypi.org/project/XXXX/
+- Releases:        https://pypi.org/project/xxxx/
 - Code:            %(url)s
 - Issue tracker:   %(url)s/issues
 
@@ -237,7 +237,7 @@ Links
 
 README = """\
 ==============================================================================
-XXXX
+xxxx
 ==============================================================================
 
 %(docstring)s
