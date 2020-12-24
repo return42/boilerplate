@@ -57,7 +57,7 @@ clean: pyclean docs-clean
 	$(call cmd,common_clean)
 
 PHONY += project
-project: $(PY_ENV) $(API_DOC) pyenvinstall
+project: pyenvinstall $(API_DOC)
 	@echo '  PROJECT   requirements.txt'
 	$(Q)- rm -f requirements.txt
 	$(Q)$(PY_ENV_BIN)/python -c "from xxxx.__pkginfo__ import *; print(requirements_txt)" > ./requirements.txt
