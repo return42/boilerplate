@@ -49,7 +49,7 @@ author_email = 'markus.heiser@darmarIT.de'
 maintainer = 'Markus Heiser'
 maintainer_email = 'markus.heiser@darmarIT.de'
 
-url = 'https://github.com/name/boilerplate'
+url = 'https://github.com/return42/boilerplate'
 docs = 'https://return42.github.io/boilerplate'
 issues = url + '/issues'
 

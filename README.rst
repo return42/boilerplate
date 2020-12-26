@@ -6,7 +6,7 @@ boilerplate
 
    - boilerplate (20200727)
    - 2020 Markus Heiser / GPLv3
-   - https://github.com/name/boilerplate
+   - https://github.com/return42/boilerplate
 
 Nothing special here, only some of my boilerplates
 

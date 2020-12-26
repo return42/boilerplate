@@ -102,12 +102,17 @@ html_theme_options = {"index_sidebar_logo": True}
 html_context = {
     "project_links": [
         ProjectLink("Slide Collection", DOC_URL + '/slides/index.html'),
-        #ProjectLink("Home", DOC_URL),
-        ProjectLink("Source", GIT_URL),
         ProjectLink("API", DOC_URL+ '/xxxx-api/xxxx.html'),
-
     ]
 }
+
+if GIT_URL:
+    html_context["project_links"].append(ProjectLink("Source", GIT_URL))
+if PKG.issues:
+    html_context["project_links"].append(ProjectLink("Issue Tracker", PKG.issues))
+if PKG.author_email:
+    html_context["project_links"].append(ProjectLink("Contact", PKG.author_email))
+
 html_sidebars = {
     "**": ["project.html", "relations.html", "localtoc.html", "searchbox.html"],
 }
