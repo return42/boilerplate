@@ -41,15 +41,15 @@ PHONY += uninstall
 uninstall: pyenvuninstall
 
 PHONY += docs
-docs:  install slides
+docs:  pyenvinstall slides
 	$(call cmd,sphinx,html,$(DOCS_FOLDER),$(DOCS_FOLDER))
 
 PHONY += slides
-slides:  install
+slides:  pyenvinstall
 	$(call cmd,sphinx,html,$(SLIDES),$(SLIDES),slides)
 
 PHONY += docs-live
-docs-live: install sphinx-live
+docs-live: pyenvinstall
 	$(call cmd,sphinx_autobuild,html,$(DOCS_FOLDER),$(DOCS_FOLDER))
 
 PHONY += clean
@@ -61,6 +61,7 @@ project: pyenvinstall $(API_DOC)
 	@echo '  PROJECT   requirements.txt'
 	$(Q)- rm -f requirements.txt
 	$(Q)$(PY_ENV_BIN)/python -c "from xxxx.__pkginfo__ import *; print(requirements_txt)" > ./requirements.txt
+	$(Q)$(PY_ENV_BIN)/python -c "from xxxx.__pkginfo__ import *; print(README)" > README.rst
 
 PHONY += $(API_DOC)
 $(API_DOC): $(PY_ENV)
