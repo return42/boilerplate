@@ -37,58 +37,62 @@ Further read:
 
 from setuptools import find_packages
 
-package = 'xxxx'
+package = 'boilerplate'
 version = '20200727'
-
-copyright = '2020 Markus Heiser'
+license   = 'GPLv3'
 description = 'xxxx lorem ipsum'
-license = 'GPLv3'
-keywords = 'xxxx lorem ipsum'
+copyright = '2020 Markus Heiser'
 
 author = 'Markus Heiser'
 author_email = 'markus.heiser@darmarIT.de'
-authors = [author, ]
 
 maintainer = 'Markus Heiser'
 maintainer_email = 'markus.heiser@darmarIT.de'
+
+url = 'https://github.com/name/boilerplate'
+docs = 'https://return42.github.io/boilerplate'
+issues = url + '/issues'
+
+authors      = [author, ]
+
+emails       = [author_email, ]
+keywords     = 'sphinx extension doc source code comments kernel-doc linux'
+
 maintainers = [maintainer, ]
 
-url = 'https://github.com/name/xxxx'
-docs = 'https://name.github.io/xxxx'
-issues = 'https://github.com/name/xxxx/issues'
-
 project_urls = {
-    # pylint: disable=bad-continuation
-    'Documentation'      : docs
-    , 'Code'             : url
-    , 'Issue tracker'    : issues
+    'Documentation'    : docs,
+    'Code'             : url,
+    'Issue tracker'    : issues,
 }
 
 packages = find_packages(exclude=['docs', 'tests'])
 
 # https://setuptools.readthedocs.io/en/latest/setuptools.html#including-data-files
 package_data = {
-    'xxxx' : [
-        'config.ini'
-        , 'log.ini'
-        , 'mime.types'
-    ]
+#     'xxxx' : [
+#         'config.ini',
+#         'log.ini',
+#         'mime.types',
+#     ]
 }
+
 
 # https://docs.python.org/distutils/setupscript.html#installing-additional-files
 # https://setuptools.readthedocs.io/en/latest/setuptools.html?highlight=options.data_files#configuring-setup-using-setup-cfg-files
 # https://www.scivision.dev/newer-setuptools-needed/
 # https://setuptools.readthedocs.io/en/latest/history.html#v40-5-0
 data_files = [
-    ('/etc/xxxx', [
-        'xxxx/config.ini'
-        ,  'xxxx/log.ini'
-    ])
-    , ('/usr/share/doc/xxxx', [
-        'README.rst'
-        , 'LICENSE.txt'
-    ])
-    , ]
+#     ('/etc/xxxx', [
+#         'xxxx/config.ini',
+#         'xxxx/log.ini',
+#     ])
+#     , ('/usr/share/doc/xxxx', [
+#         'README.rst',
+#         'LICENSE.txt',
+#     ])
+]
+
 
 # https://packaging.python.org/guides/distributing-packages-using-setuptools/#python-requires
 python_requires  ='>=3.7'
@@ -114,10 +118,10 @@ py_modules = []
 # [dependency_links] https://python-packaging.readthedocs.io/en/latest/dependencies.html
 
 install_requires = [
-    'fspath'
-    , 'tinycss2'
-    , 'requests'
-    , 'sqlalchemy'
+    'fspath',
+    'tinycss2',
+    'requests',
+    'sqlalchemy',
 ]
 
 install_requires_txt = "\n".join(install_requires)
@@ -129,53 +133,26 @@ test_requires = [
 test_requires_txt = "\n".join(test_requires)
 
 develop_requires = [
-    'twine'
+    'twine',
+    # 'wheel'
+    'Sphinx<3.0',
+    'pallets-sphinx-themes',
+    'sphinx-autobuild',
+    'sphinx-issues',
+    'sphinx-jinja',
+    'sphinx-tabs',
+    'sphinxcontrib-programoutput',
+    'linuxdoc @ git+http://github.com/return42/linuxdoc.git',
+    # slide-shows with revaljs
+    'sphinxjp.themes.revealjs @ git+https://github.com/return42/sphinxjp.themes.revealjs',
     # https://jedi.readthedocs.io/
-    , 'jedi'
+    # 'jedi',
     # epc required by emacs: https://tkf.github.io/emacs-jedi
-    , 'epc @ git+https://github.com/tkf/python-epc'
-]
+    # 'epc @ git+https://github.com/tkf/python-epc',
+    ]
+
 
 develop_requires_txt = "\n".join(develop_requires)
-
-requirements_txt = """# -*- coding: utf-8; mode: conf -*-
-
-# requirements of package xxxx
-# ----------------------------
-
-%(install_requires_txt)s
-
-# test requires
-# -------------
-
-%(test_requires_txt)s
-# tox
-# pytest
-# pytest-cov
-
-# make docs
-# ---------
-
-Sphinx
-pallets-sphinx-themes
-sphinx-autobuild
-sphinx-issues
-sphinx-jinja
-sphinx-tabs
-sphinxcontrib-programoutput
-linuxdoc @ git+http://github.com/return42/linuxdoc.git
-
-# slide-shows with revaljs
-git+https://github.com/return42/sphinxjp.themes.revealjs
-
-# develop
-# -------
-
-%(develop_requires_txt)s
-# sqlalchemy_schemadisplay @ git+https://github.com/fschulze/sqlalchemy_schemadisplay
-# wheel
-# mock
-""" % globals()
 
 def get_entry_points():
     """get entry points of the python package"""
@@ -186,59 +163,75 @@ def get_entry_points():
 
 # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
 classifiers = [
-    "Development Status :: 5 - Production/Stable"
-    , "Intended Audience :: Developers"
-    , "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
-    , "Operating System :: OS Independent"
-    , "Programming Language :: Python"
-    , "Programming Language :: Python :: 3"
-    , "Programming Language :: Python :: Implementation :: CPython"
-    , "Programming Language :: Python :: Implementation :: PyPy"
-    , "Topic :: Software Development :: Libraries :: Application Frameworks"
-    , "Topic :: Software Development :: Libraries :: Python Modules"
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
-docstring = """
-
-The python `xxxx <%(docs)s>`__ package helps .. .  It comes with an API and the
-xxxx command line (see `use <%(docs)s/use.html>`__).
+docstring = """\
 
 .. sidebar::  Info
 
-   Lorem ipsum ..
+   - %(package)s (%(version)s)
+   - %(copyright)s / %(license)s
+   - %(url)s
 
-============ ===============================================
-package:     %(package)s (%(version)s)
-copyright:   %(copyright)s
-e-mail:      %(maintainer_email)s
-license:     %(license)s
-============ ===============================================
+Nothing special here, only some of my boilerplates
 
-Install
-=======
+Documentation is available at ./docs or jump to:
 
-Install and update using `pip <https://pip.pypa.io/en/stable/quickstart/>`__:
-
-.. code:: bash
-
-   pip install -U xxxx
-
-
-Links
-=====
-
-- Documentation:   %(docs)s
-- Releases:        https://pypi.org/project/xxxx/
-- Code:            %(url)s
-- Issue tracker:   %(url)s/issues
-
-
+  %(docs)s
 """ % globals()
 
-README = """\
-==============================================================================
-xxxx
-==============================================================================
+# docstring = """
+# .. sidebar::  Info
+#
+#    - %(package)s (%(version)s)
+#    - %(copyright)s / %(license)s
+#    - %(url)s
+#
+# The python `xxxx <%(docs)s>`__ package helps .. .  It comes with an API and the
+# xxxx command line (see `use <%(docs)s/use.html>`__).
+#
+# Install
+# =======
+#
+# Install and update using `pip <https://pip.pypa.io/en/stable/quickstart/>`__:
+#
+# .. code:: bash
+#
+#    pip install -U %(package)s
+# """ % globals()
 
+
+README = """\
+===========
+%(package)s
+===========
 %(docstring)s
+""" % globals()
+
+requirements_txt = """# -*- coding: utf-8; mode: conf -*-
+
+# requirements of package %(package)s
+# -----------------------------------
+
+%(install_requires_txt)s
+
+# test requires
+# -------------
+
+%(test_requires_txt)s
+
+# develop
+# -------
+
+%(develop_requires_txt)s
 """ % globals()

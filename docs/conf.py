@@ -4,6 +4,7 @@
 
 import re
 import xxxx
+import xxxx.__pkginfo__ as PKG
 import sys, os
 
 from pallets_sphinx_themes import ProjectLink
@@ -17,8 +18,8 @@ version   = xxxx.__version__
 release   = xxxx.__version__
 show_authors = True
 
-DOC_URL    = 'https://return42.github.io/boilerplate'
-GIT_URL    = 'https://github.com/return42/boilerplate'
+DOC_URL    = PKG.docs
+GIT_URL    = PKG.url
 GIT_BRANCH = 'master'
 
 source_suffix       = '.rst'
