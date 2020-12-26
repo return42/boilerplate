@@ -2,10 +2,16 @@
 boilerplate
 ===========
 
-nothing special here, only some of my boilerplates
+.. sidebar::  Info
 
-:copyright:  Copyright (C) 2020 Markus Heiser
-:e-mail:     *markus.heiser*\ *@*\ *darmarIT.de*
-:license:    GPL Version 2, June 1991 see Linux/COPYING for details.
-:docs:       http://return42.github.io/boilerplate
-:repository: `github return42/boilerplate <https://github.com/return42/boilerplate>`_
+   - boilerplate (20200727)
+   - 2020 Markus Heiser / GPLv3
+   - https://github.com/name/boilerplate
+
+Nothing special here, only some of my boilerplates
+
+Documentation is available at ./docs or jump to:
+
+  https://return42.github.io/boilerplate
+
+
