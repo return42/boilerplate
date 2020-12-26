@@ -1,10 +1,9 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>xxxx.__pkginfo__ &#8212; xxxx 20200727 documentation</title>
     <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -35,8 +34,7 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">xxxx 20200727 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">xxxx.__pkginfo__</a></li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -85,58 +83,62 @@ Further read:
 
 from setuptools import find_packages
 
-package = &#39;xxxx&#39;
+package = &#39;boilerplate&#39;
 version = &#39;20200727&#39;
-
-copyright = &#39;2020 Markus Heiser&#39;
+license   = &#39;GPLv3&#39;
 description = &#39;xxxx lorem ipsum&#39;
-license = &#39;GPLv3&#39;
-keywords = &#39;xxxx lorem ipsum&#39;
+copyright = &#39;2020 Markus Heiser&#39;
 
 author = &#39;Markus Heiser&#39;
 author_email = &#39;markus.heiser@darmarIT.de&#39;
-authors = [author, ]
 
 maintainer = &#39;Markus Heiser&#39;
 maintainer_email = &#39;markus.heiser@darmarIT.de&#39;
+
+url = &#39;https://github.com/return42/boilerplate&#39;
+docs = &#39;https://return42.github.io/boilerplate&#39;
+issues = url + &#39;/issues&#39;
+
+authors      = [author, ]
+
+emails       = [author_email, ]
+keywords     = &#39;sphinx extension doc source code comments kernel-doc linux&#39;
+
 maintainers = [maintainer, ]
 
-url = &#39;https://github.com/name/xxxx&#39;
-docs = &#39;https://name.github.io/xxxx&#39;
-issues = &#39;https://github.com/name/xxxx/issues&#39;
-
 project_urls = {
-    # pylint: disable=bad-continuation
-    &#39;Documentation&#39;      : docs
-    , &#39;Code&#39;             : url
-    , &#39;Issue tracker&#39;    : issues
+    &#39;Documentation&#39;    : docs,
+    &#39;Code&#39;             : url,
+    &#39;Issue tracker&#39;    : issues,
 }
 
 packages = find_packages(exclude=[&#39;docs&#39;, &#39;tests&#39;])
 
 # https://setuptools.readthedocs.io/en/latest/setuptools.html#including-data-files
 package_data = {
-    &#39;xxxx&#39; : [
-        &#39;config.ini&#39;
-        , &#39;log.ini&#39;
-        , &#39;mime.types&#39;
-    ]
+#     &#39;xxxx&#39; : [
+#         &#39;config.ini&#39;,
+#         &#39;log.ini&#39;,
+#         &#39;mime.types&#39;,
+#     ]
 }
+
 
 # https://docs.python.org/distutils/setupscript.html#installing-additional-files
 # https://setuptools.readthedocs.io/en/latest/setuptools.html?highlight=options.data_files#configuring-setup-using-setup-cfg-files
 # https://www.scivision.dev/newer-setuptools-needed/
 # https://setuptools.readthedocs.io/en/latest/history.html#v40-5-0
 data_files = [
-    (&#39;/etc/xxxx&#39;, [
-        &#39;xxxx/config.ini&#39;
-        ,  &#39;xxxx/log.ini&#39;
-    ])
-    , (&#39;/usr/share/doc/xxxx&#39;, [
-        &#39;README.rst&#39;
-        , &#39;LICENSE.txt&#39;
-    ])
-    , ]
+#     (&#39;/etc/xxxx&#39;, [
+#         &#39;xxxx/config.ini&#39;,
+#         &#39;xxxx/log.ini&#39;,
+#     ])
+#     , (&#39;/usr/share/doc/xxxx&#39;, [
+#         &#39;README.rst&#39;,
+#         &#39;LICENSE.txt&#39;,
+#     ])
+]
+
 
 # https://packaging.python.org/guides/distributing-packages-using-setuptools/#python-requires
 python_requires  =&#39;&gt;=3.7&#39;
@@ -162,10 +164,10 @@ py_modules = []
 # [dependency_links] https://python-packaging.readthedocs.io/en/latest/dependencies.html
 
 install_requires = [
-    &#39;fspath&#39;
-    , &#39;tinycss2&#39;
-    , &#39;requests&#39;
-    , &#39;sqlalchemy&#39;
+    &#39;fspath&#39;,
+    &#39;tinycss2&#39;,
+    &#39;requests&#39;,
+    &#39;sqlalchemy&#39;,
 ]
 
 install_requires_txt = &quot;\n&quot;.join(install_requires)
@@ -177,53 +179,26 @@ test_requires = [
 test_requires_txt = &quot;\n&quot;.join(test_requires)
 
 develop_requires = [
-    &#39;twine&#39;
+    &#39;twine&#39;,
+    # &#39;wheel&#39;
+    &#39;Sphinx&lt;3.0&#39;,
+    &#39;pallets-sphinx-themes&#39;,
+    &#39;sphinx-autobuild&#39;,
+    &#39;sphinx-issues&#39;,
+    &#39;sphinx-jinja&#39;,
+    &#39;sphinx-tabs&#39;,
+    &#39;sphinxcontrib-programoutput&#39;,
+    &#39;linuxdoc @ git+http://github.com/return42/linuxdoc.git&#39;,
+    # slide-shows with revaljs
+    &#39;sphinxjp.themes.revealjs @ git+https://github.com/return42/sphinxjp.themes.revealjs&#39;,
     # https://jedi.readthedocs.io/
-    , &#39;jedi&#39;
+    # &#39;jedi&#39;,
     # epc required by emacs: https://tkf.github.io/emacs-jedi
-    , &#39;epc @ git+https://github.com/tkf/python-epc&#39;
-]
+    # &#39;epc @ git+https://github.com/tkf/python-epc&#39;,
+    ]
+
 
 develop_requires_txt = &quot;\n&quot;.join(develop_requires)
-
-requirements_txt = &quot;&quot;&quot;# -*- coding: utf-8; mode: conf -*-
-
-# requirements of package xxxx
-# ----------------------------
-
-%(install_requires_txt)s
-
-# test requires
-# -------------
-
-%(test_requires_txt)s
-# tox
-# pytest
-# pytest-cov
-
-# make docs
-# ---------
-
-Sphinx
-pallets-sphinx-themes
-sphinx-autobuild
-sphinx-issues
-sphinx-jinja
-sphinx-tabs
-sphinxcontrib-programoutput
-linuxdoc @ git+http://github.com/return42/linuxdoc.git
-
-# slide-shows with revaljs
-git+https://github.com/return42/sphinxjp.themes.revealjs
-
-# develop
-# -------
-
-%(develop_requires_txt)s
-# sqlalchemy_schemadisplay @ git+https://github.com/fschulze/sqlalchemy_schemadisplay
-# wheel
-# mock
-&quot;&quot;&quot; % globals()
 
 <div class="viewcode-block" id="get_entry_points"><a class="viewcode-back" href="../../xxxx-api/xxxx.__pkginfo__.html#xxxx.__pkginfo__.get_entry_points">[docs]</a>def get_entry_points():
     &quot;&quot;&quot;get entry points of the python package&quot;&quot;&quot;
@@ -234,65 +209,80 @@ git+https://github.com/return42/sphinxjp.themes.revealjs
 
 # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
 classifiers = [
-    &quot;Development Status :: 5 - Production/Stable&quot;
-    , &quot;Intended Audience :: Developers&quot;
-    , &quot;License :: OSI Approved :: GNU General Public License v3 (GPLv3)&quot;
-    , &quot;Operating System :: OS Independent&quot;
-    , &quot;Programming Language :: Python&quot;
-    , &quot;Programming Language :: Python :: 3&quot;
-    , &quot;Programming Language :: Python :: Implementation :: CPython&quot;
-    , &quot;Programming Language :: Python :: Implementation :: PyPy&quot;
-    , &quot;Topic :: Software Development :: Libraries :: Application Frameworks&quot;
-    , &quot;Topic :: Software Development :: Libraries :: Python Modules&quot;
+    &quot;Development Status :: 5 - Production/Stable&quot;,
+    &quot;Intended Audience :: Developers&quot;,
+    &quot;License :: OSI Approved :: GNU General Public License v3 (GPLv3)&quot;,
+    &quot;Operating System :: OS Independent&quot;,
+    &quot;Programming Language :: Python&quot;,
+    &quot;Programming Language :: Python :: 3&quot;,
+    &quot;Programming Language :: Python :: Implementation :: CPython&quot;,
+    &quot;Programming Language :: Python :: Implementation :: PyPy&quot;,
+    &quot;Topic :: Software Development :: Libraries :: Application Frameworks&quot;,
+    &quot;Topic :: Software Development :: Libraries :: Python Modules&quot;,
 ]
 
-docstring = &quot;&quot;&quot;
-
-The python `xxxx &lt;%(docs)s&gt;`__ package helps .. .  It comes with an API and the
-xxxx command line (see `use &lt;%(docs)s/use.html&gt;`__).
+docstring = &quot;&quot;&quot;\
 
 .. sidebar::  Info
 
-   Lorem ipsum ..
+   - %(package)s (%(version)s)
+   - %(copyright)s / %(license)s
+   - %(url)s
 
-============ ===============================================
-package:     %(package)s (%(version)s)
-copyright:   %(copyright)s
-e-mail:      %(maintainer_email)s
-license:     %(license)s
-============ ===============================================
+Nothing special here, only some of my boilerplates
 
-Install
-=======
+Documentation is available at ./docs or jump to:
 
-Install and update using `pip &lt;https://pip.pypa.io/en/stable/quickstart/&gt;`__:
-
-.. code:: bash
-
-   pip install -U xxxx
-
-
-Links
-=====
-
-- Documentation:   %(docs)s
-- Releases:        https://pypi.org/project/xxxx/
-- Code:            %(url)s
-- Issue tracker:   %(url)s/issues
-
-
+  %(docs)s
 &quot;&quot;&quot; % globals()
 
-README = &quot;&quot;&quot;\
-==============================================================================
-xxxx
-==============================================================================
+# docstring = &quot;&quot;&quot;
+# .. sidebar::  Info
+#
+#    - %(package)s (%(version)s)
+#    - %(copyright)s / %(license)s
+#    - %(url)s
+#
+# The python `xxxx &lt;%(docs)s&gt;`__ package helps .. .  It comes with an API and the
+# xxxx command line (see `use &lt;%(docs)s/use.html&gt;`__).
+#
+# Install
+# =======
+#
+# Install and update using `pip &lt;https://pip.pypa.io/en/stable/quickstart/&gt;`__:
+#
+# .. code:: bash
+#
+#    pip install -U %(package)s
+# &quot;&quot;&quot; % globals()
 
+
+README = &quot;&quot;&quot;\
+===========
+%(package)s
+===========
 %(docstring)s
+&quot;&quot;&quot; % globals()
+
+requirements_txt = &quot;&quot;&quot;# -*- coding: utf-8; mode: conf -*-
+
+# requirements of package %(package)s
+# -----------------------------------
+
+%(install_requires_txt)s
+
+# test requires
+# -------------
+
+%(test_requires_txt)s
+
+# develop
+# -------
+
+%(develop_requires_txt)s
 &quot;&quot;&quot; % globals()
 </pre></div>
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -310,9 +300,13 @@ xxxx
   <ul>
     <li><a href="https://return42.github.io/boilerplate/slides/index.html">Slide Collection</a>
   
+    <li><a href="https://return42.github.io/boilerplate/xxxx-api/xxxx.html">API</a>
+  
     <li><a href="https://github.com/return42/boilerplate">Source</a>
   
-    <li><a href="https://return42.github.io/boilerplate/xxxx-api/xxxx.html">API</a>
+    <li><a href="https://github.com/return42/boilerplate/issues">Issue Tracker</a>
+  
+    <li><a href="mailto:markus.heiser@darmarIT.de">Contact</a>
   </ul><h3>Navigation</h3>
 <ul>
   <li><a href="../../index.html">Overview</a>
@@ -342,7 +336,7 @@ xxxx
   
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020 Markus Heiser.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
     </div>
   <script src="../../_static/version_warning_offset.js"></script>
 
