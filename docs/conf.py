@@ -111,7 +111,7 @@ if GIT_URL:
 if PKG.issues:
     html_context["project_links"].append(ProjectLink("Issue Tracker", PKG.issues))
 if PKG.author_email:
-    html_context["project_links"].append(ProjectLink("Contact", PKG.author_email))
+    html_context["project_links"].append(ProjectLink("Contact", 'mailto:' + PKG.author_email))
 
 html_sidebars = {
     "**": ["project.html", "relations.html", "localtoc.html", "searchbox.html"],
