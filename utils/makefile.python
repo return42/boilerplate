@@ -50,7 +50,6 @@ python-help::
 	@echo  '    pylint    - run pylint *linting*'
 	@echo  '    pytest    - run *tox* test on python objects'
 	@echo  '    pydebug   - run tests within a PDB debug session'
-	@echo  '    python    - run python interpreter from $(PY_ENV)/bin/python'
 	@echo  '    pybuild   - build python packages ($(PYDIST) $(PYBUILD))'
 	@echo  '    pyclean   - clean intermediate python objects'
 	@echo  '  targets using system users environment:'
@@ -78,7 +77,7 @@ msg-python-exe:
   installed by::\n\n\
     sudo -H add-apt-repository ppa:deadsnakes/ppa\n\
     sudo -H apt update\n\
-    sudo -H apt-get install $(PYTHON) python$(PY)-venv\n"
+    sudo -H apt-get install $(PYTHON) $(PYTHON)-venv\n"
 
 ifeq ($(shell which $(PYTHON) >/dev/null 2>&1; echo $$?), 1)
 python-exe: msg-python-exe
@@ -203,7 +202,6 @@ PHONY += pyuninstall
 pyuninstall: pip-exe
 	$(call cmd,pyuninstall,$(PYOBJECTS))
 
-# install / uninstall python objects into virtualenv (PYENV)
 # for installation use the pip from PY_ENV (not the OS)!
 PHONY += pyenvinstall
 pyenvinstall: $(PY_ENV)
@@ -267,5 +265,4 @@ upload-pypi: pyclean pyenvinstall pybuild
 
 upload-pypi-test: pyclean pyenvinstall pybuild
 	@$(PY_ENV_BIN)/twine upload -r testpypi $(PYDIST)/*
-
 .PHONY: $(PHONY)
