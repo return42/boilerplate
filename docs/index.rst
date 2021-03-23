@@ -19,7 +19,7 @@ docs         http://return42.github.io/boilerplate
 repository   `github return42/boilerplate <https://github.com/return42/boilerplate>`_
 ============ ===============================================
 
-Source Code Documentation
+Python Code Documentation
 =========================
 
 .. toctree::
@@ -27,3 +27,14 @@ Source Code Documentation
    :caption: Contents
 
    xxxx-api/xxxx
+
+``kernel-doc`` Directive
+========================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents
+
+   kernel-doc-tests
+   all-in-a-tumble-src
+   all-in-a-tumble
