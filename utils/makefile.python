@@ -19,7 +19,6 @@ PY       ?=3
 PYTHON   ?= python$(PY)
 PIP      ?= pip$(PY)
 PIP_INST ?= --user
-PYENV_REQ ?= requirements*.txt
 
 # https://www.python.org/dev/peps/pep-0508/#extras
 #PY_SETUP_EXTRAS ?= \[develop,test\]
@@ -34,6 +33,7 @@ TEST         ?= .
 PY_ENV       = ./$(LXC_ENV_FOLDER)local/py$(PY)
 PY_ENV_BIN   = $(PY_ENV)/bin
 PY_ENV_ACT   = . $(PY_ENV_BIN)/activate
+PY_ENV_REQ  ?= requirements*.txt
 
 ifeq ($(OS),Windows_NT)
   PYTHON     = python
@@ -62,7 +62,7 @@ python-help::
 	@echo  '  make TEST=.           => choose test from $(TEST_FOLDER) (default "." runs all)'
 	@echo  '  make DEBUG=           => target "debug": do not invoke PDB on errors'
 	@echo  '  make PY_SETUP_EXTRAS  => also install extras_require from setup.py \[develop,test\]'
-	@echo  '  make PYENV_REQ=...    => target pyenv: requirement files (glob pattern $(PYENV_REQ))'
+	@echo  '  make PY_ENV_REQ=...    => target pyenv: requirement files (glob pattern $(PY_ENV_REQ))'
 	@echo  '  when using target "pydebug", set breakpoints within py-source by adding::'
 	@echo  '    DEBUG()'
 
@@ -147,14 +147,14 @@ quiet_cmd_pyenvuninstall = PYENV     [pyenvuninstall] uninstall packages: $2
 quiet_cmd_virtualenv  = PYENV     [virtualenv] usage: $ source ./$@/bin/activate
       cmd_virtualenv  = \
 	if ! cat $(PY_ENV)/requirements.sha256 2>/dev/null | sha256sum --check --status 2>/dev/null; then \
-		echo "PYENV     [virtualenv] installing $(PYENV_REQ) into $2"; \
-		rm -f $(PY_ENV)/$(PYENV_REQ).sha256; \
+		echo "PYENV     [virtualenv] installing $(PY_ENV_REQ) into $2"; \
+		rm -f $(PY_ENV)/$(PY_ENV_REQ).sha256; \
 		$(PYTHON) -m venv $(VTENV_OPTS) $2; \
 		$(PY_ENV_BIN)/python -m pip install $(PIP_VERBOSE) -U pip wheel setuptools; \
-		$(PY_ENV_BIN)/python -m pip install $(PIP_VERBOSE) $(foreach var,$(wildcard $(PYENV_REQ)),-r '$(var)') \
-		&& sha256sum $(wildcard $(PYENV_REQ)) > $(PY_ENV)/requirements.sha256 ; \
+		$(PY_ENV_BIN)/python -m pip install $(PIP_VERBOSE) $(foreach var,$(wildcard $(PY_ENV_REQ)),-r '$(var)') \
+		&& sha256sum $(wildcard $(PY_ENV_REQ)) > $(PY_ENV)/requirements.sha256 ; \
 	else \
-		echo "PYENV     [virtualenv] using $2 // glob pattern $(PYENV_REQ) --> sha256 OK"; \
+		echo "PYENV     [virtualenv] using $2 // glob pattern $(PY_ENV_REQ) --> sha256 OK"; \
 		cat $(PY_ENV)/requirements.sha256 | sed 's/^/          [virtualenv] - /'; \
         fi
 
