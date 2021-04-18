@@ -807,12 +807,16 @@ docs.gh-pages() {
     local remote="$(git config branch."${branch}".remote)"
     local remote_url="$(git config remote."${remote}".url)"
 
+    build_msg GH-PAGES "prepare folder: ${GH_PAGES}"
+    build_msg GH-PAGES "remote of the gh-pages branch: ${remote} / ${remote_url}"
+    build_msg GH-PAGES "current branch: ${branch}"
+
     # prepare the *orphan* gh-pages working tree
     (
         git worktree remove -f "${GH_PAGES}"
         git branch -D gh-pages
     ) &> /dev/null  || true
-    git worktree add --no-checkout "${GH_PAGES}" origin/master
+    git worktree add --no-checkout "${GH_PAGES}" "${remote}/master"
 
     pushd "${GH_PAGES}" &> /dev/null
     git checkout --orphan gh-pages
