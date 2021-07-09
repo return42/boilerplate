@@ -461,7 +461,7 @@ install_template() {
         choose_one _reply "choose next step with file $dst" \
                    "replace file" \
                    "leave file unchanged" \
-                   "interactiv shell" \
+                   "interactive shell" \
                    "diff files"
 
         case $_reply in
@@ -474,7 +474,7 @@ install_template() {
             "leave file unchanged")
                 break
                 ;;
-            "interactiv shell")
+            "interactive shell")
                 echo -e "// edit ${_Red}${dst}${_creset} to your needs"
                 echo -e "// exit with [${_BCyan}CTRL-D${_creset}]"
                 sudo -H -u "${owner}" -i
@@ -1587,7 +1587,7 @@ pkg_install() {
             ;;
         arch)
             # shellcheck disable=SC2068
-            pacman -Sy --noconfirm $@
+            pacman --noprogressbar -Sy --noconfirm $@
             ;;
         fedora)
             # shellcheck disable=SC2068
@@ -1615,7 +1615,7 @@ pkg_remove() {
             ;;
         arch)
             # shellcheck disable=SC2068
-            pacman -R --noconfirm $@
+            pacman --noprogressbar -R --noconfirm $@
             ;;
         fedora)
             # shellcheck disable=SC2068
@@ -1659,7 +1659,7 @@ git_clone() {
     #  into <path>.  If repository is allready cloned, pull from <branch> and
     #  update working tree (if needed, the caller has to stash local changes).
     #
-    #    git clone https://github.com/searx/searx searx-src origin/master searxlogin
+    #    git clone https://github.com/searxng/searxng searx-src origin/master searxlogin
     #
 
     local url="$1"
