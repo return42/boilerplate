@@ -3,10 +3,15 @@
 # SPDX-License-Identifier: GNU General Public License v3.0 or later
 # shellcheck disable=SC2059,SC1117
 
-# ubuntu, debian, arch, fedora ...
-DIST_ID=$(source /etc/os-release; echo "$ID");
-# shellcheck disable=SC2034
-DIST_VERS=$(source /etc/os-release; echo "$VERSION_ID");
+if [ "${OS}" == 'Windows_NT' ]; then
+    DIST_ID='Windows'
+    DIST_VERS='NT'
+else
+    # ubuntu, debian, arch, fedora ...
+    DIST_ID=$(source /etc/os-release; echo "$ID");
+    # shellcheck disable=SC2034
+    DIST_VERS=$(source /etc/os-release; echo "$VERSION_ID");
+fi
 
 ADMIN_NAME="${ADMIN_NAME:-$(git config user.name)}"
 ADMIN_NAME="${ADMIN_NAME:-$USER}"
@@ -570,6 +575,13 @@ PY_ENV="${PY_ENV:=local/py${PY}}"
 PY_ENV_BIN="${PY_ENV}/bin"
 PY_ENV_REQ="${PY_ENV_REQ:=${REPO_ROOT}/requirements*.txt}"
 
+case $DIST_ID-$DIST_VERS in
+    Windows-*)
+        PYTHON='python'
+        PY_ENV_BIN="${PY_ENV}/Scripts"
+    ;;
+esac
+
 # List of python packages (folders) or modules (files) installed by command:
 # pyenv.install
 PYOBJECTS="${PYOBJECTS:=.}"
@@ -765,6 +777,13 @@ GH_PAGES="build/gh-pages"
 DOCS_DIST="${DOCS_DIST:=dist/docs}"
 DOCS_BUILD="${DOCS_BUILD:=build/docs}"
 
+DOCS_LIVE_IP=0.0.0.0
+case $DIST_ID-$DIST_VERS in
+    Windows-*)
+        DOCS_LIVE_IP=127.0.0.1
+    ;;
+esac
+
 docs.html() {
     build_msg SPHINX "HTML ./docs --> file://$(readlink -e "$(pwd)/$DOCS_DIST")"
     pyenv.install
@@ -782,7 +801,7 @@ docs.live() {
     docs.prebuild
     # shellcheck disable=SC2086
     PATH="${PY_ENV_BIN}:${PATH}" pyenv.cmd sphinx-autobuild \
-        ${SPHINX_VERBOSE} ${SPHINXOPTS} --open-browser --host 0.0.0.0 \
+        ${SPHINX_VERBOSE} ${SPHINXOPTS} --open-browser --host ${DOCS_LIVE_IP} \
 	-b html -c ./docs -d "${DOCS_BUILD}/.doctrees" ./docs "${DOCS_DIST}"
     dump_return $?
 }
@@ -1011,6 +1030,8 @@ nginx_distro_setup() {
         fedora-*)
             NGINX_PACKAGES="nginx"
             ;;
+        Windows-*)
+            ;;
         *)
             err_msg "$DIST_ID-$DIST_VERS: nginx not yet implemented"
             ;;
@@ -1182,6 +1203,8 @@ apache_distro_setup() {
             APACHE_PACKAGES="httpd"
             APACHE_SERVICE_USER="http"
             ;;
+        Windows-*)
+            ;;
         *)
             err_msg "$DIST_ID-$DIST_VERS: apache not yet implemented"
             ;;
@@ -1346,6 +1369,8 @@ uWSGI_distro_setup() {
             uWSGI_PACKAGES="uwsgi"
             uWSGI_USER="uwsgi"
             uWSGI_GROUP="uwsgi"
+            ;;
+        Windows-*)
             ;;
         *)
             err_msg "$DIST_ID-$DIST_VERS: uWSGI not yet implemented"
@@ -1762,6 +1787,7 @@ case $DIST_ID in
     ubuntu|debian) LXC_BASE_PACKAGES="${LXC_BASE_PACKAGES_debian}" ;;
     arch)          LXC_BASE_PACKAGES="${LXC_BASE_PACKAGES_arch}" ;;
     fedora)        LXC_BASE_PACKAGES="${LXC_BASE_PACKAGES_fedora}" ;;
+    Windows) ;;
     *) err_msg "$DIST_ID-$DIST_VERS: pkg_install LXC_BASE_PACKAGES not yet implemented" ;;
 esac
 
