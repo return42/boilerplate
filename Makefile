@@ -41,7 +41,7 @@ PHONY += uninstall
 uninstall: pyenvuninstall
 
 PHONY += docs
-docs:  pyenvinstall slides
+docs:  pyenvinstall slides books/kernel-doc-tests.pdf books/xxxx-api.pdf
 	$(call cmd,sphinx,html,$(DOCS_FOLDER),$(DOCS_FOLDER))
 
 PHONY += slides

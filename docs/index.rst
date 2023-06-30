@@ -4,10 +4,9 @@
 boilerplate
 ===========
 
-.. sidebar::  Info
+.. sidebar::  Slide Shows
 
-   - `Slide Collection <slides/index.html>`_
-   - `API <xxxx-api/xxxx.html>`_
+   - `Boilerplate <slides/index.html>`_
 
 Nothing special here, only some of my boilerplates.
 
@@ -38,6 +37,12 @@ or clone and make a developer install::
   make install
 
 ----
+
+.. sidebar::  Books
+
+   - :download:`Python Modules <..//dist/books/xxxx-api/pdf/xxxx-api.pdf>`
+   - :download:`C-Sources <../dist/books/kernel-doc-tests/pdf/kernel-doc-tests.pdf>`
+
 
 .. toctree::
    :maxdepth: 2

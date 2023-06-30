@@ -113,7 +113,7 @@ html_sidebars = {
 singlehtml_sidebars = {"index": ["project.html", "localtoc.html"]}
 
 # ------------------------------------------------------------------------------
-# Since loadConfig overwrites settings from the global namespace, it has to be
-# the last statement in the conf.py file
+# Since load_sphinx_config overwrites settings from the global namespace, it has
+# to be the last statement in the conf.py file
 # ------------------------------------------------------------------------------
 load_sphinx_config(globals())
