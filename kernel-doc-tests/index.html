@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kernel-doc Test &#8212; xxxx 20230630 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="source of all-in-a-tumble.[ch]" href="all-in-a-tumble-src.html" />
+    <link rel="prev" title="xxxx.__pkginfo__ module" href="../xxxx-api/xxxx.__pkginfo__.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="all-in-a-tumble-src.html" title="source of all-in-a-tumble.[ch]"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../xxxx-api/xxxx.__pkginfo__.html" title="xxxx.__pkginfo__ module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">xxxx 20230630 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">kernel-doc Test</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="kernel-doc-test">
+<span id="kernel-doc-tests"></span><h1>kernel-doc Test<a class="headerlink" href="#kernel-doc-test" title="Permalink to this heading">¶</a></h1>
+<p>Wtihin this section you will find some <a class="reference external" href="https://return42.github.io/linuxdoc/linuxdoc-howto/index.html#linuxdoc-howto" title="(in LinuxDoc v20230321)"><span>LinuxDoc HowTo</span></a> tests and examples
+for common use cases.  The kernel-doc comments are taken from the source files
+<a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-c-src"><span class="std std-ref">source all-in-a-tumble.c</span></a> and <a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-h-src"><span class="std std-ref">source all-in-a-tumble.h</span></a>.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">C sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="all-in-a-tumble-src.html">source of <code class="docutils literal notranslate"><span class="pre">all-in-a-tumble.[ch]</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="all-in-a-tumble-src.html#source-all-in-a-tumble-h">source <code class="docutils literal notranslate"><span class="pre">all-in-a-tumble.h</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="all-in-a-tumble-src.html#source-all-in-a-tumble-c">source <code class="docutils literal notranslate"><span class="pre">all-in-a-tumble.c</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="all-in-a-tumble.html">rendered <code class="docutils literal notranslate"><span class="pre">all-in-a-tumble.[ch]</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="all-in-a-tumble.html#all-in-a-tumble-h">all-in-a-tumble.h</a></li>
+<li class="toctree-l2"><a class="reference internal" href="all-in-a-tumble.html#all-in-a-tumble-c">all-in-a-tumble.c</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="doc-sections">
+<span id="id1"></span><h2>DOC sections<a class="headerlink" href="#doc-sections" title="Permalink to this heading">¶</a></h2>
+<p>For a very simple example we use this DOC section from <a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-h-src"><span class="std std-ref">source all-in-a-tumble.h</span></a>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * DOC: lorem ipsum</span>
+<span class="cm"> *</span>
+<span class="cm"> * Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor</span>
+<span class="cm"> * incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</span>
+<span class="cm"> * nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi</span>
+<span class="cm"> * consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore</span>
+<span class="cm"> * eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident,</span>
+<span class="cm"> * sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+<span class="cm"> */</span>
+</pre></div>
+</div>
+<p>To insert content with heading use:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">kernel-doc</span><span class="p">::</span>  /src/all-in-a-tumble.h
+   <span class="nc">:doc:</span> lorem ipsum
+   <span class="nc">:module:</span> test
+</pre></div>
+</div>
+<p>With the module name <code class="docutils literal notranslate"><span class="pre">test</span></code> the title can be linked with:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>Here is a link to DOC: <span class="na">:ref:</span><span class="nv">`test.lorem-ipsum`</span>
+</pre></div>
+</div>
+<p>Here is a link to DOC <a class="reference internal" href="#test-lorem-ipsum"><span class="std std-ref">lorem ipsum</span></a> …</p>
+<div class="rst-example admonition">
+<p class="admonition-title">DOC section with header</p>
+<section id="lorem-ipsum">
+<span id="test-lorem-ipsum"></span><h3>lorem ipsum<a class="headerlink" href="#lorem-ipsum" title="Permalink to this heading">¶</a></h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor
+incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
+consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore
+eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident,
+sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</section>
+</div>
+<section id="option-no-header">
+<span id="opt-no-header"></span><h3>option <code class="docutils literal notranslate"><span class="pre">:no-header:</span></code><a class="headerlink" href="#option-no-header" title="Permalink to this heading">¶</a></h3>
+<p>To insert just the content, without the header use <a class="reference external" href="https://return42.github.io/linuxdoc/linuxdoc-howto/kernel-doc-directive.html#kernel-doc-options" title="(in LinuxDoc v20230321)"><span class="xref std std-ref">option :no-header:</span></a>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">kernel-doc</span><span class="p">::</span>  /src/all-in-a-tumble.h
+   <span class="nc">:doc:</span> lorem ipsum
+   <span class="nc">:no-header:</span>
+</pre></div>
+</div>
+<div class="rst-example admonition">
+<p class="admonition-title">DOC section without header</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor
+incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
+consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore
+eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident,
+sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+</section>
+<section id="multiple-doc-sections">
+<span id="id2"></span><h3>multiple DOC sections<a class="headerlink" href="#multiple-doc-sections" title="Permalink to this heading">¶</a></h3>
+<p>Its always recommended to separate different DOC sections in different comments.
+Nevertheless, a few tests are to be carried out here with it.  The DOC section
+tests are based on this comment:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * DOC: Theory of Operation</span>
+<span class="cm"> *</span>
+<span class="cm"> * The whizbang foobar is a dilly of a gizmo.  It can do whatever you</span>
+<span class="cm"> * want it to do, at any time.  It reads your mind.  Here&#39;s how it works.</span>
+<span class="cm"> *</span>
+<span class="cm"> * foo bar splat</span>
+<span class="cm"> * -------------</span>
+<span class="cm"> *</span>
+<span class="cm"> * The only drawback to this gizmo is that it can sometimes damage hardware,</span>
+<span class="cm"> * software, or its subject(s).</span>
+<span class="cm"> *</span>
+<span class="cm"> * DOC: multiple DOC sections</span>
+<span class="cm"> *</span>
+<span class="cm"> * It&#39;s not recommended to place more than one &quot;DOC:&quot; section in the same</span>
+<span class="cm"> * comment block. To insert a new &quot;DOC:&quot; section, create a new comment block and</span>
+<span class="cm"> * to create a sub-section use the reST markup for headings, see documentation</span>
+<span class="cm"> * of function rst_mode()</span>
+<span class="cm"> */</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">kernel-doc</span><span class="p">::</span>  /src/all-in-a-tumble.h
+   <span class="nc">:doc:</span> Theory of Operation
+   <span class="nc">:no-header:</span>
+</pre></div>
+</div>
+<div class="rst-example admonition">
+<p class="admonition-title">DOC section</p>
+<p>The whizbang foobar is a dilly of a gizmo.  It can do whatever you
+want it to do, at any time.  It reads your mind.  Here’s how it works.</p>
+<section id="foo-bar-splat">
+<h4>foo bar splat<a class="headerlink" href="#foo-bar-splat" title="Permalink to this heading">¶</a></h4>
+<p>The only drawback to this gizmo is that it can sometimes damage hardware,
+software, or its subject(s).</p>
+</section>
+</div>
+<hr class="docutils" />
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">kernel-doc</span><span class="p">::</span>  /src/all-in-a-tumble.h
+   <span class="nc">:doc:</span> multiple DOC sections
+</pre></div>
+</div>
+<div class="rst-example admonition">
+<p class="admonition-title">DOC section</p>
+<section id="id3">
+<span id="id4"></span><h4>multiple DOC sections<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
+<p>It’s not recommended to place more than one “DOC:” section in the same
+comment block. To insert a new “DOC:” section, create a new comment block and
+to create a sub-section use the reST markup for headings, see documentation
+of function <a class="reference external" href="https://return42.github.io/linuxdoc/linuxdoc-howto/reST-kernel-doc-mode.html#c.rst_mode" title="(in LinuxDoc v20230321)"><code class="xref c c-func docutils literal notranslate"><span class="pre">rst_mode()</span></code></a></p>
+</section>
+</div>
+</section>
+</section>
+<section id="option-man-sect">
+<span id="opt-man-sect"></span><h2>option <code class="docutils literal notranslate"><span class="pre">:man-sect:</span></code><a class="headerlink" href="#option-man-sect" title="Permalink to this heading">¶</a></h2>
+<p>In the <a class="reference internal" href="#opt-export"><span class="std std-ref">option :export:</span></a> example, we can add a <code class="docutils literal notranslate"><span class="pre">:man-sect:</span> <span class="pre">2</span></code> option, to
+generate man pages with the <a class="reference external" href="https://return42.github.io/linuxdoc/linuxdoc-howto/man-pages.html#man-pages" title="(in LinuxDoc v20230321)"><span class="xref std std-ref">kernel-doc-man builder</span></a> for all
+exported symbols.  The usage is:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">kernel-doc</span><span class="p">::</span>  /src/all-in-a-tumble.c
+   <span class="nc">:export:</span>  all-in-a-tumble.h
+   <span class="nc">:module:</span> test
+   <span class="nc">:man-sect:</span> 2
+</pre></div>
+</div>
+<p>In the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/config.html">conf.py</a> file we set <a class="reference external" href="http://www.sphinx-doc.org/en/stable/config.html#confval-man_pages">man_pages</a> and <a class="reference external" href="https://return42.github.io/linuxdoc/linuxdoc-howto/kernel-doc-directive.html#kernel-doc-config" title="(in LinuxDoc v20230321)"><span class="xref std std-ref">kernel_doc_mansect</span></a>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>kernel_doc_mansect = None
+man_pages = [ ]
+</pre></div>
+</div>
+<p>To place and gzip the manuals in <code class="docutils literal notranslate"><span class="pre">dist/docs/man</span></code> Folder see
+<a class="reference external" href="https://return42.github.io/linuxdoc/linuxdoc-howto/man-pages.html#kernel-doc-man-builder" title="(in LinuxDoc v20230321)"><span>kernel-doc-man Builder</span></a>.</p>
+<p>You can include the man-page as a download item in your HTML like this
+(relative build path is needed):</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:download:</span><span class="nv">`user_function.2.gz   &lt;../../dist/docs/man/user_function.2.gz&gt;`</span>
+</pre></div>
+</div>
+<p>Or just set a link to the man page file (relative HTML URL is needed)</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>hyperlink to: <span class="s">`user_function.2.gz </span><span class="si">&lt;../man/user_function.2.gz&gt;</span><span class="s">`_</span>
+</pre></div>
+</div>
+<p>To view a (downloaded) man-page use:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ man ~/Downloads/user_function.2.gz
+</pre></div>
+</div>
+</section>
+<section id="exported-symbols">
+<span id="id5"></span><h2>exported symbols<a class="headerlink" href="#exported-symbols" title="Permalink to this heading">¶</a></h2>
+<section id="option-export">
+<span id="opt-export"></span><h3>option <code class="docutils literal notranslate"><span class="pre">:export:</span></code><a class="headerlink" href="#option-export" title="Permalink to this heading">¶</a></h3>
+<p>In the <a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-h-src"><span class="std std-ref">source all-in-a-tumble.h</span></a> header file we export:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">EXPORT_SYMBOL_GPL_FUTURE</span><span class="p">(</span><span class="n">user_function</span><span class="p">)</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">user_function</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+</pre></div>
+</div>
+<p>The documentation of the exported symbols is in <a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-c-src"><span class="std std-ref">source all-in-a-tumble.c</span></a>.
+To gather exports from <a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-h-src"><span class="std std-ref">source all-in-a-tumble.h</span></a> and
+<a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-c-src"><span class="std std-ref">source all-in-a-tumble.c</span></a> and parses comments from
+<a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-c-src"><span class="std std-ref">source all-in-a-tumble.c</span></a> use <a class="reference external" href="https://return42.github.io/linuxdoc/linuxdoc-howto/kernel-doc-directive.html#kernel-doc-options" title="(in LinuxDoc v20230321)"><span>kernel-doc options</span></a>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">kernel-doc</span><span class="p">::</span>  /src/all-in-a-tumble.c
+   <span class="nc">:export:</span>  /src/all-in-a-tumble.h
+   <span class="nc">:module:</span> test
+</pre></div>
+</div>
+<div class="rst-example admonition">
+<p class="admonition-title">exported symbols</p>
+<section id="user-function">
+<span id="test-user-function"></span><h4>user_function<a class="headerlink" href="#user-function" title="Permalink to this heading">¶</a></h4>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.test.user_function">
+<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">user_function</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">a</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.test.user_function" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>function that can only be called in user context</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<span><span class="c-expr sig sig-inline c"><span class="kt">int</span></span></span>) – some argument</p></li>
+<li><p><strong>ellipsis</strong> (<span><span class="c-expr sig sig-inline c"><span class="n">ellipsis</span></span></span>) – ellipsis operator</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="description">
+<span id="test-user-function-description"></span><h5>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h5>
+<p>This function makes no sense, it’s only a kernel-doc demonstration.</p>
+</section>
+<section id="example">
+<span id="test-user-function-example"></span><h5>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h5>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user_function</span><span class="p">(</span><span class="mi">22</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="return">
+<span id="test-user-function-return"></span><h5>Return<a class="headerlink" href="#return" title="Permalink to this heading">¶</a></h5>
+<p>Returns first argument</p>
+</section>
+</section>
+</div>
+</section>
+<section id="options-export-exp-method-exp-ids">
+<h3>options <code class="docutils literal notranslate"><span class="pre">:export:,</span> <span class="pre">:exp-method:,</span> <span class="pre">:exp-ids:</span></code><a class="headerlink" href="#options-export-exp-method-exp-ids" title="Permalink to this heading">¶</a></h3>
+<p>This test gathers function from <a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-c-src"><span class="std std-ref">source all-in-a-tumble.c</span></a> whose function
+attributes mark them as exported:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * user_sum() - another function that can only be called in user context</span>
+<span class="cm"> * @a: first argument</span>
+<span class="cm"> * @b: second argument</span>
+<span class="cm"> *</span>
+<span class="cm"> * This function makes no sense, it&#39;s only a kernel-doc demonstration.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Example:</span>
+<span class="cm"> * x = user_sum(1, 2);</span>
+<span class="cm"> *</span>
+<span class="cm"> * Return:</span>
+<span class="cm"> * Returns the sum of the @a and @b</span>
+<span class="cm"> */</span>
+<span class="n">API_EXPORTED</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">user_sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>and that are present in <a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-h-src"><span class="std std-ref">source all-in-a-tumble.h</span></a>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">user_sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To insert the documentation use:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">kernel-doc</span><span class="p">::</span>  /src/all-in-a-tumble.c
+   <span class="nc">:export:</span>  /src/all-in-a-tumble.h
+   <span class="nc">:exp-method:</span> attribute
+   <span class="nc">:exp-ids:</span> API_EXPORTED
+   <span class="nc">:module:</span> test_fnattrs
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">exp-method</span></code> and <code class="docutils literal notranslate"><span class="pre">exp-ids</span></code> could be respectively omitted if
+<code class="docutils literal notranslate"><span class="pre">kernel_doc_exp_method</span></code> and <code class="docutils literal notranslate"><span class="pre">kernel_doc_exp_ids</span></code> are set in the sphinx
+configuration.</p>
+<div class="rst-example admonition">
+<p class="admonition-title">exported symbols</p>
+<section id="user-sum">
+<span id="test-fnattrs-user-sum"></span><h4>user_sum<a class="headerlink" href="#user-sum" title="Permalink to this heading">¶</a></h4>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.test_fnattrs.user_sum">
+<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">user_sum</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">a</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.test_fnattrs.user_sum" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>another function that can only be called in user context</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<span><span class="c-expr sig sig-inline c"><span class="kt">int</span></span></span>) – first argument</p></li>
+<li><p><strong>b</strong> (<span><span class="c-expr sig sig-inline c"><span class="kt">int</span></span></span>) – second argument</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="test-fnattrs-user-sum-description">
+<span id="id6"></span><h5>Description<a class="headerlink" href="#test-fnattrs-user-sum-description" title="Permalink to this heading">¶</a></h5>
+<p>This function makes no sense, it’s only a kernel-doc demonstration.</p>
+</section>
+<section id="test-fnattrs-user-sum-example">
+<span id="id7"></span><h5>Example<a class="headerlink" href="#test-fnattrs-user-sum-example" title="Permalink to this heading">¶</a></h5>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user_sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="test-fnattrs-user-sum-return">
+<span id="id8"></span><h5>Return<a class="headerlink" href="#test-fnattrs-user-sum-return" title="Permalink to this heading">¶</a></h5>
+<p>Returns the sum of the <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code></p>
+</section>
+</section>
+</div>
+</section>
+<section id="option-internal">
+<span id="opt-internal"></span><h3>option <code class="docutils literal notranslate"><span class="pre">:internal:</span></code><a class="headerlink" href="#option-internal" title="Permalink to this heading">¶</a></h3>
+<p>Include documentation for all documented definitions, <strong>not</strong> exported.  This
+test gathers exports from <a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-h-src"><span class="std std-ref">source all-in-a-tumble.h</span></a> and
+<a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-c-src"><span class="std std-ref">source all-in-a-tumble.c</span></a> and parses comments from
+<a class="reference internal" href="all-in-a-tumble-src.html#all-in-a-tumble-c-src"><span class="std std-ref">source all-in-a-tumble.c</span></a>, from where only the <em>not exported</em> definitions are
+used in the reST output:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">kernel-doc</span><span class="p">::</span>  /src/all-in-a-tumble.c
+   <span class="nc">:internal:</span>  all-in-a-tumble.h
+   <span class="nc">:module:</span> test_internal
+</pre></div>
+</div>
+<p>The example also shows, that mixing different values for</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:exp-method:</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">[macro|attribute]</span></code> and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:exp-ids:</span></code>    –&gt; <code class="docutils literal notranslate"><span class="pre">[EXPORT_SYMBOL|API_EXPORTED]</span></code></p></li>
+</ul>
+<p>in one source file is not well supported:</p>
+<div class="rst-example admonition">
+<p class="admonition-title">internal symbols</p>
+<section id="test-internal-user-sum">
+<span id="id9"></span><h4>user_sum<a class="headerlink" href="#test-internal-user-sum" title="Permalink to this heading">¶</a></h4>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.test_internal.user_sum">
+<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">user_sum</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">a</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.test_internal.user_sum" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>another function that can only be called in user context</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<span><span class="c-expr sig sig-inline c"><span class="kt">int</span></span></span>) – first argument</p></li>
+<li><p><strong>b</strong> (<span><span class="c-expr sig sig-inline c"><span class="kt">int</span></span></span>) – second argument</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="test-internal-user-sum-description">
+<span id="id10"></span><h5>Description<a class="headerlink" href="#test-internal-user-sum-description" title="Permalink to this heading">¶</a></h5>
+<p>This function makes no sense, it’s only a kernel-doc demonstration.</p>
+</section>
+<section id="test-internal-user-sum-example">
+<span id="id11"></span><h5>Example<a class="headerlink" href="#test-internal-user-sum-example" title="Permalink to this heading">¶</a></h5>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user_sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="test-internal-user-sum-return">
+<span id="id12"></span><h5>Return<a class="headerlink" href="#test-internal-user-sum-return" title="Permalink to this heading">¶</a></h5>
+<p>Returns the sum of the <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code></p>
+</section>
+</section>
+<section id="internal-function">
+<span id="test-internal-internal-function"></span><h4>internal_function<a class="headerlink" href="#internal-function" title="Permalink to this heading">¶</a></h4>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.test_internal.internal_function">
+<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">internal_function</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.test_internal.internal_function" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>the answer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>void</strong> – no arguments</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="context">
+<span id="test-internal-internal-function-context"></span><h5>Context<a class="headerlink" href="#context" title="Permalink to this heading">¶</a></h5>
+<p>!sanity()</p>
+</section>
+<section id="test-internal-internal-function-return">
+<span id="id13"></span><h5>Return<a class="headerlink" href="#test-internal-internal-function-return" title="Permalink to this heading">¶</a></h5>
+<p>The answer to the ultimate question of life, the universe and everything.</p>
+</section>
+</section>
+<section id="sys-tgkill">
+<span id="test-internal-sys-tgkill"></span><h4>sys_tgkill<a class="headerlink" href="#sys-tgkill" title="Permalink to this heading">¶</a></h4>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.test_internal.sys_tgkill">
+<span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_tgkill</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">pid_t</span></span><span class="w"> </span><span class="n"><span class="pre">tgid</span></span>, <span class="n"><span class="pre">pid_t</span></span><span class="w"> </span><span class="n"><span class="pre">pid</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">sig</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.test_internal.sys_tgkill" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>send signal to one specific thread</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tgid</strong> (<span><span class="c-expr sig sig-inline c"><span class="n">pid_t</span></span></span>) – the thread group ID of the thread</p></li>
+<li><p><strong>pid</strong> (<span><span class="c-expr sig sig-inline c"><span class="n">pid_t</span></span></span>) – the PID of the thread</p></li>
+<li><p><strong>sig</strong> (<span><span class="c-expr sig sig-inline c"><span class="kt">int</span></span></span>) – signal to be sent</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="test-internal-sys-tgkill-return">
+<span id="id14"></span><h5>Return<a class="headerlink" href="#test-internal-sys-tgkill-return" title="Permalink to this heading">¶</a></h5>
+<p>This syscall also checks the <code class="docutils literal notranslate"><span class="pre">tgid</span></code> and returns -ESRCH even if the PID
+exists but it’s not belonging to the target process anymore. This
+method solves the problem of threads exiting and PIDs getting reused.</p>
+</section>
+</section>
+<section id="enum-rarely-enum">
+<span id="test-internal-rarely-enum"></span><h4>enum rarely_enum<a class="headerlink" href="#enum-rarely-enum" title="Permalink to this heading">¶</a></h4>
+<dl class="c enum">
+<dt class="sig sig-object c" id="c.test_internal.rarely_enum">
+<span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rarely_enum</span></span></span><a class="headerlink" href="#c.test_internal.rarely_enum" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>enum to test parsing rarely code styles</p>
+</dd></dl>
+
+<section id="definition">
+<span id="test-internal-rarely-enum-definition"></span><h5>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">¶</a></h5>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="n">rarely_enum</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">F1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F2</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="constants">
+<span id="test-internal-rarely-enum-constants"></span><h5>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h5>
+<dl class="simple">
+<dt>F1</dt><dd><p>f1</p>
+</dd>
+<dt>F2</dt><dd><p>f2</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="struct-rarely-struct">
+<span id="test-internal-rarely-struct"></span><h4>struct rarely_struct<a class="headerlink" href="#struct-rarely-struct" title="Permalink to this heading">¶</a></h4>
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.test_internal.rarely_struct">
+<span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rarely_struct</span></span></span><a class="headerlink" href="#c.test_internal.rarely_struct" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>struct to test parsing rarely code styles</p>
+</dd></dl>
+
+<section id="test-internal-rarely-struct-definition">
+<span id="id15"></span><h5>Definition<a class="headerlink" href="#test-internal-rarely-struct-definition" title="Permalink to this heading">¶</a></h5>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">rarely_struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">foo</span><span class="w"> </span><span class="n">foofoo</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">bar</span><span class="w"> </span><span class="n">barbar</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="members">
+<span id="test-internal-rarely-struct-members"></span><h5>Members<a class="headerlink" href="#members" title="Permalink to this heading">¶</a></h5>
+<dl class="simple">
+<dt>foofoo</dt><dd><p>lorem</p>
+</dd>
+<dt>barbar</dt><dd><p>ipsum</p>
+</dd>
+</dl>
+</section>
+</section>
+</div>
+</section>
+</section>
+<section id="syscall-macro">
+<h2>SYSCALL macro<a class="headerlink" href="#syscall-macro" title="Permalink to this heading">¶</a></h2>
+<p>In the Kernel’s source is a macro: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/adding-syscalls.html#generic-system-call-implementation">SYSCALL_DEFINEn()</a>.
+By example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * sys_tgkill - send signal to one specific thread</span>
+<span class="cm"> * @tgid: the thread group ID of the thread</span>
+<span class="cm"> * @pid: the PID of the thread</span>
+<span class="cm"> * @sig: signal to be sent</span>
+<span class="cm"> *</span>
+<span class="cm"> * Return:</span>
+<span class="cm"> *</span>
+<span class="cm"> * This syscall also checks the @tgid and returns -ESRCH even if the PID</span>
+<span class="cm"> * exists but it&#39;s not belonging to the target process anymore. This</span>
+<span class="cm"> * method solves the problem of threads exiting and PIDs getting reused.</span>
+<span class="cm"> */</span>
+<span class="n">SYSCALL_DEFINE3</span><span class="p">(</span><span class="n">tgkill</span><span class="p">,</span><span class="w"> </span><span class="kt">pid_t</span><span class="p">,</span><span class="w"> </span><span class="n">tgid</span><span class="p">,</span><span class="w"> </span><span class="kt">pid_t</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">sig</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">kernel-doc</span><span class="p">::</span>  /src/all-in-a-tumble.c
+   <span class="nc">:symbols:</span>  sys_tgkill
+</pre></div>
+</div>
+<div class="rst-example admonition">
+<p class="admonition-title">missing exports</p>
+<section id="id16">
+<span id="id17"></span><h3>sys_tgkill<a class="headerlink" href="#id16" title="Permalink to this heading">¶</a></h3>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.sys_tgkill">
+<span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_tgkill</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">pid_t</span></span><span class="w"> </span><span class="n"><span class="pre">tgid</span></span>, <span class="n"><span class="pre">pid_t</span></span><span class="w"> </span><span class="n"><span class="pre">pid</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">sig</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.sys_tgkill" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>send signal to one specific thread</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tgid</strong> (<span><span class="c-expr sig sig-inline c"><span class="n">pid_t</span></span></span>) – the thread group ID of the thread</p></li>
+<li><p><strong>pid</strong> (<span><span class="c-expr sig sig-inline c"><span class="n">pid_t</span></span></span>) – the PID of the thread</p></li>
+<li><p><strong>sig</strong> (<span><span class="c-expr sig sig-inline c"><span class="kt">int</span></span></span>) – signal to be sent</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="sys-tgkill-return">
+<span id="id18"></span><h4>Return<a class="headerlink" href="#sys-tgkill-return" title="Permalink to this heading">¶</a></h4>
+<p>This syscall also checks the <code class="docutils literal notranslate"><span class="pre">tgid</span></code> and returns -ESRCH even if the PID
+exists but it’s not belonging to the target process anymore. This
+method solves the problem of threads exiting and PIDs getting reused.</p>
+</section>
+</section>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+  <span id="sidebar-top"></span>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  
+    
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/darmarIT_logo_128.png" alt="Logo"/>
+            </a></p>
+  
+
+  <h3>Project Links</h3>
+  <ul>
+    <li><a href="https://return42.github.io/boilerplate/slides/index.html">Slide Collection</a>
+  
+    <li><a href="https://return42.github.io/boilerplate/xxxx-api/xxxx.html">API</a>
+  
+    <li><a href="https://github.com/return42/boilerplate">Source</a>
+  
+    <li><a href="https://github.com/return42/boilerplate/issues">Issue Tracker</a>
+  
+    <li><a href="mailto:markus.heiser@darmarIT.de">Contact</a>
+  </ul><h3>Navigation</h3>
+<ul>
+  <li><a href="../index.html">Overview</a>
+    <ul>
+          <li>Previous: <a href="../xxxx-api/xxxx.__pkginfo__.html" title="previous chapter">xxxx.__pkginfo__ module</a>
+          <li>Next: <a href="all-in-a-tumble-src.html" title="next chapter">source of <code class="docutils literal notranslate"><span class="pre">all-in-a-tumble.[ch]</span></code></a>
+    </ul>
+  </li>
+</ul>
+  <h3>Contents</h3>
+  <ul>
+<li><a class="reference internal" href="#">kernel-doc Test</a><ul>
+<li><a class="reference internal" href="#doc-sections">DOC sections</a><ul>
+<li><a class="reference internal" href="#option-no-header">option <code class="docutils literal notranslate"><span class="pre">:no-header:</span></code></a></li>
+<li><a class="reference internal" href="#multiple-doc-sections">multiple DOC sections</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#option-man-sect">option <code class="docutils literal notranslate"><span class="pre">:man-sect:</span></code></a></li>
+<li><a class="reference internal" href="#exported-symbols">exported symbols</a><ul>
+<li><a class="reference internal" href="#option-export">option <code class="docutils literal notranslate"><span class="pre">:export:</span></code></a></li>
+<li><a class="reference internal" href="#options-export-exp-method-exp-ids">options <code class="docutils literal notranslate"><span class="pre">:export:,</span> <span class="pre">:exp-method:,</span> <span class="pre">:exp-ids:</span></code></a></li>
+<li><a class="reference internal" href="#option-internal">option <code class="docutils literal notranslate"><span class="pre">:internal:</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#syscall-macro">SYSCALL macro</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023 Markus Heiser.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    </div>
+  <script src="../_static/version_warning_offset.js"></script>
+
+  </body>
+</html>

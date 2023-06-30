@@ -50,10 +50,23 @@ div.sphinxsidebar {
   color: #444;
 }
 
+div.sphinxsidebar li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+div.sphinxsidebar li:hover {
+  overflow: visible;
+}
+
 div.sphinxsidebar a,
 div.sphinxsidebar a code {
   color: #444;
   border-color: #444;
+}
+
+div.sphinxsidebar a:hover {
+  background-color:#fff;
 }
 
 div.sphinxsidebar p.logo {
@@ -167,12 +180,14 @@ p.version-warning a {
 /* -- body styles --------------------------------------------------- */
 
 a {
-  text-decoration: none;
-  border-bottom: 1px dotted #000;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #000;
+  text-decoration-thickness: 1px;
 }
 
 a:hover {
-  border-bottom-style: solid;
+  text-decoration-style: solid;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -480,4 +495,31 @@ table.footnote td {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* -- sphinx-tabs -------------------------------------------------- */
+
+.sphinx-tabs {
+  margin-bottom: 0;
+}
+
+.sphinx-tabs .ui.menu {
+  font-family: 'Garamond', 'Georgia', serif !important;
+}
+
+.sphinx-tabs .ui.attached.menu {
+  border-bottom: none
+}
+
+.sphinx-tabs .ui.tabular.menu .item {
+  border-bottom: 2px solid transparent;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding: .3em 0.6em;
+}
+
+.sphinx-tabs .ui.attached.segment, .ui.segment {
+  border: 0;
+  padding: 0;
 }

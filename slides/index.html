@@ -8,7 +8,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
+    <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
 
     
 <link rel="stylesheet" href="_static/css/reset.css">
@@ -19,6 +20,8 @@
 
 <link rel="stylesheet" href="_static/mysettings.css" type="text/css" />
 
+<link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="_static/revealjs.css" type="text/css" />
 
     <!-- Printing and PDF exports -->
     <script>
@@ -33,20 +36,19 @@
     <!--[if lt IE 9]>
     <script src="_static/lib/js/html5shiv.js"></script>
     <![endif]-->
-      <script type="text/javascript" src="_static/language_data.js"></script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
+      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
         
-  <div class="section" id="boilerplate">
-<h1>boilerplate<a class="headerlink" href="#boilerplate" title="Permalink to this headline">¶</a></h1>
-<aside id="logo" style="height:8vh; width:8vw; position:absolute; bottom:2vh; left:2vw; ">
+  <aside id="logo" style="height:8vh; width:8vw; position:absolute; bottom:2vh; left:2vw; ">
   <a href="http://www.darmarit.de">
     <img src="_static/darmarIT_logo_512.png">
   </a>
 </aside><section>
-<h2>boilerplate</h2>
+<h4>boilerplate</h4>
 <p class="first">nothing special here, only some of my boilerplates</p>
 <small>
 <p class="first last"><em>Hit ‘?’ to see keyboard shortcuts</em></p>
@@ -57,42 +59,34 @@
 </small>
 </section>
 <section>
-<h2>Intro</h2>
-<p class="first">In my projects I like to run tests and build processes from <a class="reference external" href="https://www.gnu.org/software/make/">make</a>.  The
-boilerplate code here is for common build purpose and heavily based on:</p>
+<h4>Intro</h4>
+<p class="first">The boilerplate code here is for common build purpose and heavily based on:</p>
 <ul class="last simple">
 <li><p><a class="reference external" href="https://www.gnu.org/software/make/">make</a></p></li>
 <li><p><a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> (<a class="reference external" href="https://www.python.org">Python</a>)</p></li>
 </ul>
 </section>
 <section>
-<h2>add boilerplate to your project</h2>
+<h4>add boilerplate to your project</h4>
 <p class="first">copy <code class="docutils literal notranslate"><span class="pre">./utils</span></code> folder to your repository and add some includes to your
 <code class="docutils literal notranslate"><span class="pre">./Makefile</span></code> (python projects see <a class="reference external" href="https://github.com/return42/boilerplate/blob/master/Makefile.python_prj">Makefile.python_prj</a>)</p>
-<pre>
+<pre class="last">
 <code data-trim contenteditable># -*- coding: utf-8; mode: makefile-gmake -*-
 
 include utils/makefile.include
 include utils/makefile.python
 include utils/makefile.sphinx
 include utils/makefile.0</code></pre>
-<p>In your repository add developer’s <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p>
-<pre class="last">
-<code data-trim contenteditable>Sphinx
-sphinx_rtd_theme
-sphinx-autobuild
-pip
-git+https://github.com/return42/sphinxjp.themes.revealjs</code></pre>
 </section>
 <section>
-<h2>common make options</h2>
+<h4>common make options</h4>
 <pre class="first last">
 <code data-trim contenteditable>$ make make-help
   make V=0|1 [targets] 0 =&gt; quiet build (default), 1 =&gt; verbose
   make V=2   [targets] 2 =&gt; give reason for rebuild of target</code></pre>
 </section>
 <section>
-<h2>add doc targets to Makefile (1)</h2>
+<h4>add doc targets to Makefile (1)</h4>
 <p class="first">Use definitions from <a class="reference external" href="https://github.com/return42/boilerplate/blob/master/utils/makefile.sphinx">makefile.sphinx</a> to define your doc targets.</p>
 <pre class="makefile">
 <code data-trim contenteditable>help:
@@ -109,7 +103,7 @@ docs-live: sphinx-live
 <p class="last">builds (Sphinx) documentation from folder <em>docs</em>.</p>
 </section>
 <section>
-<h2>add doc targets to Makefile (2)</h2>
+<h4>add doc targets to Makefile (2)</h4>
 <p class="first">build (reveal.js) presentation from folder <em>docs/slides</em>.</p>
 <pre class="makefile">
 <code data-trim contenteditable>slides:  sphinx-doc
@@ -126,7 +120,7 @@ help:
 <code data-trim contenteditable>git+https://github.com/return42/sphinxjp.themes.revealjs</code></pre>
 </section>
 <section>
-<h2>use predefined python targets (1)</h2>
+<h4>use predefined python targets (1)</h4>
 <pre class="makefile first last">
 <code data-trim contenteditable>help:
   @echo  &#x27;  install   - developer install&#x27;
@@ -139,7 +133,7 @@ install: pyinstall
 uninstall: pyuninstall</code></pre>
 </section>
 <section>
-<h2>use predefined python targets (2)</h2>
+<h4>use predefined python targets (2)</h4>
 <pre class="first last">
 <code data-trim contenteditable>$ make help
   install   - developer install
@@ -164,7 +158,7 @@ when using target &quot;pydebug&quot;, set breakpoints within py-source by addin
     ...</code></pre>
 </section>
 <section>
-<h2>About this presentation</h2>
+<h4>About this presentation</h4>
 <p class="first">This is a small <a class="reference external" href="http://lab.hakim.se/reveal-js">REVAL.JS</a> presentation.
 The source format of it’s content is in <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reST-markup</a>.</p>
 <p>The HTML is build by the <a class="reference external" href="http://www.sphinx-doc.org/">Sphinx-doc</a> extension
@@ -175,7 +169,7 @@ The source format of it’s content is in <a class="reference external" href="ht
 <aside class="last notes">
 <p class="first">These are some notes. They’ll be hidden in your presentation, but
 you can see them if you open the speaker notes window .</p>
-<ol class="last arabic simple">
+<ol class="arabic simple last">
 <li><p>sphinxjp.themes.revealjs: <a class="reference external" href="https://github.com/tell-k/sphinxjp.themes.revealjs">https://github.com/tell-k/sphinxjp.themes.revealjs</a></p></li>
 <li><p>REVEAL.JS: <a class="reference external" href="http://lab.hakim.se/reveal-js">http://lab.hakim.se/reveal-js</a></p></li>
 <li><p>Sphinx-doc: <a class="reference external" href="http://www.sphinx-doc.org">http://www.sphinx-doc.org</a></p></li>
@@ -187,13 +181,12 @@ you can see them if you open the speaker notes window .</p>
 <h2>Thanks!</h2>
 <h3>more slides comming soon ...</h3>
 </section>
-</div>
 
 
       </div>
     </div>
     
-<script src="_static/jquery.js"></script>
+<script src="_static/js/jquery.js"></script>
 <script src="_static/js/reveal.min.js"></script>
     <script>
 
@@ -210,7 +203,7 @@ you can see them if you open the speaker notes window .</p>
         margin: 0.1,
 
         minScale: 0.2,
-        maxScale: 2,
+        maxScale: 1.0,
 
         controls: true,
         progress: true,
@@ -226,11 +219,11 @@ you can see them if you open the speaker notes window .</p>
 
         autoSlide: 0,
         mouseWheel: false,
-        rollingLinks: false,
+        rollingLinks: true,
         previewLinks: false,
 
         transitionSpeed: "default",
-        backgroundTransition: "default",
+        backgroundTransition: "slide",
 
         slideNumber: true,
         embedded: false,

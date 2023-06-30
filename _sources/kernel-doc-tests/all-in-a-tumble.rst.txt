@@ -15,10 +15,10 @@ using the following directives:
 
 .. code-block:: rst
 
-   .. kernel-doc::  ../src/all-in-a-tumble.c
+   .. kernel-doc::  /src/all-in-a-tumble.c
       :module: example
 
-   .. kernel-doc::  ../src/all-in-a-tumble.h
+   .. kernel-doc::  /src/all-in-a-tumble.h
       :module: example
 
 The option ``:module:`` is optional, to find out why we use this option *here*,
@@ -35,7 +35,7 @@ see :ref:`kernel-doc-options`.
 all-in-a-tumble.h
 =================
 
-.. kernel-doc::  ../src/all-in-a-tumble.h
+.. kernel-doc::  /src/all-in-a-tumble.h
     :module: example
 
 ------
@@ -45,5 +45,6 @@ all-in-a-tumble.h
 all-in-a-tumble.c
 =================
 
-.. kernel-doc::  ../src/all-in-a-tumble.c
+.. kernel-doc::  /src/all-in-a-tumble.c
     :module: example
+    :known-attrs: API_EXPORTED

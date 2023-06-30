@@ -61,13 +61,13 @@ body {
   font-size: 2.4em; }
 
 .reveal h2 {
-  font-size: 2em; }
+  font-size: 3em; }
 
 .reveal h3 {
-  font-size: 1.6em; }
+  font-size: 2em; }
 
 .reveal h4 {
-  font-size: 1.2em; }
+  font-size: 1.6em; }
 
 .reveal h1 {
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2); }
@@ -148,7 +148,7 @@ body {
   width: 90%;
   margin: 20px auto;
   text-align: left;
-  font-size: 0.55em;
+  font-size: 0.7em;
   font-family: "DejaVu Sans Mono", monospace;
   line-height: 1.2em;
   word-wrap: break-word;
@@ -156,13 +156,14 @@ body {
 
 .reveal code {
   font-family: "DejaVu Sans Mono", monospace;
-  text-transform: none; }
+  text-transform: none;
+  color: #ffdfbf; }
 
 .reveal pre code {
   display: block;
   padding: 5px;
   overflow: auto;
-  max-height: 400px;
+  max-height: none;
   word-wrap: normal; }
 
 .reveal table {
@@ -275,13 +276,5 @@ body {
   .backgrounds {
     background-color: #2b2b2b; } }
 
-.reveal pre {
-  font-size: 0.7em;
-  line-height: 1.2em;
-  box-shadow: none; }
 
-.reveal code {
-  color: #ffdfbf; }
 
-.reveal pre code {
-  max-height: none; }

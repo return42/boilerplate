@@ -25,7 +25,7 @@ aka :ref:`kernel-doc-syntax-snippets`, which we will use in section:
 source ``all-in-a-tumble.h``
 ============================
 
-.. literalinclude:: ../src/all-in-a-tumble.h
+.. literalinclude:: ../../src/all-in-a-tumble.h
    :language: c
    :linenos:
 
@@ -36,6 +36,6 @@ source ``all-in-a-tumble.h``
 source ``all-in-a-tumble.c``
 ============================
 
-.. literalinclude:: ../src/all-in-a-tumble.c
+.. literalinclude:: ../../src/all-in-a-tumble.c
    :language: c
    :linenos:
