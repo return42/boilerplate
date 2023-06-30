@@ -61,6 +61,11 @@ project: pyenvinstall $(API_DOC)
 	@echo '  PROJECT   requirements.txt'
 	$(Q)- rm -f requirements.txt
 	$(Q)$(PY_ENV_BIN)/python -c "from xxxx.__pkginfo__ import *; print(requirements_txt)" > ./requirements.txt
+	@echo '  PROJECT   requirements_dev.txt'
+	$(Q)- rm -f requirements_dev.txt
+	$(Q)$(PY_ENV_BIN)/python -c "from xxxx.__pkginfo__ import *; print(requirements_dev_txt)" > ./requirements_dev.txt
+	@echo '  PROJECT   README.rst'
+	$(Q)- rm -f README.rst
 	$(Q)$(PY_ENV_BIN)/python -c "from xxxx.__pkginfo__ import *; print(README)" > README.rst
 
 PHONY += $(API_DOC)

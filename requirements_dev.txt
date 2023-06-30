@@ -1,0 +1,14 @@
+pylint
+docutils
+linuxdoc @ git+http://github.com/return42/linuxdoc.git
+pallets-sphinx-themes
+sphinx
+sphinx-autobuild
+sphinx-issues
+sphinx-jinja
+sphinx-tabs
+sphinxcontrib-programoutput
+sphinxjp.themes.revealjs @ git+https://github.com/return42/sphinxjp.themes.revealjs
+tox
+twine
+

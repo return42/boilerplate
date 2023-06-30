@@ -1,19 +1,41 @@
 #!/usr/bin/env python
-# -*- coding: utf-8; mode: python -*-
 """
 xxxx ``setup.py``
 
 Metadata see ``xxxx/__pkginfo__.py``
 """
+# pylint: disable=invalid-name
 
 import os
-from os.path import join as ospj
-import imp
-from setuptools import setup
+import io
+import importlib
+from setuptools import setup, find_packages
 
-ROOT = os.path.abspath(os.path.dirname(__file__))
-SRC = ospj(ROOT, 'xxxx')
-PKG = imp.load_source('__pkginfo__', ospj(SRC, '__pkginfo__.py'))
+_dir = os.path.abspath(os.path.dirname(__file__))
+
+SRC    = os.path.join(_dir, 'xxxx')
+README = os.path.join(_dir, 'README.rst')
+DOCS   = os.path.join(_dir, 'docs')
+TESTS  = os.path.join(_dir, 'tests')
+
+
+def load_source(modname, modpath):
+    spec = importlib.util.spec_from_file_location(modname, modpath)
+    if not spec:
+        raise ValueError("Error loading '%s' module" % modpath)
+    module = importlib.util.module_from_spec(spec)
+    if not spec.loader:
+        raise ValueError("Error loading '%s' module" % modpath)
+    spec.loader.exec_module(module)
+    return module
+
+
+def readFile(fname, m='rt', enc='utf-8', nl=None):
+    with io.open(fname, mode=m, encoding=enc, newline=nl) as f:
+        return f.read()
+
+PKG = load_source('__pkginfo__', os.path.join(SRC, '__pkginfo__.py'))
+
 
 # https://packaging.python.org/guides/distributing-packages-using-setuptools/#configuring-your-project
 setup(

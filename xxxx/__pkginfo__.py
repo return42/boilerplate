@@ -1,6 +1,6 @@
 # -*- coding: utf-8; mode: python; mode: flycheck -*-
-# pylint: disable=invalid-name,redefined-builtin
-# pylint: disable=line-too-long
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# pylint: disable=line-too-long, invalid-name, consider-using-f-string
 """Python package meta informations used by setup.py and other project files.
 
 Single point of source for all xxxx package metadata.  After modifying this
@@ -9,10 +9,11 @@ file it is needed to recreate some projet files::
   ./local/py3/bin/python -c "from xxxx.__pkginfo__ import *; print(README)" > README.rst
   ./local/py3/bin/python -c "from xxxx.__pkginfo__ import *; print(requirements_txt)" > requirements.txt
 
-About python packaging see `Python Packaging Authority`_.  Most of the names
-here are mapped to ``setup(<name1>=..., <name2>=...)`` arguments in
-``setup.py``.  See `Packaging and distributing projects`_ about ``setup(...)``
-arguments. If this is all new for you, start with `PyPI Quick and Dirty`_.
+About python packaging see `Packaging Python Projects`_ and `Python Packaging
+Authority`_.  Most of the names here are mapped to ``setup(<name1>=...,
+<name2>=...)`` arguments in ``setup.py``.  See `Packaging and distributing
+projects`_ about ``setup(...)`` arguments. If this is all new for you, start
+with `PyPI Quick and Dirty`_.
 
 Further read:
 
@@ -23,6 +24,7 @@ Further read:
 - installing_
 
 .. _`Python Packaging Authority`: https://www.pypa.io
+.. _Packaging Python Projects: https://packaging.python.org/en/latest/tutorials/packaging-projects/
 .. _`Packaging and distributing projects`: https://packaging.python.org/guides/distributing-packages-using-setuptools/
 .. _`PyPI Quick and Dirty`: https://hynek.me/articles/sharing-your-labor-of-love-pypi-quick-and-dirty/
 .. _pythonwheels: https://pythonwheels.com/
@@ -38,32 +40,31 @@ Further read:
 from setuptools import find_packages
 
 package = 'boilerplate'
-version = '20200727'
-license   = 'GPLv3'
+version = '20230630'
+
+copyright = '2023 Markus Heiser'
 description = 'xxxx lorem ipsum'
-copyright = '2020 Markus Heiser'
+license = 'AGPLv3+'  # pylint: disable=redefined-builtin
+keywords = 'boilerplate template'
 
 author = 'Markus Heiser'
 author_email = 'markus.heiser@darmarIT.de'
+authors = [author, ]
+emails = [author_email, ]
 
 maintainer = 'Markus Heiser'
 maintainer_email = 'markus.heiser@darmarIT.de'
+maintainers = [maintainer, ]
 
 url = 'https://github.com/return42/boilerplate'
 docs = 'https://return42.github.io/boilerplate'
 issues = url + '/issues'
 
-authors      = [author, ]
-
-emails       = [author_email, ]
-keywords     = 'sphinx extension doc source code comments kernel-doc linux'
-
-maintainers = [maintainer, ]
-
 project_urls = {
     'Documentation'    : docs,
     'Code'             : url,
     'Issue tracker'    : issues,
+    'Changelog'        : url + '/blob/master/CHANGELOG',
 }
 
 packages = find_packages(exclude=['docs', 'tests'])
@@ -95,7 +96,7 @@ data_files = [
 
 
 # https://packaging.python.org/guides/distributing-packages-using-setuptools/#python-requires
-python_requires  ='>=3.7'
+python_requires  ='>=3.8'
 
 # https://packaging.python.org/guides/distributing-packages-using-setuptools/#py-modules
 py_modules = []
@@ -119,36 +120,32 @@ py_modules = []
 
 install_requires = [
     'fspath',
-    'tinycss2',
-    'requests',
-    'sqlalchemy',
-]
+    'setuptools',
+    # 'wheel',
 
+]
+install_requires.sort()
 install_requires_txt = "\n".join(install_requires)
 
 test_requires = [
     'pylint'
     ]
-
+test_requires.sort()
 test_requires_txt = "\n".join(test_requires)
 
 develop_requires = [
-    'twine',
-    # 'wheel'
-    'Sphinx<3.0',
+    'docutils',
+    'linuxdoc @ git+http://github.com/return42/linuxdoc.git',
     'pallets-sphinx-themes',
+    'sphinx',
     'sphinx-autobuild',
     'sphinx-issues',
     'sphinx-jinja',
     'sphinx-tabs',
     'sphinxcontrib-programoutput',
-    'linuxdoc @ git+http://github.com/return42/linuxdoc.git',
-    # slide-shows with revaljs
     'sphinxjp.themes.revealjs @ git+https://github.com/return42/sphinxjp.themes.revealjs',
-    # https://jedi.readthedocs.io/
-    # 'jedi',
-    # epc required by emacs: https://tkf.github.io/emacs-jedi
-    # 'epc @ git+https://github.com/tkf/python-epc',
+    'tox',
+    'twine',
     ]
 
 
@@ -165,12 +162,14 @@ def get_entry_points():
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Intended Audience :: Other Audience",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Utilities",
     "Topic :: Software Development :: Libraries :: Application Frameworks",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
@@ -216,22 +215,39 @@ README = """\
 %(package)s
 ===========
 %(docstring)s
+
+Install
+=======
+
+To install use `pip <https://pip.pypa.io/en/stable/getting-started/>`__:
+
+.. code-block:: text
+
+   pip install --user -U %(package)s
+
+
+Links
+=====
+
+- Documentation:   %(docs)s
+- Releases:        https://pypi.org/project/linuxdoc/
+- Code:            %(url)s
+- Issue tracker:   %(url)s/issues
+
+
+============ ===============================================
+package:     %(package)s (%(version)s)
+copyright:   %(copyright)s
+e-mail:      %(maintainer_email)s
+license:     %(license)s
+============ ===============================================
 """ % globals()
 
-requirements_txt = """# -*- coding: utf-8; mode: conf -*-
-
-# requirements of package %(package)s
-# -----------------------------------
-
+requirements_txt = """\
 %(install_requires_txt)s
+""" % globals()
 
-# test requires
-# -------------
-
+requirements_dev_txt = """\
 %(test_requires_txt)s
-
-# develop
-# -------
-
 %(develop_requires_txt)s
 """ % globals()

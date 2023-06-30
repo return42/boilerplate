@@ -1,29 +1,3 @@
-# -*- coding: utf-8; mode: conf -*-
-
-# requirements of package boilerplate
-# -----------------------------------
-
 fspath
-tinycss2
-requests
-sqlalchemy
-
-# test requires
-# -------------
-
-pylint
-
-# develop
-# -------
-
-twine
-Sphinx<3.0
-pallets-sphinx-themes
-sphinx-autobuild
-sphinx-issues
-sphinx-jinja
-sphinx-tabs
-sphinxcontrib-programoutput
-linuxdoc @ git+http://github.com/return42/linuxdoc.git
-sphinxjp.themes.revealjs @ git+https://github.com/return42/sphinxjp.themes.revealjs
+setuptools
 

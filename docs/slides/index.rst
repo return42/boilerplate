@@ -1,6 +1,3 @@
-=================================================
-boilerplate
-=================================================
 
 .. raw:: html
 
@@ -12,7 +9,7 @@ boilerplate
 
 
 .. revealjs:: boilerplate
-   :title-heading: h2
+   :title-heading: h4
 
    nothing special here, only some of my boilerplates
 
@@ -33,15 +30,16 @@ boilerplate
 
 
 .. revealjs:: Intro
+   :title-heading: h4
 
-   In my projects I like to run tests and build processes from make_.  The
-   boilerplate code here is for common build purpose and heavily based on:
+   The boilerplate code here is for common build purpose and heavily based on:
 
    - make_
    - Sphinx_ (Python_)
 
 
 .. revealjs:: add boilerplate to your project
+   :title-heading: h4
 
    copy ``./utils`` folder to your repository and add some includes to your
    ``./Makefile`` (python projects see Makefile.python_prj_)
@@ -55,17 +53,8 @@ boilerplate
       include utils/makefile.sphinx
       include utils/makefile.0
 
-   In your repository add developer's ``requirements.txt``
-
-   .. rv_code::
-
-      Sphinx
-      sphinx_rtd_theme
-      sphinx-autobuild
-      pip
-      git+https://github.com/return42/sphinxjp.themes.revealjs
-
 .. revealjs:: common make options
+   :title-heading: h4
 
    .. rv_code::
 
@@ -76,6 +65,7 @@ boilerplate
 .. _makefile.sphinx: https://github.com/return42/boilerplate/blob/master/utils/makefile.sphinx
 
 .. revealjs:: add doc targets to Makefile (1)
+   :title-heading: h4
 
    Use definitions from makefile.sphinx_ to define your doc targets.
 
@@ -97,6 +87,7 @@ boilerplate
    builds (Sphinx) documentation from folder *docs*.
 
 .. revealjs:: add doc targets to Makefile (2)
+   :title-heading: h4
 
    build (reveal.js) presentation from folder *docs/slides*.
 
@@ -120,6 +111,7 @@ boilerplate
       git+https://github.com/return42/sphinxjp.themes.revealjs
 
 .. revealjs:: use predefined python targets (1)
+   :title-heading: h4
 
    .. rv_code::
       :class: Makefile
@@ -135,6 +127,7 @@ boilerplate
       uninstall: pyuninstall
 
 .. revealjs:: use predefined python targets (2)
+   :title-heading: h4
 
    .. rv_code::
 
@@ -161,6 +154,7 @@ boilerplate
           ...
 
 .. revealjs:: About this presentation
+   :title-heading: h4
 
    This is a small `REVAL.JS <http://lab.hakim.se/reveal-js>`_ presentation.
    The source format of it's content is in `reST-markup
