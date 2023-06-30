@@ -92,69 +92,6 @@ DEFINE_EVENT(block_buffer, block_dirty_buffer,
 /* parse-SNAP: */
 
 
-/* parse-SNIP: my_struct */
-/**
-* struct my_struct - a struct with nested unions and structs
-* @arg1: first argument of anonymous union/anonymous struct
-* @arg2: second argument of anonymous union/anonymous struct
-* @arg1b: first argument of anonymous union/anonymous struct
-* @arg2b: second argument of anonymous union/anonymous struct
-* @arg3: third argument of anonymous union/anonymous struct
-* @arg4: fourth argument of anonymous union/anonymous struct
-* @bar: non-anonymous union
-* @bar.st1: struct st1 inside @bar
-* @bar.st1.arg1: first argument of struct st1 on union bar
-* @bar.st1.arg2: second argument of struct st1 on union bar
-* @bar.st2: struct st2 inside @bar
-* @bar.st2.arg1: first argument of struct st2 on union bar
-* @bar.st2.arg2: second argument of struct st2 on union bar
-* @bar.st3: struct st3 inside @bar
-* @bar.st3.arg2: second argument of struct st3 on union bar
-* @f1: nested function on anonimous union/struct
-* @bar.st2.f2: nested function on named union/struct
-*/
-struct my_struct {
-  /* Anonymous union/struct*/
-  union {
-	struct {
-	    char arg1 : 1;
-	    char arg2 : 3;
-	};
-      struct {
-          int arg1b;
-          int arg2b;
-      };
-      struct {
-          void *arg3;
-          int arg4;
-          int (*f1)(char foo, int bar);
-      };
-  };
-  union {
-      struct {
-          int arg1;
-          int arg2;
-      } st1;
-      struct {
-          void *arg1;  /* bar.st3.arg1 is undocumented, cause a warning */
-	    int arg2;
-         int (*f2)(char foo, int bar); /* bar.st3.fn2 is undocumented, cause a warning */
-      } st2, st3;
-      int (*f3)(char foo, int bar); /* f3 is undocumented, cause a warning */
-  } bar;               /* bar is undocumented, cause a warning */
-
-  /* private: */
-  int undoc_privat;    /* is undocumented but private, no warning */
-
-  /* public: */
-  enum {
-      FOO,
-      BAR,
-  } undoc_public;      /* is undocumented, cause a warning */
-
-};
-/* parse-SNAP: */
-
 /* parse-SNIP: my_long_struct */
 /**
  * struct my_long_struct - short description with &my_struct->a and &my_struct->b
@@ -489,30 +426,3 @@ struct lineevent_state {
 	DECLARE_KFIFO_PTR(foobar, struct lirc_scancode);
 	struct mutex read_lock;
 };
-
-
-/**
- * typedef genpool_algo_t: Allocation callback function type definition
- * @map: Pointer to bitmap
- * @size: The bitmap size in bits
- * @start: The bitnumber to start searching at
- * @nr: The number of zeroed bits we're looking for
- * @data: optional additional data used by the callback
- * @pool: the pool being allocated from
- */
-typedef unsigned long (*genpool_algo_t)(unsigned long *map,
-			unsigned long size,
-			unsigned long start,
-			unsigned int nr,
-			void *data, struct gen_pool *pool,
-			unsigned long start_addr);
-
-/**
- * typedef v4l2_check_dv_timings_fnc - timings check callback
- *
- * @t: the v4l2_dv_timings struct.
- * @handle: a handle from the driver.
- *
- * Returns true if the given timings are valid.
- */
-typedef bool v4l2_check_dv_timings_fnc(const struct v4l2_dv_timings *t, void *handle);

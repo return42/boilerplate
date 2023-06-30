@@ -16,7 +16,6 @@ project   = 'xxxx'
 copyright = xxxx.__copyright__
 version   = xxxx.__version__
 release   = xxxx.__version__
-show_authors = True
 
 DOC_URL    = PKG.docs
 GIT_URL    = PKG.url
@@ -26,7 +25,7 @@ source_suffix       = '.rst'
 show_authors        = True
 master_doc          = 'index'
 templates_path      = ['_templates']
-exclude_patterns    = ['_build', 'slides', 'index-autodoc.rst']
+exclude_patterns    = ['_build', 'slides', ]
 todo_include_todos  = True
 highlight_language = 'none'
 
@@ -72,18 +71,13 @@ extlinks['pull']   = (GIT_URL + '/pull/%s', 'PR ')
 extlinks['origin'] = (GIT_URL + '/blob/' + GIT_BRANCH + '/%s', 'git://')
 extlinks['patch']  = (GIT_URL + '/commit/%s', '#')
 extlinks['docs']   = (DOC_URL + '/%s', 'docs: ')
-extlinks['pypi'] = ('https://pypi.org/project/%s', 'PyPi: ')
-extlinks['man'] = ('https://manpages.debian.org/jump?q=%s', '')
-#extlinks['role'] = (
-#    'https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-%s', '')
-extlinks['duref'] = (
-    'http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#%s', '')
-extlinks['durole'] = (
-    'http://docutils.sourceforge.net/docs/ref/rst/roles.html#%s', '')
-extlinks['dudir'] =  (
-    'http://docutils.sourceforge.net/docs/ref/rst/directives.html#%s', '')
-extlinks['ctan'] =  (
-    'https://ctan.org/pkg/%s', 'CTAN: ')
+extlinks['pypi']   = ('https://pypi.org/project/%s', 'PyPi: ')
+extlinks['man']    = ('https://manpages.debian.org/jump?q=%s', '')
+#extlinks['role']  = ('https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-%s', '')
+extlinks['duref']  = ('http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#%s', '')
+extlinks['durole'] = ('http://docutils.sourceforge.net/docs/ref/rst/roles.html#%s', '')
+extlinks['dudir']  = ('http://docutils.sourceforge.net/docs/ref/rst/directives.html#%s', '')
+extlinks['ctan']   = ('https://ctan.org/pkg/%s', 'CTAN: ')
 
 # sphinx.ext.imgmath setup
 html_math_renderer = 'imgmath'

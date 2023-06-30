@@ -19,22 +19,30 @@ license:     AGPLv3+
 ============ ===============================================
 
 
-Python Code Documentation
-=========================
+Install
+=======
+
+Works as usual, e.g. use::
+
+  pip install [--user] xxxx
+
+For a bleeding edge installation::
+
+  pip install --user git+http://github.com/<name>/xxxx.git
+
+If you are a developer and like to contribute to the xxxx project, fork on github
+or clone and make a developer install::
+
+  git clone https://github.com/<name>/xxxx
+  cd xxxx
+  make install
+
+----
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents
 
-   xxxx-api/xxxx
+   Python Modules <xxxx-api/xxxx>
+   C-Sources <kernel-doc-tests/index>
 
-``kernel-doc`` Directive
-========================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents
-
-   kernel-doc-tests
-   all-in-a-tumble-src
-   all-in-a-tumble

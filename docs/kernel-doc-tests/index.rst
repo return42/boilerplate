@@ -12,8 +12,13 @@ Wtihin this section you will find some :ref:`linuxdoc-howto` tests and examples
 for common use cases.  The kernel-doc comments are taken from the source files
 :ref:`all-in-a-tumble.c-src` and :ref:`all-in-a-tumble.h-src`.
 
-.. contents::
-   :local:
+.. toctree::
+   :maxdepth: 2
+   :caption: C sources
+
+   all-in-a-tumble-src
+   all-in-a-tumble
+
 
 .. _doc_sections:
 
@@ -214,7 +219,7 @@ To insert the documentation use:
       :export:  /src/all-in-a-tumble.h
       :exp-method: attribute
       :exp-ids: API_EXPORTED
-      :module: test-fnattrs
+      :module: test_fnattrs
 
 The ``exp-method`` and ``exp-ids`` could be respectively omitted if
 ``kernel_doc_exp_method`` and ``kernel_doc_exp_ids`` are set in the sphinx
@@ -227,7 +232,7 @@ configuration.
       :export:  /src/all-in-a-tumble.h
       :exp-method: attribute
       :exp-ids: API_EXPORTED
-      :module: test-fnattrs
+      :module: test_fnattrs
 
 .. _opt_internal:
 
@@ -244,7 +249,7 @@ used in the reST output:
 
    .. kernel-doc::  /src/all-in-a-tumble.c
       :internal:  all-in-a-tumble.h
-      :module: tests-internal
+      :module: test_internal
 
 The example also shows, that mixing different values for
 
@@ -258,26 +263,8 @@ in one source file is not well supported:
 
    .. kernel-doc::  /src/all-in-a-tumble.c
       :internal:  /src/all-in-a-tumble.h
-      :module: tests-internal
-
-
-Missing exports
----------------
-
-In the next test, the ``:export: {file glob pattern}`` is used, but it does not
-match any file, or there are no exports in the matching files.  Whatever, an
-empty list of exported symbols is treated as an error:
-
-.. code-block:: rst
-
-   .. kernel-doc::  /src/all-in-a-tumble.c
-      :export:  match_files_without_exports*
-
-.. admonition:: missing exports
-   :class: rst-example
-
-   .. kernel-doc::  /src/all-in-a-tumble.c
-      :export:  match_files_without_exports*
+      :module: test_internal
+      :known-attrs: API_EXPORTED
 
 
 SYSCALL macro

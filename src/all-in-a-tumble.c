@@ -68,14 +68,16 @@ int internal_function()
 
 /* parse-SNIP: test_SYSCALL */
 /**
- *  sys_tgkill - send signal to one specific thread
- *  @tgid: the thread group ID of the thread
- *  @pid: the PID of the thread
- *  @sig: signal to be sent
+ * sys_tgkill - send signal to one specific thread
+ * @tgid: the thread group ID of the thread
+ * @pid: the PID of the thread
+ * @sig: signal to be sent
  *
- *  This syscall also checks the @tgid and returns -ESRCH even if the PID
- *  exists but it's not belonging to the target process anymore. This
- *  method solves the problem of threads exiting and PIDs getting reused.
+ * Return:
+ *
+ * This syscall also checks the @tgid and returns -ESRCH even if the PID
+ * exists but it's not belonging to the target process anymore. This
+ * method solves the problem of threads exiting and PIDs getting reused.
  */
 SYSCALL_DEFINE3(tgkill, pid_t, tgid, pid_t, pid, int, sig)
 {
@@ -112,7 +114,5 @@ struct rarely_struct {
 
 	barbar;
 };
-
-/* parse-SNIP: xxxx */
 
 
