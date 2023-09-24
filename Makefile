@@ -5,7 +5,7 @@ include utils/makefile.python
 include utils/makefile.sphinx
 include utils/makefile.0
 
-GIT_URL   = https://github.com/return42/boilerplate.git
+GIT_URL   = git@github.com:return42/boilerplate.git
 PYOBJECTS = xxxx
 DOC       = docs
 SLIDES    = $(DOC)/slides
